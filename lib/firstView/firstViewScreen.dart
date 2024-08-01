@@ -15,10 +15,10 @@ class _FirstViewScreenState extends State<FirstViewScreen> {
     Size size = MediaQuery.of(context).size;
     return Scaffold(
       appBar: AppBar(
-        title: Text('Dashboard'),
+        title: Text('Dashboard', style: TextStyle(letterSpacing: 1, fontWeight: FontWeight.bold)),
         actions: [
           IconButton(
-            icon: Icon(Icons.person),
+            icon: Icon(Icons.person, color: Colors.green),
             onPressed: () {
               // Handle user icon press
             },
@@ -31,59 +31,53 @@ class _FirstViewScreenState extends State<FirstViewScreen> {
           children: [
             DashboardCard(
               title: 'All Contacts',
-              color: Colors.lightBlue,
-              icon: Icons.contacts,
+              color: Colors.white,
+              image: "assets/background/contactimages.png",
               onTap: () {
                 // Navigate to All Contacts screen
               },
             ),
             DashboardCard(
               title: 'Call Receiving',
-              color: Colors.green,
-              icon: Icons.call_received,
+              color: Colors.white,
+              image: "assets/background/call receive.jpeg",
               onTap: () {
                 // Navigate to Call Receiving screen
               },
             ),
             DashboardCard(
               title: 'Call Logs',
-              color: Colors.green,
-              icon: Icons.call,
+              color: Colors.white,
+              image: "assets/background/call receive.jpeg",
               onTap: () {
                 // Navigate to Call Logs screen
               },
             ),
             DashboardCard(
               title: 'Agent Stats',
-              color: Colors.orange,
-              icon: Icons.assessment,
+              color: Colors.white,
+              image: "assets/background/clientimage.png",
               onTap: () {
                 // Navigate to Agent Stats screen
               },
             ),
             SizedBox(
-              height: size.height*0.36,
+              height: size.height * 0.29,
             ),
             Container(
-              width: 567,
-              height: 48,
-              child: ElevatedButton(onPressed:() {
-
-              },style: elevatedButtonStyle,
-
-                  child:Text("Register New User")),
+              width: size.width * 0.94,
+              height: 45,
+              child: ElevatedButton(
+                onPressed: () {
+                  // Handle button press
+                },
+                style: elevatedButtonStyle,
+                child: Text("Register New User ?", style: TextStyle(letterSpacing: 1)),
+              ),
             ),
           ],
         ),
       ),
-       
-
-      //   floatingActionButton: FloatingActionButton(
-      //   onPressed: () {
-      //     // Handle add button press
-      //   },
-      //   child: Icon(Icons.add),
-      // ),
     );
   }
 }
@@ -91,41 +85,56 @@ class _FirstViewScreenState extends State<FirstViewScreen> {
 class DashboardCard extends StatelessWidget {
   final String title;
   final Color color;
-  final IconData icon;
+  final String image;
   final VoidCallback onTap;
 
-  DashboardCard({
+  const DashboardCard({
     required this.title,
     required this.color,
-    required this.icon,
+    required this.image,
     required this.onTap,
   });
 
   @override
   Widget build(BuildContext context) {
     return Card(
+      shape: OutlineInputBorder(borderRadius: BorderRadius.circular(10), borderSide: BorderSide(color: Colors.transparent)),
       color: color,
-      margin: EdgeInsets.symmetric(vertical: 8.0),
+       surfaceTintColor: Colors.white,
+      margin: EdgeInsets.symmetric(vertical: 13.0, horizontal: 11.0),
       child: InkWell(
         onTap: onTap,
-        child: Padding(
-          padding: const EdgeInsets.all(16.0),
-          child: Row(
-            children: [
-              Icon(icon, color: Colors.white, size: 30),
-              SizedBox(width: 16.0),
-              Text(
-                title,
-                style: TextStyle(
-                  color: Colors.white,fontWeight: FontWeight.bold,
-                  fontSize: 16.0,
+        child: Row(
+          children: [
+            ClipRRect(
+              borderRadius: BorderRadius.only(
+                topLeft: Radius.circular(10),
+                bottomLeft: Radius.circular(10),
+              ),
+              child: Image.asset(
+                image,
+                width: MediaQuery.of(context).size.width * 0.35,
+                height: 80, // adjust height as necessary
+                fit: BoxFit.cover,
+              ),
+            ),
+            SizedBox(width: 16.0),
+            Expanded(
+              child: Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 28.0),
+                child: Text(
+                  title,
+                  style: TextStyle(
+                    color: Colors.black87,
+                    fontWeight: FontWeight.bold,
+                    fontSize: 16.0,
+                  ),
                 ),
               ),
-            ],
-          ),
+            ),
+          ],
         ),
       ),
     );
-    
   }
 }

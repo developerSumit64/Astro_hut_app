@@ -70,10 +70,10 @@ const InputDecoration kTextFormFieldDecoration = InputDecoration(
 
 );
 final ButtonStyle elevatedButtonStyle = ElevatedButton.styleFrom(
-  backgroundColor: Colors.blue, // Background color matching All Contacts card
+  backgroundColor: Colors.blue.shade400, // Background color matching All Contacts card
   onPrimary: Colors.white, // Text color
-  shadowColor: Colors.grey.shade400, // Shadow color
-  elevation: 3, // Slightly higher elevation for a more prominent shadow
+  shadowColor: Colors.green, // Shadow color
+  elevation: 2, // Slightly higher elevation for a more prominent shadow
   padding: EdgeInsets.symmetric(horizontal: 24.0, vertical: 12.0),
   shape: RoundedRectangleBorder(
     borderRadius: BorderRadius.circular(12.0), // Rounded corners
