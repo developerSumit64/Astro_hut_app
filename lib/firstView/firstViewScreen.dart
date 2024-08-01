@@ -1,3 +1,4 @@
+import 'package:api/constants/constantStyle.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -8,9 +9,10 @@ class FirstViewScreen extends StatefulWidget {
   State<FirstViewScreen> createState() => _FirstViewScreenState();
 }
 
-class DashboardScreen extends StatelessWidget {
+class _FirstViewScreenState extends State<FirstViewScreen> {
   @override
   Widget build(BuildContext context) {
+    Size size = MediaQuery.of(context).size;
     return Scaffold(
       appBar: AppBar(
         title: Text('Dashboard'),
@@ -59,15 +61,29 @@ class DashboardScreen extends StatelessWidget {
                 // Navigate to Agent Stats screen
               },
             ),
+            SizedBox(
+              height: size.height*0.36,
+            ),
+            Container(
+              width: 567,
+              height: 48,
+              child: ElevatedButton(onPressed:() {
+
+              },style: elevatedButtonStyle,
+
+                  child:Text("Register New User")),
+            ),
           ],
         ),
       ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: () {
-          // Handle add button press
-        },
-        child: Icon(Icons.add),
-      ),
+       
+
+      //   floatingActionButton: FloatingActionButton(
+      //   onPressed: () {
+      //     // Handle add button press
+      //   },
+      //   child: Icon(Icons.add),
+      // ),
     );
   }
 }
@@ -96,13 +112,13 @@ class DashboardCard extends StatelessWidget {
           padding: const EdgeInsets.all(16.0),
           child: Row(
             children: [
-              Icon(icon, color: Colors.white, size: 40),
+              Icon(icon, color: Colors.white, size: 30),
               SizedBox(width: 16.0),
               Text(
                 title,
                 style: TextStyle(
-                  color: Colors.white,
-                  fontSize: 20.0,
+                  color: Colors.white,fontWeight: FontWeight.bold,
+                  fontSize: 16.0,
                 ),
               ),
             ],
@@ -110,5 +126,6 @@ class DashboardCard extends StatelessWidget {
         ),
       ),
     );
+    
   }
 }
