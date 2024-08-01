@@ -21,7 +21,4 @@ class CourseViewModel extends BaseViewModel{
 
     return Future.value(courseListModel);
 
-  }
-
-
-}
+  }}

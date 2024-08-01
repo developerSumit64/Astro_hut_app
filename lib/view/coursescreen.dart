@@ -18,9 +18,20 @@ class _CourseScreenState extends State<CourseScreen> {
         builder: (context, model, child){
       return Scaffold(
         body: model.isBusy ? CircularProgressIndicator(color: Colors.black87, strokeAlign: 2,) :
+
         Padding(
           padding: const EdgeInsets.all(8.0),
-          child: Text("${model.courseListModel?.results![0].courseName}"),
+          // child: Text("${model.courseListModel?.results![0].courseName}"),
+        child: ListView.builder(itemBuilder: (context, index) {
+          return Column(
+            children: [
+              Text("${model.courseListModel?.results![index].courseName}"),
+              Text("${model.courseListModel?.results![index].courseDuration}"),
+              Text("${model.courseListModel?.results![0].courseId}"),
+            ],
+          );
+        },),
+
         ),
       );
         });
