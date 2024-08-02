@@ -40,7 +40,7 @@ class _FirstViewScreenState extends State<FirstViewScreen> {
             DashboardCard(
               title: 'Call Receiving',
               color: Colors.white,
-              image: "assets/background/contactimages.png",
+              image: "assets/background/call receive.jpeg",
               onTap: () {
                 // Navigate to Call Receiving screen
               },
@@ -48,7 +48,7 @@ class _FirstViewScreenState extends State<FirstViewScreen> {
             DashboardCard(
               title: 'Call Logs',
               color: Colors.white,
-              image: "assets/background/contactimages.png",
+              image: "assets/background/call receive.jpeg",
               onTap: () {
                 // Navigate to Call Logs screen
               },
@@ -56,7 +56,7 @@ class _FirstViewScreenState extends State<FirstViewScreen> {
             DashboardCard(
               title: 'Agent Stats',
               color: Colors.white,
-              image: "assets/background/contactimages.png",
+              image: "assets/background/clientimage.png",
               onTap: () {
                 // Navigate to Agent Stats screen
               },
@@ -98,8 +98,6 @@ class DashboardCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Card(
-      elevation: 0.7,
-      shadowColor: Colors.green,
       shape: OutlineInputBorder(borderRadius: BorderRadius.circular(10), borderSide: BorderSide(color: Colors.transparent)),
       color: color,
        surfaceTintColor: Colors.white,
