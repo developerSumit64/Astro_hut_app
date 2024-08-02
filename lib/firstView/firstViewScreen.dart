@@ -1,5 +1,4 @@
 import 'package:api/constants/constantStyle.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class FirstViewScreen extends StatefulWidget {
@@ -32,7 +31,7 @@ class _FirstViewScreenState extends State<FirstViewScreen> {
             DashboardCard(
               title: 'All Contacts',
               color: Colors.white,
-              image: "assets/background/contactimages.png",
+              image: "assets/images/allcontacts.png",
               onTap: () {
                 // Navigate to All Contacts screen
               },
@@ -40,7 +39,7 @@ class _FirstViewScreenState extends State<FirstViewScreen> {
             DashboardCard(
               title: 'Call Receiving',
               color: Colors.white,
-              image: "assets/background/call receive.jpeg",
+              image: "assets/images/allcontacts.png",
               onTap: () {
                 // Navigate to Call Receiving screen
               },
@@ -48,7 +47,7 @@ class _FirstViewScreenState extends State<FirstViewScreen> {
             DashboardCard(
               title: 'Call Logs',
               color: Colors.white,
-              image: "assets/background/call receive.jpeg",
+              image: "assets/images/allcontacts.png",
               onTap: () {
                 // Navigate to Call Logs screen
               },
@@ -56,7 +55,7 @@ class _FirstViewScreenState extends State<FirstViewScreen> {
             DashboardCard(
               title: 'Agent Stats',
               color: Colors.white,
-              image: "assets/background/clientimage.png",
+              image: "assets/images/allcontacts.png",
               onTap: () {
                 // Navigate to Agent Stats screen
               },

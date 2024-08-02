@@ -8,10 +8,9 @@ class AllContactsView extends StatefulWidget {
 }
 
 class _AllContactsViewState extends State<AllContactsView> {
-  TextEditingController _searchController = TextEditingController();
-  List<Map<String, String>> contacts = [
+  final List<Map<String, String>> contacts = [
     {
-      'name': 'Sapna Singh . F',
+      'name': 'Sapna Singh',
       'phone': '9096322764',
       'location': 'Nashik/Maharashtra/India',
       'details': '34. Call transfer to Priya. Not Paid',
@@ -20,16 +19,16 @@ class _AllContactsViewState extends State<AllContactsView> {
       'registeredBy': 'guru ji'
     },
     {
-      'name': 'Sapa Singh . F',
+      'name': 'Sapna Singh',
       'phone': '9096322764',
       'location': 'Nashik/Maharashtra/India',
       'details': '35. Call transfer to Pooja. Not Paid',
       'update': '31/07/2024 18:19',
-      'register': '31/07/2024 18:29',
+      'register': '31/07/2024 18:19',
       'registeredBy': 'Shweta'
     },
     {
-      'name': 'Anjali Kumari . F',
+      'name': 'Anjali Kumari',
       'phone': '9060904630',
       'location': 'Patna/Bihar/India',
       'details': '34. Call transfer to Priya. Not Paid',
@@ -37,118 +36,129 @@ class _AllContactsViewState extends State<AllContactsView> {
       'register': '31/07/2024 16:49',
       'registeredBy': 'Shweta'
     },
-    // Add more contacts here
   ];
-
-  List<Map<String, String>> filteredContacts = [];
-
-  @override
-  void initState() {
-    super.initState();
-    filteredContacts = contacts;
-    _searchController.addListener(_filterContacts);
-  }
-
-  void _filterContacts() {
-    setState(() {
-      String searchTerm = _searchController.text.toLowerCase();
-      filteredContacts = contacts.where((contact) {
-        return contact['name']!.toLowerCase().contains(searchTerm) ||
-            contact['phone']!.toLowerCase().contains(searchTerm) ||
-            contact['location']!.toLowerCase().contains(searchTerm) ||
-            contact['details']!.toLowerCase().contains(searchTerm) ||
-            contact['update']!.toLowerCase().contains(searchTerm) ||
-            contact['register']!.toLowerCase().contains(searchTerm) ||
-            contact['registeredBy']!.toLowerCase().contains(searchTerm);
-      }).toList();
-    });
-  }
-
-  @override
-  void dispose() {
-    _searchController.dispose();
-    super.dispose();
-  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Caller List'),
-        backgroundColor: Colors.white,
-        foregroundColor: Colors.black,
-        elevation: 0,
+        title: Text(
+          'Caller List',
+          style: TextStyle(
+            fontSize: 20,
+            color: Colors.grey,
+            fontWeight: FontWeight.bold,
+          ),
+        ),
       ),
-      body: Padding(
-        padding: const EdgeInsets.all(20),
-        child: Column(
-          children: [
-            TextField(
-              controller: _searchController,
+      body: Column(
+        children: [
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: TextField(
               decoration: InputDecoration(
                 hintText: 'Search',
                 prefixIcon: Icon(Icons.search),
                 border: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(8),
+                  borderRadius: BorderRadius.circular(8.0),
+                  borderSide: BorderSide.none,
                 ),
+                filled: true,
+                fillColor: Colors.grey[200],
               ),
             ),
-            SizedBox(height: 20),
-            Expanded(
-              child: ListView.builder(
-                shrinkWrap: true,
-                itemCount: filteredContacts.length,
-                itemBuilder: (context, index) {
-                  final contact = filteredContacts[index];
-                  return Card(
-                    margin: const EdgeInsets.symmetric(vertical: 10),
-                    child: ListTile(
-                      leading: CircleAvatar(
-                        child: Text(contact['name']![0]), // Display initial
-                      ),
-                      title: Text(contact['name']!),
-                      subtitle: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text(contact['location']!),
-                          Text(contact['details']!),
-                          Text('Update at: ${contact['update']}'),
-                          Text('Register at: ${contact['register']}'),
-                          Text('Registered By: ${contact['registeredBy']}'),
-                        ],
-                      ),
-                      trailing: Column(
-                        mainAxisAlignment: MainAxisAlignment.spaceAround,
-                        children: [
-                          Icon(Icons.phone),
-                          Icon(Icons.message),
-                        ],
-                      ),
-                    ),
-                  );
-                },
-              ),
-            ),
-            SizedBox(height: 20),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: List.generate(4, (index) {
-                return Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 5),
-                  child: ElevatedButton(
-                    onPressed: () {},
-                    child: Text('${index + 1}'),
-                    style: ElevatedButton.styleFrom(
-                      shape: CircleBorder(),
-                      padding: EdgeInsets.all(15),
+          ),
+          Expanded(
+            child: ListView.builder(
+              itemCount: contacts.length,
+              itemBuilder: (context, index) {
+                return Card(
+                  margin: EdgeInsets.symmetric(horizontal: 8.0, vertical: 4.0),
+                  child: Padding(
+                    padding: const EdgeInsets.all(16.0),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Row(
+                          children: [
+                            CircleAvatar(
+                              child: Text(contacts[index]['name']![0]),
+                            ),
+                            SizedBox(width: 10),
+                            Column(
+                              children: [
+                                Text(
+                                  '${contacts[index]['name']} . F',
+                                  style: TextStyle(
+                                    fontWeight: FontWeight.bold,
+                                    fontSize: 16,
+                                  ),
+                                ),
+                                Padding(
+                                  padding: const EdgeInsets.only(right: 30),
+                                  child: Text(contacts[index]['phone']!,style: TextStyle(fontWeight: FontWeight.bold)),
+                                ),
+                              ],
+                            ),
+                            Padding(
+                              padding: const EdgeInsets.only(left: 90),
+                              child: Row(
+                                children: [
+                                  IconButton(onPressed: () {}, icon: Icon(Icons.call)),
+                                  IconButton(onPressed: () {}, icon: Image.asset('assets/icons/whatsapp.png',height: 30,))
+                                ],
+                              ),
+                            ),
+                          ],
+                        ),
+                        SizedBox(height: 10),
+                        Divider(),
+                        Row(
+                          children: [
+                            Text('Location : ',style: TextStyle(color: Colors.grey,fontWeight: FontWeight.bold)),
+                            Text(contacts[index]['location']!,style: TextStyle(fontWeight: FontWeight.bold)),
+                          ],
+                        ),
+                        Row(
+                          children: [
+                            Text('Details : ',style: TextStyle(fontWeight: FontWeight.bold,color: Colors.grey)),
+                            Text(contacts[index]['details']!,style: TextStyle(fontWeight: FontWeight.bold)),
+                          ],
+                        ),
+                        Divider(),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Column(
+                              children: [
+                                Text('Update at: ',style: TextStyle(fontWeight: FontWeight.bold,color: Colors.grey)),
+                                Text(' ${contacts[index]['update']}',style: TextStyle(fontWeight: FontWeight.bold)),
+                              ],
+                            ),
+                            Column(
+                              children: [
+                                Text('Register at: ',style: TextStyle(fontWeight: FontWeight.bold,color: Colors.grey)),
+                                Text(' ${contacts[index]['register']}',style: TextStyle(fontWeight: FontWeight.bold)),
+                              ],
+                            ),
+                            Column(
+                              children: [
+                                Text('Registered By: ',style: TextStyle(fontWeight: FontWeight.bold,color: Colors.grey)),
+                                Text(' ${contacts[index]['registeredBy']}',style: TextStyle(fontWeight: FontWeight.bold)),
+                              ],
+                            ),
+                          ],
+                        ),
+                      ],
                     ),
                   ),
                 );
-              }),
+              },
             ),
-          ],
-        ),
+          ),
+        ],
       ),
     );
   }
 }
+

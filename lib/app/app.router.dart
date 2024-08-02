@@ -5,7 +5,7 @@
 // **************************************************************************
 
 // ignore_for_file: no_leading_underscores_for_library_prefixes
-import 'package:api/agentView/agentView.dart' as _i3;
+// import 'package:api/agentView/agentView.dart' as _i3;
 import 'package:api/firstView/firstViewScreen.dart' as _i2;
 import 'package:flutter/material.dart' as _i4;
 import 'package:flutter/material.dart';
@@ -31,7 +31,7 @@ class StackedRouter extends _i1.RouterBase {
     ),
     _i1.RouteDef(
       Routes.agentView,
-      page: _i3.AgentView,
+      // page: _i3.AgentView,
     ),
   ];
 
@@ -42,12 +42,12 @@ class StackedRouter extends _i1.RouterBase {
         settings: data,
       );
     },
-    _i3.AgentView: (data) {
-      return _i4.MaterialPageRoute<dynamic>(
-        builder: (context) => const _i3.AgentView(),
-        settings: data,
-      );
-    },
+    // _i3.AgentView: (data) {
+    //   return _i4.MaterialPageRoute<dynamic>(
+        // builder: (context) => const _i3.AgentView(),
+        // settings: data,
+      // );
+    // },
   };
 
   @override
