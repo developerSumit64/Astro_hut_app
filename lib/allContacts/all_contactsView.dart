@@ -42,13 +42,22 @@ class _AllContactsViewState extends State<AllContactsView> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(
-          'Caller List',
-          style: TextStyle(
-            fontSize: 20,
-            color: Colors.grey,
-            fontWeight: FontWeight.bold,
-          ),
+        title: Row(
+          children: [
+            Text(
+              'Caller List',
+              style: TextStyle(
+                fontSize: 20,
+                color: Colors.grey,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.only(left: 180),
+              child: IconButton(onPressed: () {}, icon: Icon(Icons.more_vert_outlined)),
+            ),
+            IconButton(onPressed: () {}, icon: Icon(Icons.filter_list)),
+          ],
         ),
       ),
       body: Column(
