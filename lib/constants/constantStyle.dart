@@ -84,3 +84,18 @@ final ButtonStyle elevatedButtonStyle = ElevatedButton.styleFrom(
   ),
 );
 
+final ButtonStyle elevatedButtonStylerounded = ElevatedButton.styleFrom(
+  backgroundColor: Colors.blue.shade400, // Background color matching All Contacts card
+  onPrimary: Colors.white, // Text color
+  shadowColor: Colors.green, // Shadow color
+  elevation: 2, // Slightly higher elevation for a more prominent shadow
+  padding: EdgeInsets.symmetric(horizontal: 24.0, vertical: 12.0),
+  shape: RoundedRectangleBorder(
+    borderRadius: BorderRadius.circular(12.0), // Rounded corners
+  ),
+  textStyle: TextStyle(
+    fontSize: 18, // Font size
+    fontWeight: FontWeight.bold, // Font weight
+  ),
+);
+
