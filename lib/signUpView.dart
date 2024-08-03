@@ -13,6 +13,7 @@ class _SingUpViewState extends State<SingUpView> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+
       appBar: AppBar(
         backgroundColor: Colors.white,
         elevation: 2,
@@ -30,18 +31,19 @@ class _SingUpViewState extends State<SingUpView> {
 
       ),
       body: Stack(
+
         fit: StackFit.expand,
         children: [
-          // Image.asset(
-          //   'assets/images/uh.jpg',
-          //   fit: BoxFit.cover,
-          // ),
+             Image.asset(
+                      'assets/images/gradientback.jpg',
+                        fit: BoxFit.cover,
+                    ),
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 16.0),
             child: SingleChildScrollView(
               child: Column(
                 children: [
-                  SizedBox(height: 30),
+                  SizedBox(height: 100),
                   // Align(
                   //   alignment: Alignment.topLeft,
                   //   child: IconButton(
@@ -60,7 +62,7 @@ class _SingUpViewState extends State<SingUpView> {
 
                       fontSize: 20,
                       fontWeight: FontWeight.bold,
-                      color: Colors.orange.shade600,
+                      color: Colors.blue,
                     ),
                   ),
                   SizedBox(height: 20),

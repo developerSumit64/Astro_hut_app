@@ -73,12 +73,25 @@ const InputDecoration kTextFormFieldDecoration = InputDecoration(
 
 );
 final ButtonStyle elevatedButtonStyle = ElevatedButton.styleFrom(
-  foregroundColor: Colors.white, backgroundColor: Colors.blue, // Text color
+  foregroundColor: Colors.white, backgroundColor: Colors.orangeAccent, // Text color
   shadowColor: Colors.grey.shade400, // Shadow color
   elevation: 1, // Slightly higher elevation for a more prominent shadow
   padding: EdgeInsets.symmetric(horizontal: 24.0, vertical: 12.0),
   shape: RoundedRectangleBorder(
     borderRadius: BorderRadius.circular(12.0), // Rounded corners
+  ),
+  textStyle: TextStyle(
+    fontSize: 18, // Font size
+    fontWeight: FontWeight.bold, // Font weight
+  ),
+);
+final ButtonStyle roundedelevatedButtonStyle = ElevatedButton.styleFrom(
+  foregroundColor: Colors.white, backgroundColor: Colors.orangeAccent, // Text color
+  shadowColor: Colors.grey.shade400, // Shadow color
+  elevation: 1, // Slightly higher elevation for a more prominent shadow
+  padding: EdgeInsets.symmetric(horizontal: 24.0, vertical: 12.0),
+  shape: RoundedRectangleBorder(
+    borderRadius: BorderRadius.only(bottomLeft: Radius.circular(42),topRight: Radius.circular(42)), // Rounded corners
   ),
   textStyle: TextStyle(
     fontSize: 18, // Font size
