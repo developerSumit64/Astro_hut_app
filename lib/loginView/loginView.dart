@@ -91,7 +91,7 @@ class _LoginViewState extends State<LoginView> {
                   ),
                   SizedBox(height: 20),
                   Text(
-                    '-------------------Or-----------------------',
+                    '-------------------Or-------------------',
                     style: TextStyle(
                       fontSize: 16,
                       color: Colors.black54,
