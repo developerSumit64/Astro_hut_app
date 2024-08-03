@@ -5,6 +5,11 @@ import 'package:api/view/coursescreen.dart';
 import 'package:stacked/stacked_annotations.dart';
 import 'package:stacked_services/stacked_services.dart';
 
+import '../agentView/aggentView.dart';
+import '../callerLogs/callerLogsView.dart';
+import '../loginView/loginView.dart';
+import '../signUpView.dart';
+
 // import '../agentView/agentView.dart';
 
 
@@ -12,9 +17,13 @@ import 'package:stacked_services/stacked_services.dart';
   routes: [
     // MaterialRoute(page: CourseScreen,initial: true),
     MaterialRoute(page: FirstViewScreen),
-    MaterialRoute(page: AllContactsView,initial: true),
+    // MaterialRoute(page: AllContactsView,initial: true),
 
-    // MaterialRoute(page: AgentView,initial: false),
+    MaterialRoute(page: AgentView,initial:false),
+    MaterialRoute(page: CallerLogsView,initial: false),
+    MaterialRoute(page: SingUpView,initial: false),
+    MaterialRoute(page: LoginView,initial: true),
+
 
 
 

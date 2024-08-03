@@ -16,9 +16,12 @@ final Container containerdesign= Container(
     shape: BoxShape.rectangle,
 
     gradient: LinearGradient(
+      begin: Alignment.bottomRight,
+      // transform: GradientRotation(),
+
       colors: [
-        Colors.blue.shade500,
-        Colors.blue.shade300,
+        Colors.white,
+        Colors.blue.shade100,
       ],
     ),
     borderRadius: BorderRadius.circular(12),
@@ -45,7 +48,7 @@ const InputDecoration kTextFormFieldDecoration = InputDecoration(
     ),
     hintStyle: TextStyle(
       color: Colors.black26,
-      fontSize: 13,
+      fontSize: 14,
       fontWeight: FontWeight.bold,
     ),
     labelStyle: TextStyle(
@@ -72,7 +75,7 @@ const InputDecoration kTextFormFieldDecoration = InputDecoration(
 final ButtonStyle elevatedButtonStyle = ElevatedButton.styleFrom(
   foregroundColor: Colors.white, backgroundColor: Colors.blue, // Text color
   shadowColor: Colors.grey.shade400, // Shadow color
-  elevation: 3, // Slightly higher elevation for a more prominent shadow
+  elevation: 1, // Slightly higher elevation for a more prominent shadow
   padding: EdgeInsets.symmetric(horizontal: 24.0, vertical: 12.0),
   shape: RoundedRectangleBorder(
     borderRadius: BorderRadius.circular(12.0), // Rounded corners
