@@ -60,6 +60,7 @@ class _AllContactsViewState extends State<AllContactsView> {
           ],
         ),
       ),
+
       body: Column(
         children: [
           Padding(
@@ -81,6 +82,7 @@ class _AllContactsViewState extends State<AllContactsView> {
             child: ListView.builder(
               itemCount: contacts.length,
               itemBuilder: (context, index) {
+
                 return Card(
                   margin: EdgeInsets.symmetric(horizontal: 8.0, vertical: 4.0),
                   child: Padding(
