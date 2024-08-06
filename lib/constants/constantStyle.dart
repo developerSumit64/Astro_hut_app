@@ -21,7 +21,7 @@ final Container containerdesign= Container(
 
       colors: [
         Colors.white,
-        Colors.blue.shade100,
+        Colors.orange.shade300,
       ],
     ),
     borderRadius: BorderRadius.circular(12),
@@ -31,8 +31,7 @@ final Container containerdesign= Container(
 
 const InputDecoration kTextFormFieldDecoration = InputDecoration(
     focusedBorder: OutlineInputBorder(
-
-      borderRadius: BorderRadius.all(Radius.circular(30)),
+      borderRadius: BorderRadius.all(Radius.circular(10)),
       borderSide: BorderSide(
         color: Colors.blueAccent,// Focused blue border colo258/369*-+
 
@@ -40,7 +39,7 @@ const InputDecoration kTextFormFieldDecoration = InputDecoration(
       ),
     ),
     enabledBorder: OutlineInputBorder(
-      borderRadius: BorderRadius.all(Radius.circular(30)),
+      borderRadius: BorderRadius.all(Radius.circular(10)),
       borderSide: BorderSide(
         color: Colors.black12, // Enabled black border color
         width: 1,
@@ -63,8 +62,7 @@ const InputDecoration kTextFormFieldDecoration = InputDecoration(
     //   fontWeight: FontWeight.bold,
     // ),
     errorBorder:OutlineInputBorder(
-      borderRadius: BorderRadius.all(Radius.circular(30)),
-      borderSide: BorderSide(
+      borderRadius: BorderRadius.all(Radius.circular(10)),  borderSide: BorderSide(
         color: Colors.red,
         width: 1,
       ),
@@ -82,7 +80,7 @@ final ButtonStyle elevatedButtonStyle = ElevatedButton.styleFrom(
   ),
   textStyle: TextStyle(
     fontSize: 18, // Font size
-    fontWeight: FontWeight.bold, // Font weight
+    // fontWeight: FontWeight.bold, // Font weight
   ),
 );
 final ButtonStyle roundedelevatedButtonStyle = ElevatedButton.styleFrom(
@@ -95,7 +93,7 @@ final ButtonStyle roundedelevatedButtonStyle = ElevatedButton.styleFrom(
   ),
   textStyle: TextStyle(
     fontSize: 18, // Font size
-    fontWeight: FontWeight.bold, // Font weight
+    // fontWeight: FontWeight.bold, // Font weight
   ),
 );
 
