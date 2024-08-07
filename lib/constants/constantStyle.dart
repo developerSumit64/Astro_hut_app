@@ -24,8 +24,12 @@ final Container containerdesign= Container(
         Colors.orange.shade300,
       ],
     ),
-    borderRadius: BorderRadius.circular(12),
+    borderRadius: BorderRadius.only(
+      topLeft: Radius.circular(32),
+      bottomRight: Radius.circular(32),
+    ),
   ),
+
 
 );
 

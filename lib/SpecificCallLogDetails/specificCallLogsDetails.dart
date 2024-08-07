@@ -30,7 +30,8 @@ class _CallLogDetailViewState extends State<CallLogDetailView> {
           },
         ),
       ),
-      body: Center(
+      body:
+      Center(
         child: Padding(
           padding: const EdgeInsets.all(16.0),
           child: Card(

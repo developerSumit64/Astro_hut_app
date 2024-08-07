@@ -16,10 +16,11 @@ import 'package:api/profileVIew/profileView.dart' as _i8;
 import 'package:api/signUpView.dart' as _i5;
 import 'package:api/SpecificCallLogDetails/specificCallLogsDetails.dart'
     as _i10;
-import 'package:flutter/material.dart' as _i11;
+import 'package:api/updateList/updateListView.dart' as _i11;
+import 'package:flutter/material.dart' as _i12;
 import 'package:flutter/material.dart';
 import 'package:stacked/stacked.dart' as _i1;
-import 'package:stacked_services/stacked_services.dart' as _i12;
+import 'package:stacked_services/stacked_services.dart' as _i13;
 
 class Routes {
   static const firstViewScreen = '/first-view-screen';
@@ -40,6 +41,8 @@ class Routes {
 
   static const callLogDetailView = '/call-log-detail-view';
 
+  static const updateListAgent = '/update-list-agent';
+
   static const all = <String>{
     firstViewScreen,
     agentView,
@@ -50,6 +53,7 @@ class Routes {
     profileView,
     forgetPassword,
     callLogDetailView,
+    updateListAgent,
   };
 }
 
@@ -91,60 +95,70 @@ class StackedRouter extends _i1.RouterBase {
       Routes.callLogDetailView,
       page: _i10.CallLogDetailView,
     ),
+    _i1.RouteDef(
+      Routes.updateListAgent,
+      page: _i11.UpdateListAgent,
+    ),
   ];
 
   final _pagesMap = <Type, _i1.StackedRouteFactory>{
     _i2.FirstViewScreen: (data) {
-      return _i11.MaterialPageRoute<dynamic>(
+      return _i12.MaterialPageRoute<dynamic>(
         builder: (context) => const _i2.FirstViewScreen(),
         settings: data,
       );
     },
     _i3.AgentView: (data) {
-      return _i11.MaterialPageRoute<dynamic>(
+      return _i12.MaterialPageRoute<dynamic>(
         builder: (context) => const _i3.AgentView(),
         settings: data,
       );
     },
     _i4.CallerLogsView: (data) {
-      return _i11.MaterialPageRoute<dynamic>(
+      return _i12.MaterialPageRoute<dynamic>(
         builder: (context) => const _i4.CallerLogsView(),
         settings: data,
       );
     },
     _i5.SingUpView: (data) {
-      return _i11.MaterialPageRoute<dynamic>(
+      return _i12.MaterialPageRoute<dynamic>(
         builder: (context) => const _i5.SingUpView(),
         settings: data,
       );
     },
     _i6.LoginView: (data) {
-      return _i11.MaterialPageRoute<dynamic>(
+      return _i12.MaterialPageRoute<dynamic>(
         builder: (context) => const _i6.LoginView(),
         settings: data,
       );
     },
     _i7.LoginOrRegisterView: (data) {
-      return _i11.MaterialPageRoute<dynamic>(
+      return _i12.MaterialPageRoute<dynamic>(
         builder: (context) => const _i7.LoginOrRegisterView(),
         settings: data,
       );
     },
     _i8.ProfileView: (data) {
-      return _i11.MaterialPageRoute<dynamic>(
+      return _i12.MaterialPageRoute<dynamic>(
         builder: (context) => const _i8.ProfileView(),
         settings: data,
       );
     },
     _i9.ForgetPassword: (data) {
-      return _i11.MaterialPageRoute<dynamic>(
+      return _i12.MaterialPageRoute<dynamic>(
         builder: (context) => const _i9.ForgetPassword(),
         settings: data,
       );
     },
     _i10.CallLogDetailView: (data) {
-      return _i11.MaterialPageRoute<dynamic>(
+      return _i12.MaterialPageRoute<dynamic>(
         builder: (context) => const _i10.CallLogDetailView(),
+        settings: data,
+      );
+    },
+    _i11.UpdateListAgent: (data) {
+      return _i12.MaterialPageRoute<dynamic>(
+        builder: (context) => _i11.UpdateListAgent(),
         settings: data,
       );
     },
@@ -157,7 +171,7 @@ class StackedRouter extends _i1.RouterBase {
   Map<Type, _i1.StackedRouteFactory> get pagesMap => _pagesMap;
 }
 
-extension NavigatorStateExtension on _i12.NavigationService {
+extension NavigatorStateExtension on _i13.NavigationService {
   Future<dynamic> navigateToFirstViewScreen([
     int? routerId,
     bool preventDuplicates = true,
@@ -284,6 +298,20 @@ extension NavigatorStateExtension on _i12.NavigationService {
         transition: transition);
   }
 
+  Future<dynamic> navigateToUpdateListAgent([
+    int? routerId,
+    bool preventDuplicates = true,
+    Map<String, String>? parameters,
+    Widget Function(BuildContext, Animation<double>, Animation<double>, Widget)?
+        transition,
+  ]) async {
+    return navigateTo<dynamic>(Routes.updateListAgent,
+        id: routerId,
+        preventDuplicates: preventDuplicates,
+        parameters: parameters,
+        transition: transition);
+  }
+
   Future<dynamic> replaceWithFirstViewScreen([
     int? routerId,
     bool preventDuplicates = true,
@@ -404,6 +432,20 @@ extension NavigatorStateExtension on _i12.NavigationService {
         transition,
   ]) async {
     return replaceWith<dynamic>(Routes.callLogDetailView,
+        id: routerId,
+        preventDuplicates: preventDuplicates,
+        parameters: parameters,
+        transition: transition);
+  }
+
+  Future<dynamic> replaceWithUpdateListAgent([
+    int? routerId,
+    bool preventDuplicates = true,
+    Map<String, String>? parameters,
+    Widget Function(BuildContext, Animation<double>, Animation<double>, Widget)?
+        transition,
+  ]) async {
+    return replaceWith<dynamic>(Routes.updateListAgent,
         id: routerId,
         preventDuplicates: preventDuplicates,
         parameters: parameters,

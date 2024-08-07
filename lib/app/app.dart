@@ -13,6 +13,7 @@ import '../forgetPassworddView/forgetPasswordView.dart';
 import '../loginOrRegisterSelecterView/loginOrRegisterView.dart';
 import '../loginView/loginView.dart';
 import '../signUpView.dart';
+import '../updateList/updateListView.dart';
 
 // import '../agentView/agentView.dart';
 
@@ -31,6 +32,7 @@ import '../signUpView.dart';
     MaterialRoute(page: ProfileView,initial: false),
     MaterialRoute(page: ForgetPassword,initial: false),
     MaterialRoute(page: CallLogDetailView,initial: false),
+    MaterialRoute(page: UpdateListAgent,initial: false),
 
 
 

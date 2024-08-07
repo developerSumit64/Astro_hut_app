@@ -147,7 +147,7 @@ model.NavigateTOCallLogDetailView();
 
           surfaceTintColor: Colors.white,
           color: Colors.white,
-          margin: EdgeInsets.symmetric(vertical: 8),
+          margin: EdgeInsets.symmetric(vertical: 5,horizontal: 1),
           elevation: 0.5,
           shape: RoundedRectangleBorder(
             side: BorderSide(color: Colors.black12.withOpacity(0.05)),
