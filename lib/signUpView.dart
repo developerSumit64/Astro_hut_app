@@ -13,6 +13,7 @@ class _SingUpViewState extends State<SingUpView> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+
       appBar: AppBar(
         backgroundColor: Colors.white,
         elevation: 2,
@@ -29,19 +30,24 @@ class _SingUpViewState extends State<SingUpView> {
         ),
 
       ),
-      body: Stack(
-        fit: StackFit.expand,
-        children: [
-          // Image.asset(
-          //   'assets/images/uh.jpg',
-          //   fit: BoxFit.cover,
-          // ),
-          Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 16.0),
-            child: SingleChildScrollView(
+      body: SingleChildScrollView(
+        child: Column(
+        
+        
+          children: [
+            Align(
+              alignment: Alignment.centerRight,
+              child: Image.asset(
+                'assets/images/corner_orange.png',
+                // fit: BoxFit.fitWidth,
+                width: MediaQuery.of(context).size.width/1.5,
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 16.0),
               child: Column(
                 children: [
-                  SizedBox(height: 30),
+                  // SizedBox(height: 30),
                   // Align(
                   //   alignment: Alignment.topLeft,
                   //   child: IconButton(
@@ -60,40 +66,91 @@ class _SingUpViewState extends State<SingUpView> {
 
                       fontSize: 20,
                       fontWeight: FontWeight.bold,
-                      color: Colors.orange.shade600,
+                      color: Colors.orangeAccent,
+                    ),
+                  ),
+                  SizedBox(height: 14),
+                  Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 7.0),
+                    child: Align(
+                      alignment: Alignment.topLeft,
+                        child: Text("Username",style: TextStyle(letterSpacing: 1.5,color: Colors.black54),)),
+                  ),
+                  SizedBox(height: 10),
+                  // Padding(
+                  //   padding: const EdgeInsets.symmetric(horizontal: 7.0),
+                  //   child: Align(
+                  //       alignment: Alignment.topLeft,
+                  //       child: Text("Username",style: TextStyle(letterSpacing: 1.5,fontWeight: FontWeight.bold),)),
+                  // ),
+                  // SizedBox(height: 10),
+                  SizedBox(
+                    height: 50,
+                    child: TextFormField(
+                      decoration: kTextFormFieldDecoration.copyWith(
+                        // labelText: ' Username',
+
+
+                      ),
+                    ),
+                  ),
+                  SizedBox(height: 14),
+                  Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 7.0),
+                    child: Align(
+                        alignment: Alignment.topLeft,
+                        child: Text("Email id",style: TextStyle(letterSpacing: 1.5,color: Colors.black54),)),
+                  ),
+                  SizedBox(height: 10),
+
+                  SizedBox(height: 50,
+                    child: TextFormField(
+                      decoration: kTextFormFieldDecoration.copyWith(
+                        // labelText: ' ,
+
+                      ),
+                    ),
+                  ),
+
+                  SizedBox(height: 14),
+                  Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 7.0),
+                    child: Align(
+                        alignment: Alignment.topLeft,
+                        child: Text("Enter Password",style: TextStyle(letterSpacing: 1.5,color: Colors.black54),)),
+                  ),
+                  SizedBox(height: 10),
+
+
+
+                  SizedBox(
+                    height: 50,
+                    child: TextFormField(
+                      obscureText: true,
+                      decoration: kTextFormFieldDecoration.copyWith(
+                        // labelText: 'Enter Password',
+
+                      ),
+                    ),
+                  ), SizedBox(height: 14),
+                  Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 7.0),
+                    child: Align(
+                        alignment: Alignment.topLeft,
+                        child: Text("Re - Enter Password",style: TextStyle(letterSpacing: 1.5,color: Colors.black54),)),
+                  ),
+                  SizedBox(height: 10),
+                  SizedBox(height: 50,
+                    child: TextFormField(
+                      obscureText: true,
+                      decoration: kTextFormFieldDecoration.copyWith(
+                        // labelText: 'Re-enter Password',
+
+                      ),
                     ),
                   ),
                   SizedBox(height: 20),
-                  TextFormField(
-                    decoration: kTextFormFieldDecoration.copyWith(
-                      labelText: ' Username',
 
-                    ),
-                  ),
-                  SizedBox(height: 20),
-                  TextFormField(
-                    decoration: kTextFormFieldDecoration.copyWith(
-                      labelText: ' Email id',
-
-                    ),
-                  ),
-
-                  SizedBox(height: 20),
-                  TextFormField(
-                    obscureText: true,
-                    decoration: kTextFormFieldDecoration.copyWith(
-                      labelText: 'Enter Password',
-
-                    ),
-                  ), SizedBox(height: 20),
-                  TextFormField(
-                    obscureText: true,
-                    decoration: kTextFormFieldDecoration.copyWith(
-                      labelText: 'Re-enter Password',
-
-                    ),
-                  ),
-                  SizedBox(height: 20),
                   SizedBox(
                     width: 630,
                     child: ElevatedButton(
@@ -123,8 +180,8 @@ class _SingUpViewState extends State<SingUpView> {
                 ],
               ),
             ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }

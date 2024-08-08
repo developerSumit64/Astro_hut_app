@@ -21,18 +21,21 @@ final Container containerdesign= Container(
 
       colors: [
         Colors.white,
-        Colors.blue.shade100,
+        Colors.orange.shade300,
       ],
     ),
-    borderRadius: BorderRadius.circular(12),
+    borderRadius: BorderRadius.only(
+      topLeft: Radius.circular(32),
+      bottomRight: Radius.circular(32),
+    ),
   ),
+
 
 );
 
 const InputDecoration kTextFormFieldDecoration = InputDecoration(
     focusedBorder: OutlineInputBorder(
-
-      borderRadius: BorderRadius.all(Radius.circular(30)),
+      borderRadius: BorderRadius.all(Radius.circular(10)),
       borderSide: BorderSide(
         color: Colors.blueAccent,// Focused blue border colo258/369*-+
 
@@ -40,7 +43,7 @@ const InputDecoration kTextFormFieldDecoration = InputDecoration(
       ),
     ),
     enabledBorder: OutlineInputBorder(
-      borderRadius: BorderRadius.all(Radius.circular(30)),
+      borderRadius: BorderRadius.all(Radius.circular(10)),
       borderSide: BorderSide(
         color: Colors.black12, // Enabled black border color
         width: 1,
@@ -63,8 +66,7 @@ const InputDecoration kTextFormFieldDecoration = InputDecoration(
     //   fontWeight: FontWeight.bold,
     // ),
     errorBorder:OutlineInputBorder(
-      borderRadius: BorderRadius.all(Radius.circular(30)),
-      borderSide: BorderSide(
+      borderRadius: BorderRadius.all(Radius.circular(10)),  borderSide: BorderSide(
         color: Colors.red,
         width: 1,
       ),
@@ -73,7 +75,7 @@ const InputDecoration kTextFormFieldDecoration = InputDecoration(
 
 );
 final ButtonStyle elevatedButtonStyle = ElevatedButton.styleFrom(
-  foregroundColor: Colors.white, backgroundColor: Colors.blue, // Text color
+  foregroundColor: Colors.white, backgroundColor: Colors.orangeAccent, // Text color
   shadowColor: Colors.grey.shade400, // Shadow color
   elevation: 1, // Slightly higher elevation for a more prominent shadow
   padding: EdgeInsets.symmetric(horizontal: 24.0, vertical: 12.0),
@@ -82,22 +84,35 @@ final ButtonStyle elevatedButtonStyle = ElevatedButton.styleFrom(
   ),
   textStyle: TextStyle(
     fontSize: 18, // Font size
-    fontWeight: FontWeight.bold, // Font weight
+    // fontWeight: FontWeight.bold, // Font weight
   ),
 );
 final ButtonStyle roundedelevatedButtonStyle = ElevatedButton.styleFrom(
-  foregroundColor: Colors.white, backgroundColor: Colors.blue, // Text color
+  foregroundColor: Colors.white, backgroundColor: Colors.orangeAccent, // Text color
   shadowColor: Colors.grey.shade400, // Shadow color
   elevation: 1, // Slightly higher elevation for a more prominent shadow
   padding: EdgeInsets.symmetric(horizontal: 24.0, vertical: 12.0),
   shape: RoundedRectangleBorder(
-    borderRadius: BorderRadius.only(bottomRight: Radius.circular(22),topLeft: Radius.circular(22)), // Rounded corners
+    borderRadius: BorderRadius.only(bottomLeft: Radius.circular(42),topRight: Radius.circular(42)), // Rounded corners
   ),
   textStyle: TextStyle(
     fontSize: 18, // Font size
-    fontWeight: FontWeight.bold, // Font weight
+    // fontWeight: FontWeight.bold, // Font weight
   ),
 );
+// final ButtonStyle roundedelevatedButtonStyle = ElevatedButton.styleFrom(
+//   foregroundColor: Colors.white, backgroundColor: Colors.blue, // Text color
+//   shadowColor: Colors.grey.shade400, // Shadow color
+//   elevation: 1, // Slightly higher elevation for a more prominent shadow
+//   padding: EdgeInsets.symmetric(horizontal: 24.0, vertical: 12.0),
+//   shape: RoundedRectangleBorder(
+//     borderRadius: BorderRadius.only(bottomRight: Radius.circular(22),topLeft: Radius.circular(22)), // Rounded corners
+//   ),
+//   textStyle: TextStyle(
+//     fontSize: 18, // Font size
+//     fontWeight: FontWeight.bold, // Font weight
+//   ),
+// );
 
 final ButtonStyle elevatedButtonStylerounded = ElevatedButton.styleFrom(
   foregroundColor: Colors.white, backgroundColor: Colors.blue.shade400, // Text color

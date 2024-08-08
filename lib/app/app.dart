@@ -6,11 +6,14 @@ import 'package:api/view/coursescreen.dart';
 import 'package:stacked/stacked_annotations.dart';
 import 'package:stacked_services/stacked_services.dart';
 
+import '../SpecificCallLogDetails/specificCallLogsDetails.dart';
 import '../agentView/aggentView.dart';
 import '../callerLogs/callerLogsView.dart';
+import '../forgetPassworddView/forgetPasswordView.dart';
 import '../loginOrRegisterSelecterView/loginOrRegisterView.dart';
 import '../loginView/loginView.dart';
 import '../signUpView.dart';
+import '../updateList/updateListView.dart';
 
 // import '../agentView/agentView.dart';
 
@@ -25,8 +28,11 @@ import '../signUpView.dart';
     MaterialRoute(page: CallerLogsView,initial: false),
     MaterialRoute(page: SingUpView,initial: false),
     MaterialRoute(page: LoginView,initial: false),
-    MaterialRoute(page: LoginOrRegisterView,initial: false),
-    MaterialRoute(page: ProfileView,initial: true),
+    MaterialRoute(page: LoginOrRegisterView,initial: true),
+    MaterialRoute(page: ProfileView,initial: false),
+    MaterialRoute(page: ForgetPassword,initial: false),
+    MaterialRoute(page: CallLogDetailView,initial: false),
+    MaterialRoute(page: UpdateListAgent,initial: false),
 
 
 
