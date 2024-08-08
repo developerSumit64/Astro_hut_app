@@ -12,4 +12,16 @@ class FirstViewModel extends BaseViewModel{
   void navigateToCallLogs() async{
     await _navigationService.navigateToCallerLogsView();
   }
+  void navigateToProfileView() async{
+    await _navigationService.navigateToProfileSettings();
+  }
+  void navigateToRegisterNewUser() async{
+    await _navigationService.navigateToRegistration();
+  }
+  void navigateToAllContacts() async{
+    await _navigationService.navigateToAllContactsView();
+  }
+  void navigateToCallReceiving() async{
+    await _navigationService.navigateToCallReceiveView();
+  }
 }

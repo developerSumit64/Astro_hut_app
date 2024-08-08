@@ -8,10 +8,14 @@ import 'package:stacked_services/stacked_services.dart';
 
 import '../SpecificCallLogDetails/specificCallLogsDetails.dart';
 import '../agentView/aggentView.dart';
+import '../callReceiving/call_receiveView.dart';
 import '../callerLogs/callerLogsView.dart';
+import '../editProfile/editProfileView.dart';
 import '../forgetPassworddView/forgetPasswordView.dart';
 import '../loginOrRegisterSelecterView/loginOrRegisterView.dart';
 import '../loginView/loginView.dart';
+import '../newRegisteratoin/newRegisterationview.dart';
+import '../profileViewScreen/profileViewScreenView.dart';
 import '../signUpView.dart';
 import '../updateList/updateListView.dart';
 
@@ -33,6 +37,13 @@ import '../updateList/updateListView.dart';
     MaterialRoute(page: ForgetPassword,initial: false),
     MaterialRoute(page: CallLogDetailView,initial: false),
     MaterialRoute(page: UpdateListAgent,initial: false),
+    MaterialRoute(page: ProfileSettings,initial: false),
+    MaterialRoute(page: ProfileEditApp,initial: false),
+    MaterialRoute(page: CallReceiveView,initial: false),
+    MaterialRoute(page: Registration,initial: false),
+    MaterialRoute(page: AllContactsView,initial: false),
+    MaterialRoute(page: FilterDialog,initial: false),
+
 
 
 
