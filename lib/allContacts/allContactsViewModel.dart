@@ -3,14 +3,10 @@ import 'package:api/app/app.router.dart';
 import 'package:stacked/stacked.dart';
 import 'package:stacked_services/stacked_services.dart';
 
-class CallLogDetailViewModel extends BaseViewModel{
+class AllContactsViewModal extends BaseViewModel{
   final NavigationService _navigationService = locator<NavigationService>();
 
-  void NavigateTOCallLogDetailView() async {
-    await _navigationService.navigateToCallLogDetailView();
+  void NavigateTOFilterView() async {
+    await _navigationService.navigateToFilterDialog();
   }
-
-  // void NavigateTOFilterView() async {
-  //   await _navigationService.navigateToFilterDialog();
-  // }
 }

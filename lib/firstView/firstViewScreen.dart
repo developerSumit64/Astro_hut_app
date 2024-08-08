@@ -14,67 +14,77 @@ class _FirstViewScreenState extends State<FirstViewScreen> {
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
-  return ViewModelBuilder<FirstViewModel>.reactive(viewModelBuilder: () => FirstViewModel(),
-      builder:(context, viewModel, child) {
+    return ViewModelBuilder<FirstViewModel>.reactive(
+      viewModelBuilder: () => FirstViewModel(),
+      builder: (context, viewModel, child) {
         return Scaffold(
+          backgroundColor: Colors.grey.shade300,
           appBar: AppBar(
-            title: Text('Dashboard', style: TextStyle(letterSpacing: 1, fontWeight: FontWeight.normal)),
+            title: Text('Dashboard', style: TextStyle(color: Colors.white,letterSpacing: 1, fontWeight: FontWeight.normal,)),
             actions: [
               IconButton(
-                icon: Icon(Icons.person, color: Colors.blue),
+                icon: Icon(Icons.person_pin_outlined, color: Colors.white),
                 onPressed: () {
-                  // Handle user icon press
+                  viewModel.navigateToProfileView();
                 },
               ),
             ],
+            flexibleSpace: Container(
+              decoration: BoxDecoration(
+                gradient: LinearGradient(
+                  colors: [Colors.orangeAccent.shade700, Colors.orange.shade500],
+                  begin: Alignment.topLeft,
+                  end: Alignment.bottomRight,
+                ),
+              ),
+            ),
           ),
           body: Padding(
             padding: const EdgeInsets.all(16.0),
             child: Column(
               children: [
                 DashboardCard(
+
+
                   title: 'All Contacts',
                   color: Colors.white,
-                  image: "assets/images/allcontacts.png",
+                  image: "assets/images/img_6.png",
                   onTap: () {
-                    // Navigate to All Contacts screen
+                    viewModel.navigateToAllContacts();
                   },
                 ),
                 DashboardCard(
                   title: 'Call Receiving',
                   color: Colors.white,
-                  image: "assets/images/allcontacts.png",
+
+                  image: "assets/images/img_5.png",
                   onTap: () {
-                    // Navigate to Call Receiving screen
+                    viewModel.navigateToCallReceiving();
                   },
                 ),
                 DashboardCard(
                   title: 'Call Logs',
                   color: Colors.white,
-                  image: "assets/images/allcontacts.png",
+                  image: "assets/images/img.png",
                   onTap: () {
                     viewModel.navigateToCallLogs();
-                    // Navigate to Call Logs screen
                   },
                 ),
                 DashboardCard(
                   title: 'Agent Stats',
                   color: Colors.white,
-                  image: "assets/images/allcontacts.png",
+                  image: "assets/images/img_3.png",
                   onTap: () {
                     viewModel.navigateToAgentView();
-                    // Navigate to Agent Stats screen
                   },
                 ),
-                SizedBox(
-                  height: size.height * 0.29,
-                ),
+                Spacer(),
                 Container(
                   width: size.width * 0.94,
                   height: 45,
                   child: ElevatedButton(
                     onPressed: () {
-                      // Handle button press
+                      viewModel.navigateToRegisterNewUser();
                     },
                     style: elevatedButtonStyle,
                     child: Text("Register New User ?", style: TextStyle(letterSpacing: 1)),
@@ -84,7 +94,8 @@ class _FirstViewScreenState extends State<FirstViewScreen> {
             ),
           ),
         );
-      },);
+      },
+    );
   }
 }
 
@@ -104,36 +115,32 @@ class DashboardCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Card(
-      shape: OutlineInputBorder(borderRadius: BorderRadius.circular(10), borderSide: BorderSide(color: Colors.transparent)),
+      surfaceTintColor: Colors.white,
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(10),
+      ),
       color: color,
-       surfaceTintColor: Colors.white,
-      margin: EdgeInsets.symmetric(vertical: 13.0, horizontal: 11.0),
+      margin: EdgeInsets.symmetric(vertical: 10.0),
+      elevation: 5,
       child: InkWell(
         onTap: onTap,
         child: Row(
           children: [
-            ClipRRect(
-              borderRadius: BorderRadius.only(
-                topLeft: Radius.circular(10),
-                bottomLeft: Radius.circular(10),
-              ),
-              child: Image.asset(
-                image,
-                width: MediaQuery.of(context).size.width * 0.35,
-                height: 80, // adjust height as necessary
-                fit: BoxFit.cover,
-              ),
+            Image.asset(
+              image,
+              width: 100,
+              height: 80,
+              fit: BoxFit.cover,
             ),
             SizedBox(width: 16.0),
             Expanded(
               child: Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 28.0),
+                padding: const EdgeInsets.symmetric(horizontal: 60.0,),
                 child: Text(
                   title,
                   style: TextStyle(
                     letterSpacing: 1,
                     color: Colors.black87,
-                    // fontWeight: FontWeight.bold,
                     fontSize: 16.0,
                   ),
                 ),
