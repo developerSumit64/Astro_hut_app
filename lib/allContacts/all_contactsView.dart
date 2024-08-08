@@ -42,6 +42,99 @@ class _AllContactsViewState extends State<AllContactsView> {
     },
   ];
 
+  void _showBottomSheet() {
+    showModalBottomSheet(
+      context: context,
+      builder: (BuildContext context) {
+        return Container(
+          padding: const EdgeInsets.all(16.0),
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              ListTile(
+                leading: const Icon(Icons.settings,),
+                title: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    const Text('Settings',style: TextStyle(fontWeight: FontWeight.bold)),
+                    Icon(Icons.arrow_forward_ios,size: 20,)
+                  ],
+                ),
+                onTap: () {},
+              ),
+              ListTile(
+                leading: const Icon(Icons.details),
+                title: const Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Text('Plan Details',style: TextStyle(fontWeight: FontWeight.bold),),
+                    Icon(Icons.arrow_forward_ios,size: 20,)
+                  ],
+                ),
+                onTap: () {},
+              ),
+              ListTile(
+                leading: const Icon(Icons.group),
+                title: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    const Text('User management',style: TextStyle(fontWeight: FontWeight.bold)),
+                    Icon(Icons.arrow_forward_ios,size: 20,)
+                  ],
+                ),
+                onTap: () {},
+              ),
+              ListTile(
+                leading: const Icon(Icons.history),
+                title: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    const Text('Activity',style: TextStyle(fontWeight: FontWeight.bold)),
+                    Icon(Icons.arrow_forward_ios,size: 20,)
+                  ],
+                ),
+                onTap: () {},
+              ),
+              ListTile(
+                leading: const Icon(Icons.lock),
+                title: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    const Text('Privacy',style: TextStyle(fontWeight: FontWeight.bold)),
+                    Icon(Icons.arrow_forward_ios,size: 20,)
+                  ],
+                ),
+                onTap: () {},
+              ),
+              ListTile(
+                leading: const Icon(Icons.info),
+                title: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    const Text('Information',style: TextStyle(fontWeight: FontWeight.bold)),
+                    Icon(Icons.arrow_forward_ios,size: 20,)
+                  ],
+                ),
+                onTap: () {},
+              ),
+              ListTile(
+                leading: const Icon(Icons.logout),
+                title: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    const Text('Log out',style: TextStyle(fontWeight: FontWeight.bold)),
+                    Icon(Icons.arrow_forward_ios,size: 20,)
+                  ],
+                ),
+                onTap: (){},
+              ),
+            ],
+          ),
+        );
+      },
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return ViewModelBuilder<AllContactsViewModal>.reactive(viewModelBuilder: () => AllContactsViewModal(),
@@ -54,44 +147,43 @@ class _AllContactsViewState extends State<AllContactsView> {
                     'Caller List',
                     style: TextStyle(
                       fontSize: 20,
+                      fontWeight: FontWeight.bold,
                       color: Colors.black87,
                       // fontWeight: FontWeight.bold,
                     ),
                   ),
-                  // Padding(
-                  //   padding:  EdgeInsets.only(left: 90),
-                  //   child: IconButton(onPressed: () {}, icon: Icon(Icons.more_vert_outlined)),
-                  // ),
+                  Padding(
+                    padding:  EdgeInsets.only(left: 130),
+                    child: IconButton(onPressed: () {
+                      _showBottomSheet();
+                    }, icon: Icon(Icons.more_vert_outlined)),
+                  ),
                 ],
 
               ),
               actions: [
                 IconButton(onPressed: () {
                   viewModel.NavigateTOFilterView();
-
                 }, icon: Icon(Icons.filter_list)),
-                PopupMenuButton<String>(
-                  color: Colors.white,
-                  surfaceTintColor: Colors.white,
-                  elevation: 3,
-                  onSelected: (String value) {
-                    print('Selected: $value');
-                  },
-                  itemBuilder: (BuildContext context) {
-                    return {'All Callers', 'Call Receiving', 'Add Contact', 'Dashboard', 'Call Logs', 'Agent Stats', 'Go to page '}
-                        .map((String choice) {
-                      return PopupMenuItem<String>(
-                        onTap: () {
-
-                        },
-                        value: choice,
-                        child: Text(choice),
-                      );
-                    }).toList();
-                  },
-                  icon: Icon(Icons.more_vert, color: Colors.black),
-                ),
-
+                // PopupMenuButton<String>(
+                //   color: Colors.white,
+                //   surfaceTintColor: Colors.white,
+                //   elevation: 3,
+                //   onSelected: (String value) {
+                //     print('Selected: $value');
+                //   },
+                //   itemBuilder: (BuildContext context) {
+                //     return {'All Callers', 'Call Receiving', 'Add Contact', 'Dashboard', 'Call Logs', 'Agent Stats', 'Go to page '},
+                //         .map((String choice) {
+                //       return PopupMenuItem<String>(
+                //         onTap: () {},
+                //         value: choice,
+                //         child: Text(choice),
+                //       );
+                //     }).toList();
+                //   },
+                //   icon: Icon(Icons.more_vert, color: Colors.black),
+                // ),
               ],
             ),
 
@@ -115,7 +207,6 @@ class _AllContactsViewState extends State<AllContactsView> {
                     child: ListView.builder(
                       itemCount: contacts.length,
                       itemBuilder: (context, index) {
-
                         return Card(
                           surfaceTintColor: Colors.white,
                           color: Colors.white,

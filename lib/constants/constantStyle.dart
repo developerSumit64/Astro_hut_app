@@ -37,7 +37,7 @@ const InputDecoration kTextFormFieldDecoration = InputDecoration(
     focusedBorder: OutlineInputBorder(
       borderRadius: BorderRadius.all(Radius.circular(10)),
       borderSide: BorderSide(
-        color: Colors.blueAccent,// Focused blue border colo258/369*-+
+        color: Colors.blueAccent,
 
         width: 1,
       ),
