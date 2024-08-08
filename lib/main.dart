@@ -1,7 +1,6 @@
 import 'package:api/app/app.locator.dart';
 import 'package:api/app/app.router.dart';
 import 'package:flutter/material.dart';
-import 'package:stacked/stacked_annotations.dart';
 import 'package:stacked_services/stacked_services.dart';
 
 Future main() async {
