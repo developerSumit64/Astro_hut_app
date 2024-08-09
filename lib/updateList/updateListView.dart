@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+
 import 'package:intl/intl.dart';
-import 'package:api/constants/constantStyle.dart'; // Ensure this file contains your custom styles
+import 'package:api/constants/constantStyle.dart';
+import 'package:url_launcher/url_launcher.dart'; // Ensure this file contains your custom styles
 
 class UpdateListAgent extends StatefulWidget {
   @override
@@ -221,10 +223,22 @@ class _UpdateListAgentState extends State<UpdateListAgent> {
                               children: [
                                 IconButton(
                                   icon: Icon(Icons.call, color: Colors.blue),
-                                  onPressed: () {
-                                    // Call action
+                                  onPressed: () async {
+                                    const phoneNumber = '9084907266'; // Replace with the desired phone number
+                                    final Uri url = Uri.parse('tel:$phoneNumber');
+
+                                    if (await canLaunchUrl(url)) {
+                                      await launchUrl(url);
+                                    } else {
+                                      // Show an error message if the call cannot be made
+                                      ScaffoldMessenger.of(context).showSnackBar(
+                                        SnackBar(content: Text('Could not launch $url')),
+                                      );
+                                    }
                                   },
                                 ),
+
+
                                 IconButton(
                                   icon: Icon(Icons.message, color: Colors.green),
                                   onPressed: () {

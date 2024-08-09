@@ -41,20 +41,78 @@ class _AllContactsViewState extends State<AllContactsView> {
       'registeredBy': 'Shweta'
     },
   ];
+  void _showModalBottomSheet(BuildContext context) {
+    showModalBottomSheet(
+      context: context,
+      builder: (BuildContext context) {
+        return ViewModelBuilder<AllContactsViewModal>.reactive(
+          viewModelBuilder: () => AllContactsViewModal(),
+          builder: (context, viewModel, child) {
+            return Container(
+              padding: EdgeInsets.symmetric(vertical: 10.0),
+              decoration: BoxDecoration(
+                color: Colors.white,
+                borderRadius: BorderRadius.only(
+                  topLeft: Radius.circular(20.0),
+                  topRight: Radius.circular(20.0),
+                ),
+              ),
+              child: Column(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  _buildListItem(context, Icons.people, 'All Callers', Colors.blue, viewModel.NavigateTOAllCaller),
+                  _buildListItem(context, Icons.call_received, 'Call Receiving', Colors.green, viewModel.navigateToCallReceiving),
+                  _buildListItem(context, Icons.contact_phone, 'Add Contact', Colors.orange, viewModel.navigateToRegisterNewUser),
+                  _buildListItem(context, Icons.dashboard, 'Dashboard', Colors.red, viewModel.NavigateTODashboard),
+                  _buildListItem(context, Icons.call, 'Call Logs', Colors.purple, viewModel.NavigateTOAllCaller),
+                  _buildListItem(context, Icons.bar_chart, 'Agent Stats', Colors.teal, viewModel.navigateToAgentView),
+                  _buildListItem(context, Icons.arrow_forward, 'Go to page', Colors.brown, viewModel.NavigateTOAllCaller),
+                ],
+              ),
+            );
+          },
+        );
+      },
+    );
+  }
 
+  Widget _buildListItem(BuildContext context, IconData icon, String text, Color iconColor, void Function() callback) {
+    return ListTile(
+      leading: Icon(icon, color: iconColor),
+      title: Text(text),
+      onTap: () {
+        callback();
+        // Navigator.pop(context); // Close the bottom sheet after navigation
+      },
+    );
+  }
+
+
+  // Widget _buildListItem(BuildContext context, IconData icon, String text, Color iconColor,void callback() ) {
+  //   return ListTile(
+  //     leading: Icon(icon, color: iconColor),
+  //     title: Text(text),
+  //     onTap: () {
+  //       callback();
+  //       // Navigator.pop(context); // Close the bottom sheet
+  //     },
+  //   );
+  // }
   @override
   Widget build(BuildContext context) {
     return ViewModelBuilder<AllContactsViewModal>.reactive(viewModelBuilder: () => AllContactsViewModal(),
         builder: (context, viewModel, child) {
           return Scaffold(
             appBar: AppBar(
+              iconTheme: IconThemeData(color: Colors.white),
               title: Row(
                 children: [
                   Text(
                     'Caller List',
                     style: TextStyle(
                       fontSize: 20,
-                      color: Colors.black87,
+                      letterSpacing: 1,
+                      color: Colors.white,
                       // fontWeight: FontWeight.bold,
                     ),
                   ),
@@ -69,30 +127,22 @@ class _AllContactsViewState extends State<AllContactsView> {
                 IconButton(onPressed: () {
                   viewModel.NavigateTOFilterView();
 
-                }, icon: Icon(Icons.filter_list)),
-                PopupMenuButton<String>(
-                  color: Colors.white,
-                  surfaceTintColor: Colors.white,
-                  elevation: 3,
-                  onSelected: (String value) {
-                    print('Selected: $value');
-                  },
-                  itemBuilder: (BuildContext context) {
-                    return {'All Callers', 'Call Receiving', 'Add Contact', 'Dashboard', 'Call Logs', 'Agent Stats', 'Go to page '}
-                        .map((String choice) {
-                      return PopupMenuItem<String>(
-                        onTap: () {
-
-                        },
-                        value: choice,
-                        child: Text(choice),
-                      );
-                    }).toList();
-                  },
-                  icon: Icon(Icons.more_vert, color: Colors.black),
+                }, icon: Icon(Icons.filter_list,color: Colors.white,)),
+                IconButton(
+                  icon: Icon(Icons.more_vert, color: Colors.white),
+                  onPressed: () => _showModalBottomSheet(context),
                 ),
 
               ],
+              flexibleSpace: Container(
+                decoration: BoxDecoration(
+                  gradient: LinearGradient(
+                    colors: [Colors.orange, Colors.orange.shade400],
+                    begin: Alignment.topLeft,
+                    end: Alignment.bottomRight,
+                  ),
+                ),
+              ),
             ),
 
             body: Padding(
@@ -161,7 +211,10 @@ class _AllContactsViewState extends State<AllContactsView> {
                                       padding: const EdgeInsets.only(left: 60),
                                       child: Row(
                                         children: [
-                                          IconButton(onPressed: () {}, icon: Icon(Icons.call)),
+                                          IconButton(onPressed: () {
+                                            viewModel.navigateToKundliView();
+
+                                          }, icon: Icon(Icons.call)),
                                           IconButton(onPressed: () {}, icon: Image.asset('assets/icons/whatsapp.png',height: 30,)),
                                         ],
                                       ),
