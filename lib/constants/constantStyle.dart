@@ -21,7 +21,7 @@ final Container containerdesign= Container(
 
       colors: [
         Colors.white,
-        Colors.orange.shade300,
+        Colors.orange.shade200,
       ],
     ),
     borderRadius: BorderRadius.only(
