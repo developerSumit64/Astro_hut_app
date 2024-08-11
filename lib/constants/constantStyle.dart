@@ -76,37 +76,37 @@ final ButtonStyle elevatedButtonStyle = ElevatedButton.styleFrom(
   foregroundColor: Colors.white, backgroundColor: Colors.orangeAccent, // Text color
   shadowColor: Colors.grey.shade400, // Shadow color
   elevation: 1, // Slightly higher elevation for a more prominent shadow
-  padding: EdgeInsets.symmetric(horizontal: 24.0, vertical: 12.0),
+  padding: const EdgeInsets.symmetric(horizontal: 24.0, vertical: 12.0),
   shape: RoundedRectangleBorder(
     borderRadius: BorderRadius.circular(12.0), // Rounded corners
   ),
-  textStyle: TextStyle(
+  textStyle: const TextStyle(
     fontSize: 18, // Font size
     fontWeight: FontWeight.bold, // Font weight
   ),
 );
-final ButtonStyle roundedelevatedButtonStyle = ElevatedButton.styleFrom(
-  foregroundColor: Colors.white, backgroundColor: Colors.blue, // Text color
-  shadowColor: Colors.grey.shade400, // Shadow color
-  elevation: 1, // Slightly higher elevation for a more prominent shadow
-  padding: EdgeInsets.symmetric(horizontal: 24.0, vertical: 12.0),
-  shape: RoundedRectangleBorder(
-    borderRadius: BorderRadius.only(bottomRight: Radius.circular(22),topLeft: Radius.circular(22)), // Rounded corners
-  ),
-  textStyle: TextStyle(
-    fontSize: 18, // Font size
-    fontWeight: FontWeight.bold, // Font weight
-  ),
-);
+// final ButtonStyle roundedelevatedButtonStyle = ElevatedButton.styleFrom(
+//   foregroundColor: Colors.white, backgroundColor: Colors.blue, // Text color
+//   shadowColor: Colors.grey.shade400, // Shadow color
+//   elevation: 1, // Slightly higher elevation for a more prominent shadow
+//   padding: EdgeInsets.symmetric(horizontal: 24.0, vertical: 12.0),
+//   shape: RoundedRectangleBorder(
+//     borderRadius: BorderRadius.only(bottomRight: Radius.circular(22),topLeft: Radius.circular(22)), // Rounded corners
+//   ),
+//   textStyle: TextStyle(
+//     fontSize: 18, // Font size
+//     fontWeight: FontWeight.bold, // Font weight
+//   ),
+// );
 final ButtonStyle roundedelevatedButtonStyle = ElevatedButton.styleFrom(
   foregroundColor: Colors.white, backgroundColor: Colors.orangeAccent, // Text color
   shadowColor: Colors.grey.shade400, // Shadow color
   elevation: 1, // Slightly higher elevation for a more prominent shadow
-  padding: EdgeInsets.symmetric(horizontal: 24.0, vertical: 12.0),
-  shape: RoundedRectangleBorder(
+  padding: const EdgeInsets.symmetric(horizontal: 24.0, vertical: 12.0),
+  shape: const RoundedRectangleBorder(
     borderRadius: BorderRadius.only(bottomLeft: Radius.circular(42),topRight: Radius.circular(42)), // Rounded corners
   ),
-  textStyle: TextStyle(
+  textStyle: const TextStyle(
     fontSize: 18, // Font size
     fontWeight: FontWeight.bold, // Font weight
   ),
@@ -116,11 +116,11 @@ final ButtonStyle elevatedButtonStylerounded = ElevatedButton.styleFrom(
   foregroundColor: Colors.white, backgroundColor: Colors.blue.shade400, // Text color
   shadowColor: Colors.green, // Shadow color
   elevation: 2, // Slightly higher elevation for a more prominent shadow
-  padding: EdgeInsets.symmetric(horizontal: 24.0, vertical: 12.0),
+  padding: const EdgeInsets.symmetric(horizontal: 24.0, vertical: 12.0),
   shape: RoundedRectangleBorder(
     borderRadius: BorderRadius.circular(12.0), // Rounded corners
   ),
-  textStyle: TextStyle(
+  textStyle: const TextStyle(
     fontSize: 18, // Font size
     fontWeight: FontWeight.bold, // Font weight
   ),
