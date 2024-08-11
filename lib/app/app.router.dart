@@ -6,17 +6,27 @@
 
 // ignore_for_file: no_leading_underscores_for_library_prefixes
 import 'package:api/agentView/aggentView.dart' as _i3;
+import 'package:api/allContacts/all_contactsView.dart' as _i16;
 import 'package:api/callerLogs/callerLogsView.dart' as _i4;
+import 'package:api/callReceiving/call_receiveView.dart' as _i14;
+import 'package:api/editProfile/editProfileView.dart' as _i13;
 import 'package:api/firstView/firstViewScreen.dart' as _i2;
+import 'package:api/forgetPassworddView/forgetPasswordView.dart' as _i9;
+import 'package:api/kundliView/kundliView.dart' as _i17;
 import 'package:api/loginOrRegisterSelecterView/loginOrRegisterView.dart'
     as _i7;
 import 'package:api/loginView/loginView.dart' as _i6;
+import 'package:api/newRegisteratoin/newRegisterationview.dart' as _i15;
 import 'package:api/profileVIew/profileView.dart' as _i8;
+import 'package:api/profileViewScreen/profileViewScreenView.dart' as _i12;
 import 'package:api/signUpView.dart' as _i5;
-import 'package:flutter/material.dart' as _i9;
+import 'package:api/SpecificCallLogDetails/specificCallLogsDetails.dart'
+    as _i10;
+import 'package:api/updateList/updateListView.dart' as _i11;
+import 'package:flutter/material.dart' as _i18;
 import 'package:flutter/material.dart';
 import 'package:stacked/stacked.dart' as _i1;
-import 'package:stacked_services/stacked_services.dart' as _i10;
+import 'package:stacked_services/stacked_services.dart' as _i19;
 
 class Routes {
   static const firstViewScreen = '/first-view-screen';
@@ -29,9 +39,29 @@ class Routes {
 
   static const loginView = '/login-view';
 
-  static const loginOrRegisterView = '/login-or-register-view';
+  static const loginOrRegisterView = '/';
 
-  static const profileView = '/';
+  static const profileView = '/profile-view';
+
+  static const forgetPassword = '/forget-password';
+
+  static const callLogDetailView = '/call-log-detail-view';
+
+  static const updateListAgent = '/update-list-agent';
+
+  static const profileSettings = '/profile-settings';
+
+  static const profileEditApp = '/profile-edit-app';
+
+  static const callReceiveView = '/call-receive-view';
+
+  static const registration = '/Registration';
+
+  static const allContactsView = '/all-contacts-view';
+
+  static const filterDialog = '/filter-dialog';
+
+  static const kundliView = '/kundli-view';
 
   static const all = <String>{
     firstViewScreen,
@@ -41,6 +71,16 @@ class Routes {
     loginView,
     loginOrRegisterView,
     profileView,
+    forgetPassword,
+    callLogDetailView,
+    updateListAgent,
+    profileSettings,
+    profileEditApp,
+    callReceiveView,
+    registration,
+    allContactsView,
+    filterDialog,
+    kundliView,
   };
 }
 
@@ -74,48 +114,148 @@ class StackedRouter extends _i1.RouterBase {
       Routes.profileView,
       page: _i8.ProfileView,
     ),
+    _i1.RouteDef(
+      Routes.forgetPassword,
+      page: _i9.ForgetPassword,
+    ),
+    _i1.RouteDef(
+      Routes.callLogDetailView,
+      page: _i10.CallLogDetailView,
+    ),
+    _i1.RouteDef(
+      Routes.updateListAgent,
+      page: _i11.UpdateListAgent,
+    ),
+    _i1.RouteDef(
+      Routes.profileSettings,
+      page: _i12.ProfileSettings,
+    ),
+    _i1.RouteDef(
+      Routes.profileEditApp,
+      page: _i13.ProfileEditApp,
+    ),
+    _i1.RouteDef(
+      Routes.callReceiveView,
+      page: _i14.CallReceiveView,
+    ),
+    _i1.RouteDef(
+      Routes.registration,
+      page: _i15.Registration,
+    ),
+    _i1.RouteDef(
+      Routes.allContactsView,
+      page: _i16.AllContactsView,
+    ),
+    _i1.RouteDef(
+      Routes.filterDialog,
+      page: _i11.FilterDialog,
+    ),
+    _i1.RouteDef(
+      Routes.kundliView,
+      page: _i17.KundliView,
+    ),
   ];
 
   final _pagesMap = <Type, _i1.StackedRouteFactory>{
     _i2.FirstViewScreen: (data) {
-      return _i9.MaterialPageRoute<dynamic>(
+      return _i18.MaterialPageRoute<dynamic>(
         builder: (context) => const _i2.FirstViewScreen(),
         settings: data,
       );
     },
     _i3.AgentView: (data) {
-      return _i9.MaterialPageRoute<dynamic>(
+      return _i18.MaterialPageRoute<dynamic>(
         builder: (context) => const _i3.AgentView(),
         settings: data,
       );
     },
     _i4.CallerLogsView: (data) {
-      return _i9.MaterialPageRoute<dynamic>(
+      return _i18.MaterialPageRoute<dynamic>(
         builder: (context) => const _i4.CallerLogsView(),
         settings: data,
       );
     },
     _i5.SingUpView: (data) {
-      return _i9.MaterialPageRoute<dynamic>(
+      return _i18.MaterialPageRoute<dynamic>(
         builder: (context) => const _i5.SingUpView(),
         settings: data,
       );
     },
     _i6.LoginView: (data) {
-      return _i9.MaterialPageRoute<dynamic>(
+      return _i18.MaterialPageRoute<dynamic>(
         builder: (context) => const _i6.LoginView(),
         settings: data,
       );
     },
     _i7.LoginOrRegisterView: (data) {
-      return _i9.MaterialPageRoute<dynamic>(
+      return _i18.MaterialPageRoute<dynamic>(
         builder: (context) => const _i7.LoginOrRegisterView(),
         settings: data,
       );
     },
     _i8.ProfileView: (data) {
-      return _i9.MaterialPageRoute<dynamic>(
+      return _i18.MaterialPageRoute<dynamic>(
         builder: (context) => const _i8.ProfileView(),
+        settings: data,
+      );
+    },
+    _i9.ForgetPassword: (data) {
+      return _i18.MaterialPageRoute<dynamic>(
+        builder: (context) => const _i9.ForgetPassword(),
+        settings: data,
+      );
+    },
+    _i10.CallLogDetailView: (data) {
+      return _i18.MaterialPageRoute<dynamic>(
+        builder: (context) => const _i10.CallLogDetailView(),
+        settings: data,
+      );
+    },
+    _i11.UpdateListAgent: (data) {
+      return _i18.MaterialPageRoute<dynamic>(
+        builder: (context) => _i11.UpdateListAgent(),
+        settings: data,
+      );
+    },
+    _i12.ProfileSettings: (data) {
+      return _i18.MaterialPageRoute<dynamic>(
+        builder: (context) => const _i12.ProfileSettings(),
+        settings: data,
+      );
+    },
+    _i13.ProfileEditApp: (data) {
+      return _i18.MaterialPageRoute<dynamic>(
+        builder: (context) => const _i13.ProfileEditApp(),
+        settings: data,
+      );
+    },
+    _i14.CallReceiveView: (data) {
+      return _i18.MaterialPageRoute<dynamic>(
+        builder: (context) => const _i14.CallReceiveView(),
+        settings: data,
+      );
+    },
+    _i15.Registration: (data) {
+      return _i18.MaterialPageRoute<dynamic>(
+        builder: (context) => const _i15.Registration(),
+        settings: data,
+      );
+    },
+    _i16.AllContactsView: (data) {
+      return _i18.MaterialPageRoute<dynamic>(
+        builder: (context) => const _i16.AllContactsView(),
+        settings: data,
+      );
+    },
+    _i11.FilterDialog: (data) {
+      return _i18.MaterialPageRoute<dynamic>(
+        builder: (context) => _i11.FilterDialog(),
+        settings: data,
+      );
+    },
+    _i17.KundliView: (data) {
+      return _i18.MaterialPageRoute<dynamic>(
+        builder: (context) => const _i17.KundliView(),
         settings: data,
       );
     },
@@ -128,7 +268,7 @@ class StackedRouter extends _i1.RouterBase {
   Map<Type, _i1.StackedRouteFactory> get pagesMap => _pagesMap;
 }
 
-extension NavigatorStateExtension on _i10.NavigationService {
+extension NavigatorStateExtension on _i19.NavigationService {
   Future<dynamic> navigateToFirstViewScreen([
     int? routerId,
     bool preventDuplicates = true,
@@ -227,6 +367,146 @@ extension NavigatorStateExtension on _i10.NavigationService {
         transition: transition);
   }
 
+  Future<dynamic> navigateToForgetPassword([
+    int? routerId,
+    bool preventDuplicates = true,
+    Map<String, String>? parameters,
+    Widget Function(BuildContext, Animation<double>, Animation<double>, Widget)?
+        transition,
+  ]) async {
+    return navigateTo<dynamic>(Routes.forgetPassword,
+        id: routerId,
+        preventDuplicates: preventDuplicates,
+        parameters: parameters,
+        transition: transition);
+  }
+
+  Future<dynamic> navigateToCallLogDetailView([
+    int? routerId,
+    bool preventDuplicates = true,
+    Map<String, String>? parameters,
+    Widget Function(BuildContext, Animation<double>, Animation<double>, Widget)?
+        transition,
+  ]) async {
+    return navigateTo<dynamic>(Routes.callLogDetailView,
+        id: routerId,
+        preventDuplicates: preventDuplicates,
+        parameters: parameters,
+        transition: transition);
+  }
+
+  Future<dynamic> navigateToUpdateListAgent([
+    int? routerId,
+    bool preventDuplicates = true,
+    Map<String, String>? parameters,
+    Widget Function(BuildContext, Animation<double>, Animation<double>, Widget)?
+        transition,
+  ]) async {
+    return navigateTo<dynamic>(Routes.updateListAgent,
+        id: routerId,
+        preventDuplicates: preventDuplicates,
+        parameters: parameters,
+        transition: transition);
+  }
+
+  Future<dynamic> navigateToProfileSettings([
+    int? routerId,
+    bool preventDuplicates = true,
+    Map<String, String>? parameters,
+    Widget Function(BuildContext, Animation<double>, Animation<double>, Widget)?
+        transition,
+  ]) async {
+    return navigateTo<dynamic>(Routes.profileSettings,
+        id: routerId,
+        preventDuplicates: preventDuplicates,
+        parameters: parameters,
+        transition: transition);
+  }
+
+  Future<dynamic> navigateToProfileEditApp([
+    int? routerId,
+    bool preventDuplicates = true,
+    Map<String, String>? parameters,
+    Widget Function(BuildContext, Animation<double>, Animation<double>, Widget)?
+        transition,
+  ]) async {
+    return navigateTo<dynamic>(Routes.profileEditApp,
+        id: routerId,
+        preventDuplicates: preventDuplicates,
+        parameters: parameters,
+        transition: transition);
+  }
+
+  Future<dynamic> navigateToCallReceiveView([
+    int? routerId,
+    bool preventDuplicates = true,
+    Map<String, String>? parameters,
+    Widget Function(BuildContext, Animation<double>, Animation<double>, Widget)?
+        transition,
+  ]) async {
+    return navigateTo<dynamic>(Routes.callReceiveView,
+        id: routerId,
+        preventDuplicates: preventDuplicates,
+        parameters: parameters,
+        transition: transition);
+  }
+
+  Future<dynamic> navigateToRegistration([
+    int? routerId,
+    bool preventDuplicates = true,
+    Map<String, String>? parameters,
+    Widget Function(BuildContext, Animation<double>, Animation<double>, Widget)?
+        transition,
+  ]) async {
+    return navigateTo<dynamic>(Routes.registration,
+        id: routerId,
+        preventDuplicates: preventDuplicates,
+        parameters: parameters,
+        transition: transition);
+  }
+
+  Future<dynamic> navigateToAllContactsView([
+    int? routerId,
+    bool preventDuplicates = true,
+    Map<String, String>? parameters,
+    Widget Function(BuildContext, Animation<double>, Animation<double>, Widget)?
+        transition,
+  ]) async {
+    return navigateTo<dynamic>(Routes.allContactsView,
+        id: routerId,
+        preventDuplicates: preventDuplicates,
+        parameters: parameters,
+        transition: transition);
+  }
+
+  Future<dynamic> navigateToFilterDialog([
+    int? routerId,
+    bool preventDuplicates = true,
+    Map<String, String>? parameters,
+    Widget Function(BuildContext, Animation<double>, Animation<double>, Widget)?
+        transition,
+  ]) async {
+    return navigateTo<dynamic>(Routes.filterDialog,
+        id: routerId,
+        preventDuplicates: preventDuplicates,
+        parameters: parameters,
+        transition: transition);
+  }
+
+  Future<dynamic> navigateToKundliView([
+    int? routerId,
+    bool preventDuplicates = true,
+    Map<String, String>? parameters,
+    Widget Function(BuildContext, Animation<double>, Animation<double>, Widget)?
+        transition,
+  ]) async {
+    return navigateTo<dynamic>(Routes.kundliView,
+        id: routerId,
+        preventDuplicates: preventDuplicates,
+        parameters: parameters,
+        transition: transition);
+  }
+
   Future<dynamic> replaceWithFirstViewScreen([
     int? routerId,
     bool preventDuplicates = true,
@@ -319,6 +599,146 @@ extension NavigatorStateExtension on _i10.NavigationService {
         transition,
   ]) async {
     return replaceWith<dynamic>(Routes.profileView,
+        id: routerId,
+        preventDuplicates: preventDuplicates,
+        parameters: parameters,
+        transition: transition);
+  }
+
+  Future<dynamic> replaceWithForgetPassword([
+    int? routerId,
+    bool preventDuplicates = true,
+    Map<String, String>? parameters,
+    Widget Function(BuildContext, Animation<double>, Animation<double>, Widget)?
+        transition,
+  ]) async {
+    return replaceWith<dynamic>(Routes.forgetPassword,
+        id: routerId,
+        preventDuplicates: preventDuplicates,
+        parameters: parameters,
+        transition: transition);
+  }
+
+  Future<dynamic> replaceWithCallLogDetailView([
+    int? routerId,
+    bool preventDuplicates = true,
+    Map<String, String>? parameters,
+    Widget Function(BuildContext, Animation<double>, Animation<double>, Widget)?
+        transition,
+  ]) async {
+    return replaceWith<dynamic>(Routes.callLogDetailView,
+        id: routerId,
+        preventDuplicates: preventDuplicates,
+        parameters: parameters,
+        transition: transition);
+  }
+
+  Future<dynamic> replaceWithUpdateListAgent([
+    int? routerId,
+    bool preventDuplicates = true,
+    Map<String, String>? parameters,
+    Widget Function(BuildContext, Animation<double>, Animation<double>, Widget)?
+        transition,
+  ]) async {
+    return replaceWith<dynamic>(Routes.updateListAgent,
+        id: routerId,
+        preventDuplicates: preventDuplicates,
+        parameters: parameters,
+        transition: transition);
+  }
+
+  Future<dynamic> replaceWithProfileSettings([
+    int? routerId,
+    bool preventDuplicates = true,
+    Map<String, String>? parameters,
+    Widget Function(BuildContext, Animation<double>, Animation<double>, Widget)?
+        transition,
+  ]) async {
+    return replaceWith<dynamic>(Routes.profileSettings,
+        id: routerId,
+        preventDuplicates: preventDuplicates,
+        parameters: parameters,
+        transition: transition);
+  }
+
+  Future<dynamic> replaceWithProfileEditApp([
+    int? routerId,
+    bool preventDuplicates = true,
+    Map<String, String>? parameters,
+    Widget Function(BuildContext, Animation<double>, Animation<double>, Widget)?
+        transition,
+  ]) async {
+    return replaceWith<dynamic>(Routes.profileEditApp,
+        id: routerId,
+        preventDuplicates: preventDuplicates,
+        parameters: parameters,
+        transition: transition);
+  }
+
+  Future<dynamic> replaceWithCallReceiveView([
+    int? routerId,
+    bool preventDuplicates = true,
+    Map<String, String>? parameters,
+    Widget Function(BuildContext, Animation<double>, Animation<double>, Widget)?
+        transition,
+  ]) async {
+    return replaceWith<dynamic>(Routes.callReceiveView,
+        id: routerId,
+        preventDuplicates: preventDuplicates,
+        parameters: parameters,
+        transition: transition);
+  }
+
+  Future<dynamic> replaceWithRegistration([
+    int? routerId,
+    bool preventDuplicates = true,
+    Map<String, String>? parameters,
+    Widget Function(BuildContext, Animation<double>, Animation<double>, Widget)?
+        transition,
+  ]) async {
+    return replaceWith<dynamic>(Routes.registration,
+        id: routerId,
+        preventDuplicates: preventDuplicates,
+        parameters: parameters,
+        transition: transition);
+  }
+
+  Future<dynamic> replaceWithAllContactsView([
+    int? routerId,
+    bool preventDuplicates = true,
+    Map<String, String>? parameters,
+    Widget Function(BuildContext, Animation<double>, Animation<double>, Widget)?
+        transition,
+  ]) async {
+    return replaceWith<dynamic>(Routes.allContactsView,
+        id: routerId,
+        preventDuplicates: preventDuplicates,
+        parameters: parameters,
+        transition: transition);
+  }
+
+  Future<dynamic> replaceWithFilterDialog([
+    int? routerId,
+    bool preventDuplicates = true,
+    Map<String, String>? parameters,
+    Widget Function(BuildContext, Animation<double>, Animation<double>, Widget)?
+        transition,
+  ]) async {
+    return replaceWith<dynamic>(Routes.filterDialog,
+        id: routerId,
+        preventDuplicates: preventDuplicates,
+        parameters: parameters,
+        transition: transition);
+  }
+
+  Future<dynamic> replaceWithKundliView([
+    int? routerId,
+    bool preventDuplicates = true,
+    Map<String, String>? parameters,
+    Widget Function(BuildContext, Animation<double>, Animation<double>, Widget)?
+        transition,
+  ]) async {
+    return replaceWith<dynamic>(Routes.kundliView,
         id: routerId,
         preventDuplicates: preventDuplicates,
         parameters: parameters,

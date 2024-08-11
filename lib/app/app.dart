@@ -1,40 +1,51 @@
-// import 'package:api/allContacts/all_contactsView.dart';
+import 'package:api/allContacts/all_contactsView.dart';
 import 'package:api/firstView/firstViewScreen.dart';
 import 'package:api/profileVIew/profileView.dart';
 import 'package:api/services/courseapi.dart';
-// import 'package:api/view/coursescreen.dart';
+import 'package:api/view/coursescreen.dart';
 import 'package:stacked/stacked_annotations.dart';
 import 'package:stacked_services/stacked_services.dart';
 
+import '../SpecificCallLogDetails/specificCallLogsDetails.dart';
 import '../agentView/aggentView.dart';
-import '../allContacts/all_contactsView.dart';
+import '../callReceiving/call_receiveView.dart';
 import '../callerLogs/callerLogsView.dart';
-import '../loginOrRegisterSelecterView/loginOrRegisterView.dart';
+import '../editProfile/editProfileView.dart';
 import '../forgetPassworddView/forgetPasswordView.dart';
+import '../kundliView/kundliView.dart';
 import '../loginOrRegisterSelecterView/loginOrRegisterView.dart';
 import '../loginView/loginView.dart';
+import '../newRegisteratoin/newRegisterationview.dart';
+import '../profileViewScreen/profileViewScreenView.dart';
 import '../signUpView.dart';
-import '../view/coursescreen.dart';
+import '../updateList/updateListView.dart';
 
 // import '../agentView/agentView.dart';
 
 
 @StackedApp(
   routes: [
-    MaterialRoute(page: CourseScreen,initial: true),
+    // MaterialRoute(page: CourseScreen,initial: true),
     MaterialRoute(page: FirstViewScreen),
-    MaterialRoute(page: AllContactsView,initial: true),
+    // MaterialRoute(page: AllContactsView,initial: true),
 
     MaterialRoute(page: AgentView,initial:false),
     MaterialRoute(page: CallerLogsView,initial: false),
     MaterialRoute(page: SingUpView,initial: false),
     MaterialRoute(page: LoginView,initial: false),
-    MaterialRoute(page: LoginOrRegisterView,initial: false),
-    MaterialRoute(page: ProfileView,initial: true),
-    MaterialRoute(page: LoginView,initial: false),
-    MaterialRoute(page: LoginOrRegisterView,initial: false),
+    MaterialRoute(page: LoginOrRegisterView,initial: true),
     MaterialRoute(page: ProfileView,initial: false),
-    MaterialRoute(page: ForgetPassword,initial: true),
+    MaterialRoute(page: ForgetPassword,initial: false),
+    MaterialRoute(page: CallLogDetailView,initial: false),
+    MaterialRoute(page: UpdateListAgent,initial: false),
+    MaterialRoute(page: ProfileSettings,initial: false),
+    MaterialRoute(page: ProfileEditApp,initial: false),
+    MaterialRoute(page: CallReceiveView,initial: false),
+    MaterialRoute(page: Registration,initial: false),
+    MaterialRoute(page: AllContactsView,initial: false),
+    MaterialRoute(page: FilterDialog,initial: false),
+    MaterialRoute(page: KundliView,initial: false),
+
 
 
 
