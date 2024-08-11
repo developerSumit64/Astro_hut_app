@@ -32,10 +32,10 @@ class _LoginViewState extends State<LoginView> {
       body: Stack(
         fit: StackFit.expand,
         children: [
-          // Image.asset(
-          //   'assets/images/uh.jpg',
-          //   fit: BoxFit.cover,
-          // ),
+          Image.asset(
+            'assets/images/gradientback.jpg',
+            fit: BoxFit.cover,
+          ),
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 16.0),
             child: SingleChildScrollView(
@@ -49,7 +49,7 @@ class _LoginViewState extends State<LoginView> {
                       letterSpacing: 1,
                       fontSize: 20,
                       fontWeight: FontWeight.bold,
-                      color: Colors.orange.shade600,
+                      color: Colors.blue,
                     ),
                   ),
                   SizedBox(height: 20),
@@ -73,8 +73,8 @@ class _LoginViewState extends State<LoginView> {
                         // Handle forgot password button press
                       },
                       child: Text(
-                        'Forgot Password?',
-                        style: TextStyle(color: Colors.orange),
+                        'Forgot Password ?',
+                        style: TextStyle(color: Colors.redAccent.shade200),
                       ),
                     ),
                   ),
@@ -126,7 +126,7 @@ class _LoginViewState extends State<LoginView> {
                         },
                         child: Text(
                           'Sign Up',
-                          style: TextStyle(color: Colors.orange),
+                          style: TextStyle(color: Colors.redAccent.shade200),
                         ),
                       ),
                     ],

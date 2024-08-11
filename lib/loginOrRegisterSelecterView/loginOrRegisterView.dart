@@ -32,21 +32,21 @@ class _LoginOrRegisterViewState extends State<LoginOrRegisterView> {
         fit: StackFit.expand,
         children: [
           // Uncomment and use this line if you want to add a background image
-          // Image.asset(
-          //   'assets/images/uh.jpg',
-          //   fit: BoxFit.cover,
-          // ),
+          Image.asset(
+            'assets/images/gradientback.jpg',
+              fit: BoxFit.cover,
+          ),
           Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 16.0),
+            padding: const EdgeInsets.symmetric(horizontal: 23.0),
             child: SingleChildScrollView(
               child: Column(
                 children: [
-                  SizedBox(height: 140),
+                  SizedBox(height: 120),
                   Text(
                     'Astro Hut',
                     style: TextStyle(
                       wordSpacing: 1,
-                      letterSpacing: 1,
+                      letterSpacing: 2,
                       fontSize: 21,
                       fontWeight: FontWeight.bold,
                       color: Colors.orange.shade600,
@@ -84,6 +84,7 @@ class _LoginOrRegisterViewState extends State<LoginOrRegisterView> {
                     ),
 
                   ),
+                  SizedBox(height: 10),
 
                   ElevatedButton(
                     onPressed: () {
