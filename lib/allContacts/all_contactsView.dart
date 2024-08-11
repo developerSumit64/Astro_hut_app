@@ -49,8 +49,8 @@ class _AllContactsViewState extends State<AllContactsView> {
           viewModelBuilder: () => AllContactsViewModal(),
           builder: (context, viewModel, child) {
             return Container(
-              padding: EdgeInsets.symmetric(vertical: 10.0),
-              decoration: BoxDecoration(
+              padding: const EdgeInsets.symmetric(vertical: 10.0),
+              decoration: const BoxDecoration(
                 color: Colors.white,
                 borderRadius: BorderRadius.only(
                   topLeft: Radius.circular(20.0),
@@ -93,8 +93,8 @@ class _AllContactsViewState extends State<AllContactsView> {
         builder: (context, viewModel, child) {
           return Scaffold(
             appBar: AppBar(
-              iconTheme: IconThemeData(color: Colors.white),
-              title: Row(
+              iconTheme: const IconThemeData(color: Colors.white),
+              title: const Row(
                 children: [
                   Text(
                     'Caller List',
@@ -116,9 +116,9 @@ class _AllContactsViewState extends State<AllContactsView> {
                 IconButton(onPressed: () {
                   viewModel.NavigateTOFilterView();
 
-                }, icon: Icon(Icons.filter_list,color: Colors.white,)),
+                }, icon: const Icon(Icons.filter_list,color: Colors.white,)),
                 IconButton(
-                  icon: Icon(Icons.more_vert, color: Colors.white),
+                  icon: const Icon(Icons.more_vert, color: Colors.white),
                   onPressed: () => _showModalBottomSheet(context),
                 ),
 
@@ -143,7 +143,7 @@ class _AllContactsViewState extends State<AllContactsView> {
                     child: TextField(
                       decoration: InputDecoration(
                         hintText: 'Search',
-                        prefixIcon: Icon(Icons.search),
+                        prefixIcon: const Icon(Icons.search),
                         border: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(12),
                         ),
@@ -158,13 +158,13 @@ class _AllContactsViewState extends State<AllContactsView> {
                         return Card(
                           surfaceTintColor: Colors.white,
                           color: Colors.white,
-                          margin: EdgeInsets.symmetric(vertical: 5, horizontal: 1),
+                          margin: const EdgeInsets.symmetric(vertical: 5, horizontal: 1),
                           elevation: 0.5,
                           shape: RoundedRectangleBorder(
                             side: BorderSide(
                               color: Colors.black12.withOpacity(0.05),
                             ),
-                            borderRadius: BorderRadius.only(
+                            borderRadius: const BorderRadius.only(
                               topLeft: Radius.circular(32),
                               bottomRight: Radius.circular(32),
                             ),
@@ -179,12 +179,12 @@ class _AllContactsViewState extends State<AllContactsView> {
                                     CircleAvatar(
                                       child: Text(contacts[index]['name']![0]),
                                     ),
-                                    SizedBox(width: 10),
+                                    const SizedBox(width: 10),
                                     Column(
                                       children: [
                                         Text(
                                           '${contacts[index]['name']} . F',
-                                          style: TextStyle(
+                                          style: const TextStyle(
                                             fontWeight: FontWeight.w500,
                                             fontSize: 16,
                                           ),
@@ -192,7 +192,7 @@ class _AllContactsViewState extends State<AllContactsView> {
                                         Padding(
                                           padding: const EdgeInsets.only(right: 30),
                                           child: Text(contacts[index]['phone']!,
-                                              style: TextStyle(fontWeight: FontWeight.w500)),
+                                              style: const TextStyle(fontWeight: FontWeight.w500)),
                                         ),
                                       ],
                                     ),
@@ -203,48 +203,48 @@ class _AllContactsViewState extends State<AllContactsView> {
                                           IconButton(onPressed: () {
                                             viewModel.navigateToKundliView();
 
-                                          }, icon: Icon(Icons.call)),
+                                          }, icon: const Icon(Icons.call)),
                                           IconButton(onPressed: () {}, icon: Image.asset('assets/icons/whatsapp.png',height: 30,)),
                                         ],
                                       ),
                                     ),
                                   ],
                                 ),
-                                SizedBox(height: 10),
-                                Divider(),
+                                const SizedBox(height: 10),
+                                const Divider(),
                                 Row(
                                   children: [
-                                    Text('Location : ',style: TextStyle(color: Colors.black54)),
-                                    Text(contacts[index]['location']!,style: TextStyle(fontWeight: FontWeight.w400)),
+                                    const Text('Location : ',style: TextStyle(color: Colors.black54)),
+                                    Text(contacts[index]['location']!,style: const TextStyle(fontWeight: FontWeight.w400)),
                                   ],
                                 ),
                                 Row(
                                   children: [
-                                    Text('Details : ',style: TextStyle(color: Colors.black54)),
-                                    Text(contacts[index]['details']!,style: TextStyle(fontWeight: FontWeight.w400)),
+                                    const Text('Details : ',style: TextStyle(color: Colors.black54)),
+                                    Text(contacts[index]['details']!,style: const TextStyle(fontWeight: FontWeight.w400)),
                                   ],
                                 ),
-                                Divider(),
+                                const Divider(),
                                 FittedBox(
                                   child: Row(
                                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                     children: [
                                       Column(
                                         children: [
-                                          Text('Update at: ',style: TextStyle(color: Colors.black54)),
-                                          Text(' ${contacts[index]['update']}',style: TextStyle(fontWeight: FontWeight.w400)),
+                                          const Text('Update at: ',style: TextStyle(color: Colors.black54)),
+                                          Text(' ${contacts[index]['update']}',style: const TextStyle(fontWeight: FontWeight.w400)),
                                         ],
                                       ),
                                       Column(
                                         children: [
-                                          Text('Register at: ',style: TextStyle(color: Colors.black54)),
-                                          Text(' ${contacts[index]['register']}',style: TextStyle(fontWeight: FontWeight.w400)),
+                                          const Text('Register at: ',style: TextStyle(color: Colors.black54)),
+                                          Text(' ${contacts[index]['register']}',style: const TextStyle(fontWeight: FontWeight.w400)),
                                         ],
                                       ),
                                       Column(
                                         children: [
-                                          Text('Registered By: ',style: TextStyle(color: Colors.black54)),
-                                          Text(' ${contacts[index]['registeredBy']}',style: TextStyle(fontWeight: FontWeight.w400)),
+                                          const Text('Registered By: ',style: TextStyle(color: Colors.black54)),
+                                          Text(' ${contacts[index]['registeredBy']}',style: const TextStyle(fontWeight: FontWeight.w400)),
                                         ],
                                       ),
                                     ],
