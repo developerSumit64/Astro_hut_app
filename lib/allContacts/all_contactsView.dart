@@ -265,4 +265,3 @@ class _AllContactsViewState extends State<AllContactsView> {
   }
 }
 
-}
