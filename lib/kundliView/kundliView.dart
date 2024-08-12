@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import 'constant.dart';
+import 'package:api/constants/constantStyle.dart';
 // import 'package:api/constants/constantStyle.dart';
 
 class KundliView extends StatefulWidget {
