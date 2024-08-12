@@ -18,8 +18,8 @@ class _AllContactsViewState extends State<AllContactsView> {
       'phone': '9096322764',
       'location': 'Nashik/Maharashtra/India',
       'details': '34. Call transfer to Priya. Not Paid',
-      'update': '02/08/2024 12:07',
-      'register': '02/08/2024 12:07',
+      'update': '02/08/2024 ',
+      'register': '02/08/2024 ',
       'registeredBy': 'guru ji'
     },
     {
@@ -27,8 +27,8 @@ class _AllContactsViewState extends State<AllContactsView> {
       'phone': '9096322764',
       'location': 'Nashik/Maharashtra/India',
       'details': '35. Call transfer to Pooja. Not Paid',
-      'update': '31/07/2024 18:19',
-      'register': '31/07/2024 18:19',
+      'update': '31/07/2024 ',
+      'register': '31/07/2024 ',
       'registeredBy': 'Shweta'
     },
     {
@@ -36,104 +36,12 @@ class _AllContactsViewState extends State<AllContactsView> {
       'phone': '9060904630',
       'location': 'Patna/Bihar/India',
       'details': '34. Call transfer to Priya. Not Paid',
-      'update': '31/07/2024 18:09',
-      'register': '31/07/2024 16:49',
+      'update': '31/07/2024 ',
+      'register': '31/07/2024 ',
       'registeredBy': 'Shweta'
     },
   ];
 
-  void _showBottomSheet() {
-    showModalBottomSheet(
-      context: context,
-      builder: (BuildContext context) {
-        return Container(
-          padding: const EdgeInsets.all(16.0),
-          child: Column(
-            mainAxisSize: MainAxisSize.min,
-            children: [
-              ListTile(
-                leading: const Icon(Icons.settings,),
-                title: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    const Text('Settings',style: TextStyle(fontWeight: FontWeight.bold)),
-                    Icon(Icons.arrow_forward_ios,size: 20,)
-                  ],
-                ),
-                onTap: () {},
-              ),
-              ListTile(
-                leading: const Icon(Icons.details),
-                title: const Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Text('Plan Details',style: TextStyle(fontWeight: FontWeight.bold),),
-                    Icon(Icons.arrow_forward_ios,size: 20,)
-                  ],
-                ),
-                onTap: () {},
-              ),
-              ListTile(
-                leading: const Icon(Icons.group),
-                title: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    const Text('User management',style: TextStyle(fontWeight: FontWeight.bold)),
-                    Icon(Icons.arrow_forward_ios,size: 20,)
-                  ],
-                ),
-                onTap: () {},
-              ),
-              ListTile(
-                leading: const Icon(Icons.history),
-                title: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    const Text('Activity',style: TextStyle(fontWeight: FontWeight.bold)),
-                    Icon(Icons.arrow_forward_ios,size: 20,)
-                  ],
-                ),
-                onTap: () {},
-              ),
-              ListTile(
-                leading: const Icon(Icons.lock),
-                title: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    const Text('Privacy',style: TextStyle(fontWeight: FontWeight.bold)),
-                    Icon(Icons.arrow_forward_ios,size: 20,)
-                  ],
-                ),
-                onTap: () {},
-              ),
-              ListTile(
-                leading: const Icon(Icons.info),
-                title: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    const Text('Information',style: TextStyle(fontWeight: FontWeight.bold)),
-                    Icon(Icons.arrow_forward_ios,size: 20,)
-                  ],
-                ),
-                onTap: () {},
-              ),
-              ListTile(
-                leading: const Icon(Icons.logout),
-                title: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    const Text('Log out',style: TextStyle(fontWeight: FontWeight.bold)),
-                    Icon(Icons.arrow_forward_ios,size: 20,)
-                  ],
-                ),
-                onTap: (){},
-              ),
-            ],
-          ),
-        );
-      },
-    );
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -155,7 +63,7 @@ class _AllContactsViewState extends State<AllContactsView> {
                   Padding(
                     padding:  EdgeInsets.only(left: 130),
                     child: IconButton(onPressed: () {
-                      _showBottomSheet();
+
                     }, icon: Icon(Icons.more_vert_outlined)),
                   ),
                 ],
@@ -165,25 +73,6 @@ class _AllContactsViewState extends State<AllContactsView> {
                 IconButton(onPressed: () {
                   viewModel.NavigateTOFilterView();
                 }, icon: Icon(Icons.filter_list)),
-                // PopupMenuButton<String>(
-                //   color: Colors.white,
-                //   surfaceTintColor: Colors.white,
-                //   elevation: 3,
-                //   onSelected: (String value) {
-                //     print('Selected: $value');
-                //   },
-                //   itemBuilder: (BuildContext context) {
-                //     return {'All Callers', 'Call Receiving', 'Add Contact', 'Dashboard', 'Call Logs', 'Agent Stats', 'Go to page '},
-                //         .map((String choice) {
-                //       return PopupMenuItem<String>(
-                //         onTap: () {},
-                //         value: choice,
-                //         child: Text(choice),
-                //       );
-                //     }).toList();
-                //   },
-                //   icon: Icon(Icons.more_vert, color: Colors.black),
-                // ),
               ],
             ),
 
