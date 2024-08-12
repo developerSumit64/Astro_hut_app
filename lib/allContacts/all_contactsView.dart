@@ -1,5 +1,6 @@
 import 'package:api/allContacts/allContactsViewModel.dart';
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:stacked/stacked.dart';
 
 import '../updateList/updateListView.dart';
@@ -90,178 +91,184 @@ class _AllContactsViewState extends State<AllContactsView> {
   @override
   Widget build(BuildContext context) {
     return ViewModelBuilder<AllContactsViewModal>.reactive(viewModelBuilder: () => AllContactsViewModal(),
-        builder: (context, viewModel, child) {
-          return Scaffold(
-            appBar: AppBar(
-              iconTheme: IconThemeData(color: Colors.white),
-              title: Row(
-                children: [
-                  Text(
-                    'Caller List',
-                    style: TextStyle(
-                      fontSize: 20,
-                      letterSpacing: 1,
-                      color: Colors.white,
-                      // fontWeight: FontWeight.bold,
-                    ),
+      builder: (context, viewModel, child) {
+        return Scaffold(
+          appBar: AppBar(
+            iconTheme: IconThemeData(color: Colors.white),
+            title: Row(
+              children: [
+                Text(
+                  'Caller List',
+                  style: TextStyle(
+                    fontSize: 20,
+                    letterSpacing: 1,
+                    color: Colors.white,
+                    // fontWeight: FontWeight.bold,
                   ),
-                  // Padding(
-                  //   padding:  EdgeInsets.only(left: 90),
-                  //   child: IconButton(onPressed: () {}, icon: Icon(Icons.more_vert_outlined)),
-                  // ),
-                ],
-
-              ),
-              actions: [
-                IconButton(onPressed: () {
-                  viewModel.NavigateTOFilterView();
-
-                }, icon: Icon(Icons.filter_list,color: Colors.white,)),
-                IconButton(
-                  icon: Icon(Icons.more_vert, color: Colors.white),
-                  onPressed: () => _showModalBottomSheet(context),
                 ),
-
+                // Padding(
+                //   padding:  EdgeInsets.only(left: 90),
+                //   child: IconButton(onPressed: () {}, icon: Icon(Icons.more_vert_outlined)),
+                // ),
               ],
-              flexibleSpace: Container(
-                decoration: BoxDecoration(
-                  gradient: LinearGradient(
-                    colors: [Colors.orange, Colors.orange.shade400],
-                    begin: Alignment.topLeft,
-                    end: Alignment.bottomRight,
-                  ),
+
+            ),
+            actions: [
+              IconButton(onPressed: () {
+                viewModel.NavigateTOFilterView();
+
+              }, icon: Icon(Icons.filter_list,color: Colors.white,)),
+              IconButton(
+                icon: Icon(Icons.more_vert, color: Colors.white),
+                onPressed: () => _showModalBottomSheet(context),
+              ),
+
+            ],
+            flexibleSpace: Container(
+              decoration: BoxDecoration(
+                gradient: LinearGradient(
+                  colors: [Colors.orange, Colors.orange.shade400],
+                  begin: Alignment.topLeft,
+                  end: Alignment.bottomRight,
                 ),
               ),
             ),
+          ),
 
-            body: Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: Column(
-                children: [
-                  SizedBox(
-                    height: 50,
-                    child: TextField(
-                      decoration: InputDecoration(
-                        hintText: 'Search',
-                        prefixIcon: Icon(Icons.search),
-                        border: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(12),
-                        ),
+          body: Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Column(
+              children: [
+                SizedBox(
+                  height: 50,
+                  child: TextField(
+                    decoration: InputDecoration(
+                      hintText: 'Search',
+                      prefixIcon: Icon(Icons.search),
+                      border: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(12),
                       ),
                     ),
                   ),
-                  Expanded(
-                    child: ListView.builder(
-                      itemCount: contacts.length,
-                      itemBuilder: (context, index) {
+                ),
+                Expanded(
+                  child: ListView.builder(
+                    itemCount: contacts.length,
+                    itemBuilder: (context, index) {
 
-                        return Card(
-                          surfaceTintColor: Colors.white,
-                          color: Colors.white,
-                          margin: EdgeInsets.symmetric(vertical: 5, horizontal: 1),
-                          elevation: 0.5,
-                          shape: RoundedRectangleBorder(
-                            side: BorderSide(
-                              color: Colors.black12.withOpacity(0.05),
-                            ),
-                            borderRadius: BorderRadius.only(
-                              topLeft: Radius.circular(32),
-                              bottomRight: Radius.circular(32),
-                            ),
+                      return Card(
+                        surfaceTintColor: Colors.white,
+                        color: Colors.white,
+                        margin: EdgeInsets.symmetric(vertical: 5, horizontal: 1),
+                        elevation: 2,
+                        shadowColor: Colors.orangeAccent,
+                        shape: RoundedRectangleBorder(
+                          side: BorderSide(
+                            color: Colors.orangeAccent.withOpacity(0.05),
                           ),
-                          child: Padding(
-                            padding: const EdgeInsets.all(16.0),
-                            child: Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Row(
-                                  children: [
-                                    CircleAvatar(
-                                      child: Text(contacts[index]['name']![0]),
-                                    ),
-                                    SizedBox(width: 10),
-                                    Column(
-                                      children: [
-                                        Text(
-                                          '${contacts[index]['name']} . F',
-                                          style: TextStyle(
-                                            fontWeight: FontWeight.w500,
-                                            fontSize: 16,
-                                          ),
-                                        ),
-                                        Padding(
-                                          padding: const EdgeInsets.only(right: 30),
-                                          child: Text(contacts[index]['phone']!,
-                                              style: TextStyle(fontWeight: FontWeight.w500)),
-                                        ),
-                                      ],
-                                    ),
-                                    Padding(
-                                      padding: const EdgeInsets.only(left: 60),
-                                      child: Row(
-                                        children: [
-                                          IconButton(onPressed: () {
-                                            viewModel.navigateToKundliView();
-
-                                          }, icon: Icon(Icons.call)),
-                                          IconButton(onPressed: () {}, icon: Image.asset('assets/icons/whatsapp.png',height: 30,)),
-                                        ],
-                                      ),
-                                    ),
-                                  ],
-                                ),
-                                SizedBox(height: 10),
-                                Divider(),
-                                Row(
-                                  children: [
-                                    Text('Location : ',style: TextStyle(color: Colors.black54)),
-                                    Text(contacts[index]['location']!,style: TextStyle(fontWeight: FontWeight.w400)),
-                                  ],
-                                ),
-                                Row(
-                                  children: [
-                                    Text('Details : ',style: TextStyle(color: Colors.black54)),
-                                    Text(contacts[index]['details']!,style: TextStyle(fontWeight: FontWeight.w400)),
-                                  ],
-                                ),
-                                Divider(),
-                                FittedBox(
-                                  child: Row(
-                                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          borderRadius: BorderRadius.only(
+                            topLeft: Radius.circular(32),
+                            bottomRight: Radius.circular(32),
+                          ),
+                        ),
+                        child: Padding(
+                          padding: const EdgeInsets.all(16.0),
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Row(
+                                children: [
+                                  CircleAvatar(
+                                    child: Text(contacts[index]['name']![0],style: TextStyle(fontWeight: FontWeight.bold,color: Colors.white),),
+                                    backgroundColor: Colors.orangeAccent,
+                                  ),
+                                  SizedBox(width: 10),
+                                  Column(
                                     children: [
-                                      Column(
-                                        children: [
-                                          Text('Update at: ',style: TextStyle(color: Colors.black54)),
-                                          Text(' ${contacts[index]['update']}',style: TextStyle(fontWeight: FontWeight.w400)),
-                                        ],
+                                      Text(
+                                        '${contacts[index]['name']} . F',
+                                        style: TextStyle(
+                                          fontWeight: FontWeight.bold,
+                                          fontSize: 16,
+                                        ),
                                       ),
-                                      Column(
-                                        children: [
-                                          Text('Register at: ',style: TextStyle(color: Colors.black54)),
-                                          Text(' ${contacts[index]['register']}',style: TextStyle(fontWeight: FontWeight.w400)),
-                                        ],
-                                      ),
-                                      Column(
-                                        children: [
-                                          Text('Registered By: ',style: TextStyle(color: Colors.black54)),
-                                          Text(' ${contacts[index]['registeredBy']}',style: TextStyle(fontWeight: FontWeight.w400)),
-                                        ],
+                                      Padding(
+                                        padding: const EdgeInsets.only(right: 30),
+                                        child: Text(contacts[index]['phone']!,
+                                            style: TextStyle(fontWeight: FontWeight.bold)),
                                       ),
                                     ],
                                   ),
-                                ),
-                              ],
-                            ),
+                                  Padding(
+                                    padding: const EdgeInsets.only(left: 60),
+                                    child: Row(
+                                      children: [
+                                        IconButton(onPressed: () {
+                                          viewModel.navigateToKundliView();
+
+                                        }, icon: Icon(Icons.call,color: Colors.orangeAccent,),
+                                        ),
+                                        IconButton(
+                                          onPressed: () {},
+                                          icon: FaIcon(FontAwesomeIcons.whatsapp),
+                                          iconSize: 40.0,
+                                          color: Colors.green,
+                                        ),
+                                      ],
+                                    ),
+                                  ),
+                                ],
+                              ),
+                              SizedBox(height: 10),
+                              Divider(),
+                              Row(
+                                children: [
+                                  Text('Location : ',style: TextStyle(color: Colors.grey,fontWeight: FontWeight.bold)),
+                                  Text(contacts[index]['location']!,style: TextStyle(fontWeight: FontWeight.bold)),
+                                ],
+                              ),
+                              Row(
+                                children: [
+                                  Text('Details : ',style: TextStyle(color: Colors.grey,fontWeight: FontWeight.bold)),
+                                  Text(contacts[index]['details']!,style: TextStyle(fontWeight: FontWeight.bold)),
+                                ],
+                              ),
+                              Divider(),
+                              Row(
+                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                children: [
+                                  Column(
+                                    children: [
+                                      Text('Update at: ',style: TextStyle(color: Colors.grey,fontWeight: FontWeight.bold)),
+                                      Text(' ${contacts[index]['update']}',style: TextStyle(fontWeight: FontWeight.bold)),
+                                    ],
+                                  ),
+                                  Column(
+                                    children: [
+                                      Text('Register at: ',style: TextStyle(color: Colors.grey,fontWeight: FontWeight.bold)),
+                                      Text(' ${contacts[index]['register']}',style: TextStyle(fontWeight: FontWeight.bold)),
+                                    ],
+                                  ),
+                                  Column(
+                                    children: [
+                                      Text('Registered By: ',style: TextStyle(color: Colors.grey,fontWeight: FontWeight.bold)),
+                                      Text(' ${contacts[index]['registeredBy']}',style: TextStyle(fontWeight: FontWeight.bold)),
+                                    ],
+                                  ),
+                                ],
+                              ),
+                            ],
                           ),
-                        );
-                      },
-                    ),
+                        ),
+                      );
+                    },
                   ),
-                ],
-              ),
+                ),
+              ],
             ),
-          );
-        },);
+          ),
+        );
+      },);
   }
 }
 
