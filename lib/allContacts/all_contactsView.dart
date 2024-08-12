@@ -87,17 +87,6 @@ class _AllContactsViewState extends State<AllContactsView> {
     );
   }
 
-
-  // Widget _buildListItem(BuildContext context, IconData icon, String text, Color iconColor,void callback() ) {
-  //   return ListTile(
-  //     leading: Icon(icon, color: iconColor),
-  //     title: Text(text),
-  //     onTap: () {
-  //       callback();
-  //       // Navigator.pop(context); // Close the bottom sheet
-  //     },
-  //   );
-  // }
   @override
   Widget build(BuildContext context) {
     return ViewModelBuilder<AllContactsViewModal>.reactive(viewModelBuilder: () => AllContactsViewModal(),
@@ -274,5 +263,5 @@ class _AllContactsViewState extends State<AllContactsView> {
           );
         },);
   }
-
 }
+
