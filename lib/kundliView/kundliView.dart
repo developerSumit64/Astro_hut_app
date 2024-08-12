@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:api/constants/constantStyle.dart';
+
+import 'constant.dart';
+// import 'package:api/constants/constantStyle.dart';
 
 class KundliView extends StatefulWidget {
   const KundliView({super.key});
@@ -241,6 +243,7 @@ class _KundliViewState extends State<KundliView> {
         iconTheme: const IconThemeData(color: Colors.white),
         actions: [
           PopupMenuButton<int>(
+            surfaceTintColor: Colors.white,
             icon: const Icon(Icons.more_vert_outlined),
             onSelected: (value) {
               setState(() {
@@ -251,17 +254,61 @@ class _KundliViewState extends State<KundliView> {
                   showHistory = !showHistory;
                 }
 
+                // Add more options here based on the selection
               });
             },
             itemBuilder: (context) => [
               const PopupMenuItem(
-
                 value: 1,
-                child: Text("Show Full Informaton"),
+                child: Text("Show Full Information"),
               ),
               const PopupMenuItem(
                 value: 2,
                 child: Text("Show History"),
+              ),
+              const PopupMenuItem(
+                value: 3,
+                child: Text("Kundli Page"),
+              ),
+              const PopupMenuItem(
+                value: 4,
+                child: Text("Edit Caller"),
+              ),
+              const PopupMenuItem(
+                value: 5,
+                child: Text("Caller Details"),
+              ),
+              const PopupMenuItem(
+                value: 6,
+                child: Text("Update History"),
+              ),
+              const PopupMenuItem(
+                value: 7,
+                child: Text("Prediction History"),
+              ),
+              const PopupMenuItem(
+                value: 8,
+                child: Text("All Callers"),
+              ),
+              const PopupMenuItem(
+                value: 9,
+                child: Text("Call Receiving"),
+              ),
+              const PopupMenuItem(
+                value: 10,
+                child: Text("Add Contact"),
+              ),
+              const PopupMenuItem(
+                value: 11,
+                child: Text("Dashboard"),
+              ),
+              const PopupMenuItem(
+                value: 12,
+                child: Text("Call Logs"),
+              ),
+              const PopupMenuItem(
+                value: 13,
+                child: Text("Agent Stats"),
               ),
             ],
           ),

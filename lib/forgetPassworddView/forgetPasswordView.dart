@@ -1,8 +1,6 @@
-
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-
-import '../constants/constantStyle.dart';
+import 'constant.dart';
 
 class ForgetPassword extends StatefulWidget {
   const ForgetPassword({Key? key}) : super(key: key);
@@ -11,157 +9,137 @@ class ForgetPassword extends StatefulWidget {
   State<ForgetPassword> createState() => _ForgetPasswordState();
 }
 
-class _ForgetPasswordState extends State<ForgetPassword> with SingleTickerProviderStateMixin {
+class _ForgetPasswordState extends State<ForgetPassword> {
   int state = 0;
   final _formKey = GlobalKey<FormState>();
-  final TextEditingController _regnoController = TextEditingController();
+
+  // Change controller name from _regnoController to _mobileEmailController
+  final TextEditingController _mobileEmailController = TextEditingController();
   final TextEditingController _otpController = TextEditingController();
-  // late AnimationController _animationController;
-  // late Animation<double> _animation;
-
-  @override
-  void initState() {
-    super.initState();
-    // _animationController = AnimationController(
-    //   duration: Duration(milliseconds: 2),
-    //   vsync: this,
-    // )..forward();
-    //
-    // _animation = CurvedAnimation(
-    //   parent: _animationController,
-    //   curve: Curves.linear,
-    // );
-  }
-
-  @override
-  void dispose() {
-  //   _animationController.dispose();
-  //   super.dispose();
-  }
 
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
     return Scaffold(
       appBar: AppBar(
-        // shadowColor: Colors.green.shade100,
-        centerTitle: true,
-        backgroundColor: Colors.blue.shade400,
-        elevation: 5.0,
-        title: Text('Reset Your Password',style: TextStyle(
-          color: Colors. white,
-          shadows: [
-            Shadow(
-              offset: Offset(1.0, 1.0),
-              blurRadius: 2.0,
-              color: Color.fromARGB(111, 0, 0, 0),
+        iconTheme: IconThemeData(color: Colors.white),
+        leading: IconButton(
+          icon: Icon(Icons.arrow_back),
+          onPressed: () {
+            Navigator.of(context).pop();
+          },
+        ),
+        flexibleSpace: Container(
+          decoration: BoxDecoration(
+            gradient: LinearGradient(
+              colors: [Colors.orange, Colors.orange.shade400],
+              begin: Alignment.topLeft,
+              end: Alignment.bottomRight,
             ),
-          ],
-        )),
+          ),
+        ),
+        centerTitle: true,
+        title: const Text(
+          'Reset Your Password',
+          style: TextStyle(color: Colors.white, letterSpacing: 1),
+        ),
+        // iconTheme: const IconThemeData(color: Colors.white),
       ),
-      body:
-
-      SingleChildScrollView(
-        child: Stack(
+      body: SingleChildScrollView(
+        child: Column(
           children: [
-            Image.asset(
-              "assets/background/MDUBAck.jpeg",
-              fit: BoxFit.cover,
-              height: size.height,
-            ),Padding(
-                padding: const EdgeInsets.only(top:80),
-                child: Column(
-                    children: [
-
-                      Container(
-                        height: 150,
-                        width: 200,
-                        decoration: BoxDecoration(
-                          shape: BoxShape.circle,
-                          image: DecorationImage(
-                            image: AssetImage("assets/background/forgetpasslogo.jpeg"),
-                          ),
-                        ),
+            Align(
+              alignment: Alignment.centerRight,
+              child: Image.asset(
+                'assets/background/corner_orange.png',
+                // fit: BoxFit.fitWidth,
+                width: MediaQuery.of(context).size.width/1.5,
+              ),
+            ),
+            Column(
+              children: [
+                // Container(
+                //   height: 150,
+                //   width: 200,
+                //   decoration: BoxDecoration(
+                //     shape: BoxShape.circle,
+                //     image: DecorationImage(
+                //       image: AssetImage("assets/background/forgetpasslogo.jpeg"),
+                //     ),
+                //   ),
+                // ),
+                Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Text(
+                      "Forgot Your Password",
+                      style: TextStyle(
+                        // shadows: [
+                        //   Shadow(
+                        //     offset: Offset(1.0, 1.2),
+                        //     blurRadius: 2.0,
+                        //     color: Colors.green,
+                        //   ),
+                        // ],
+                        fontWeight: FontWeight.bold,
+                        letterSpacing: 1,
+                        color: Colors.deepOrange,
+                        fontSize: 21,
+                        wordSpacing: 1,
                       ),
+                    ),SizedBox(height: 22),
+                    Text(
+                      "Enter your Registration number and we will send you an OTP to your registered mobile number to reset your password",
+                      style: TextStyle(color: Colors.deepOrange.shade200),
+                      textAlign: TextAlign.center,
 
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.only(bottom: 18,right: 18,left: 18,top: 45),
+                      child: Container(
+                        decoration: BoxDecoration(
+                          shape: BoxShape.rectangle,
+                          color: Colors.orange,
+                          borderRadius: BorderRadius.all(Radius.circular(22)),
+                        ),
+                        child: Column(
+                          children: [
+                            // SizedBox(height: 22),
 
+                            Padding(
+                              padding: const EdgeInsets.all(16.0),
+                              child: Form(
+                                key: _formKey,
+                                child: Column(
+                                  children: [
 
-
-                      Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Padding(
-                            padding: const EdgeInsets.all(8.0),
-                            child: Text(
-                              "Forgot Your Password ",
-                              style: TextStyle(
-                                shadows: [
-                                  Shadow(
-                                    offset: Offset(1.0, 1.2),
-                                    blurRadius: 2.0,
-                                    color: Colors.green,
-                                  ),
-                                ],
-                                fontWeight: FontWeight.bold,
-                                letterSpacing: 1,
-                                color: Colors.blueAccent.shade400,
-                                fontSize: 21,
-                                wordSpacing: 1,
-                              ),
-                            ),
-                          ),
-                          Padding(
-                            padding: const EdgeInsets.all(18.0),
-                            child: Container(
-                              decoration: BoxDecoration(
-                                shape: BoxShape.rectangle,
-                                color: Colors.blue.shade50,
-                                borderRadius: BorderRadius.all(Radius.circular(22)),
-                                // gradient: LinearGradient(
-                                //   colors: [
-                                //     Colors.blue.shade50,
-                                //     Colors.blue.shade200,
-                                //   ],
-                                // ),
-
-                              ),
-                              child: Padding(
-                                padding: const EdgeInsets.all(16.0),
-                                child: Form(
-                                  key: _formKey,
-                                  child: Column(
-                                    children: [
-                                      SizedBox(height: 22),
-                                      Text(
-                                        "Enter your Registration number and we will send you an OTP to your registered mobile number to reset your password",
-                                        style: TextStyle(color: Colors.black45),
-                                        textAlign: TextAlign.center,
-                                      ),
-                                      Padding(
-                                        padding: const EdgeInsets.all(8.0),
-                                        child: SizedBox(height: 58,
-                                          child: TextFormField(
-                                            controller: _regnoController,
-                                            decoration: kTextFormFieldDecoration.copyWith(
-                                              hintText: "Mobile Number / Email id",
-                                              prefixIcon: Icon(
-                                                Icons.format_list_numbered,
-                                                color: Colors.blue.shade300,
-                                              ),
+                                    Padding(
+                                      padding: const EdgeInsets.all(8.0),
+                                      child: SizedBox(
+                                        height: 58,
+                                        child: TextFormField(
+                                          controller: _mobileEmailController,
+                                          decoration: kTextFormFieldDecoration.copyWith(
+                                            hintText: "Mobile Number / Email id",
+                                            prefixIcon: Icon(
+                                              Icons.format_list_numbered,
+                                              color: Colors.blue.shade300,
                                             ),
-                                            validator: (value) {
-                                              if (value == null || value.isEmpty) {
-                                                return 'Please enter your Mobile number';
-                                              }
-                                              return null;
-                                            },
                                           ),
+                                          validator: (value) {
+                                            if (value == null || value.isEmpty) {
+                                              return 'Please enter your Mobile number';
+                                            }
+                                            return null;
+                                          },
                                         ),
                                       ),
-                                      state == 1
-                                          ? Padding(
+                                    ),
+                                    if (state == 1)
+                                      Padding(
                                         padding: const EdgeInsets.all(8.0),
-                                        child: SizedBox(height: 58,
+                                        child: SizedBox(
+                                          height: 58,
                                           child: TextFormField(
                                             controller: _otpController,
                                             decoration: kTextFormFieldDecoration.copyWith(
@@ -182,129 +160,73 @@ class _ForgetPasswordState extends State<ForgetPassword> with SingleTickerProvid
                                             },
                                           ),
                                         ),
-                                      )
-                                          : Container(),
-                                      SizedBox(
-                                        height: 11,
                                       ),
-                                      SizedBox(
-                                        width: 310,
-                                        child: state == 0
-                                            ?
-                                        Container(
-
-                                          decoration: containerdesign.decoration,
-                                          child: InkWell(
-                                            borderRadius: BorderRadius.circular(12),
-                                            onTap: () {
-                                              if (_formKey.currentState!.validate()) {
-                                                setState(() {
-                                                  state = 1;
-                                                });
-
-                                                ScaffoldMessenger.of(context).showSnackBar(
-                                                  SnackBar(content: Text('Processing Data')),
-                                                );
-
-                                                // Navigator.of(context).push(_createRoute(OtpVerification()));
-                                                // Here you can add the logic to request OTP
-                                              }
-                                            },
-
-                                            child: Container(
-
-                                              padding: EdgeInsets.symmetric(vertical: 15),
-                                              alignment: Alignment.center,
-                                              child: Text(
-                                                'Request OTP',
-                                                style: TextStyle(
-                                                  color: Colors.white,
-                                                  fontWeight: FontWeight.bold,
-                                                ),
-                                              ),
-                                            ),
-                                          ),
-                                        )
-                                            : InkWell(
-                                          borderRadius: BorderRadius.circular(12),
-                                          onTap: () {
-                                            if (_formKey.currentState!.validate()) {
-                                              setState(() {
-                                                state = 1;
-                                              });
-
-                                              ScaffoldMessenger.of(context).showSnackBar(
-                                                SnackBar(content: Text('Processing Data')),
-                                              );
-
-                                              // Navigator.of(context).push(_createRoute(passchange()));
-                                              // Here you can add the logic to request OTP
-                                            }
-                                          },
-
-                                          child: Container(
-                                            decoration: containerdesign.decoration,
-                                            padding: EdgeInsets.symmetric(vertical: 15),
-                                            alignment: Alignment.center,
-                                            child: Text(
-                                              'Submit OTP',
-                                              style: TextStyle(
-                                                color: Colors.white,
-                                                fontWeight: FontWeight.bold,
-                                              ),
-                                            ),
-                                          ),
-                                        ),
-                                      ),
-                                      SizedBox(
-                                        height: 11,
-                                      ),
-                                      Align(
-                                        alignment: Alignment.center,
-                                        child: TextButton(
+                                    SizedBox(height: 11),
+                                    SizedBox(
+                                      width: 310,
+                                      child: state == 0
+                                          ?      SizedBox(
+                                        width: 567,
+                                        child: ElevatedButton(
                                           onPressed: () {
-                                            // Add resend OTP logic here
+                                            setState(() {
+                                              state = 1;
+                                            });
+
+                                            // viewModel.navigateToRegister();
+                                            // Handle register action
                                           },
-                                          child: Text(
-                                            "Resend OTP ?",
-                                            style: TextStyle(
-                                              color: Colors.black38,
-                                            ),
+                                          style: elevatedButtonStyle.copyWith(
+                                            side: MaterialStatePropertyAll(BorderSide(color: Colors.white60)),
+                                          ),
+                                          child: Text('Request OTP',style: TextStyle(fontSize: 14,letterSpacing: 1,wordSpacing: 1)),
+                                        ),
+                                      )
+                                          :
+                                      SizedBox(
+                                        width: 567,
+                                        child: ElevatedButton(
+                                          onPressed: () {
+                                            // viewModel.navigateToRegister();
+                                            // Handle register action
+                                          },
+                                          style: elevatedButtonStyle.copyWith(
+                                            side: MaterialStatePropertyAll(BorderSide(color: Colors.white60)),
+                                          ),
+                                          child: Text('Submit OTP',style: TextStyle(fontSize: 14,letterSpacing: 1,wordSpacing: 1)),
+                                        ),
+                                      ),
+                                    ),
+                                    SizedBox(height: 11),
+                                    Align(
+                                      alignment: Alignment.center,
+                                      child: TextButton(
+                                        onPressed: () {
+                                          // Add resend OTP logic here
+                                        },
+                                        child: Text(
+                                          "Resend OTP ?",
+                                          style: TextStyle(
+                                            color: Colors.white,
                                           ),
                                         ),
                                       ),
-                                    ],
-                                  ),
+                                    ),
+                                  ],
                                 ),
                               ),
                             ),
-                          ),
-                        ],
-
-                      ),]
-                )),],
+                          ],
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+              ],
+            ),
+          ],
         ),
       ),
     );
-
   }
-
-  // Route _createRoute(Widget page) {
-  //   return PageRouteBuilder(
-  //     pageBuilder: (context, animation, secondaryAnimation) => page,
-  //     transitionsBuilder: (context, animation, secondaryAnimation, child) {
-  //       const begin = Offset(1.0, 0.0); // Slide from right to left
-  //       const end = Offset.zero;
-  //       const curve = Curves.easeInOut;
-  //
-  //       var tween = Tween(begin: begin, end: end).chain(CurveTween(curve: curve));
-  //       var offsetAnimation = animation.drive(tween);
-  //
-  //       return   Transform.scale(
-  //         scale: animation.value,
-  //         child: child,
-  //       );
-  //     },
-  //   );
-  // }
 }
