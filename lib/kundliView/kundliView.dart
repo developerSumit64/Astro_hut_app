@@ -257,7 +257,7 @@ class _KundliViewState extends State<KundliView> {
               const PopupMenuItem(
 
                 value: 1,
-                child: Text("Show Info"),
+                child: Text("Show Full Informaton"),
               ),
               const PopupMenuItem(
                 value: 2,
