@@ -18,8 +18,8 @@ class _AllContactsViewState extends State<AllContactsView> {
       'phone': '9096322764',
       'location': 'Nashik/Maharashtra/India',
       'details': '34. Call transfer to Priya. Not Paid',
-      'update': '02/08/2024 ',
-      'register': '02/08/2024 ',
+      'update': '02/08/2024 12:07',
+      'register': '02/08/2024 12:07',
       'registeredBy': 'guru ji'
     },
     {
@@ -27,8 +27,8 @@ class _AllContactsViewState extends State<AllContactsView> {
       'phone': '9096322764',
       'location': 'Nashik/Maharashtra/India',
       'details': '35. Call transfer to Pooja. Not Paid',
-      'update': '31/07/2024 ',
-      'register': '31/07/2024 ',
+      'update': '31/07/2024 18:19',
+      'register': '31/07/2024 18:19',
       'registeredBy': 'Shweta'
     },
     {
@@ -36,12 +36,56 @@ class _AllContactsViewState extends State<AllContactsView> {
       'phone': '9060904630',
       'location': 'Patna/Bihar/India',
       'details': '34. Call transfer to Priya. Not Paid',
-      'update': '31/07/2024 ',
-      'register': '31/07/2024 ',
+      'update': '31/07/2024 18:09',
+      'register': '31/07/2024 16:49',
       'registeredBy': 'Shweta'
     },
   ];
+  void _showModalBottomSheet(BuildContext context) {
+    showModalBottomSheet(
+      context: context,
+      builder: (BuildContext context) {
+        return ViewModelBuilder<AllContactsViewModal>.reactive(
+          viewModelBuilder: () => AllContactsViewModal(),
+          builder: (context, viewModel, child) {
+            return Container(
+              padding: EdgeInsets.symmetric(vertical: 10.0),
+              decoration: BoxDecoration(
+                color: Colors.white,
+                borderRadius: BorderRadius.only(
+                  topLeft: Radius.circular(20.0),
+                  topRight: Radius.circular(20.0),
+                ),
+              ),
+              child: Column(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  _buildListItem(context, Icons.people, 'All Callers', Colors.blue, viewModel.NavigateTOAllCaller),
+                  _buildListItem(context, Icons.call_received, 'Call Receiving', Colors.green, viewModel.navigateToCallReceiving),
+                  _buildListItem(context, Icons.contact_phone, 'Add Contact', Colors.orange, viewModel.navigateToRegisterNewUser),
+                  _buildListItem(context, Icons.dashboard, 'Dashboard', Colors.red, viewModel.NavigateTODashboard),
+                  _buildListItem(context, Icons.call, 'Call Logs', Colors.purple, viewModel.NavigateTOAllCaller),
+                  _buildListItem(context, Icons.bar_chart, 'Agent Stats', Colors.teal, viewModel.navigateToAgentView),
+                  _buildListItem(context, Icons.arrow_forward, 'Go to page', Colors.brown, viewModel.NavigateTOAllCaller),
+                ],
+              ),
+            );
+          },
+        );
+      },
+    );
+  }
 
+  Widget _buildListItem(BuildContext context, IconData icon, String text, Color iconColor, void Function() callback) {
+    return ListTile(
+      leading: Icon(icon, color: iconColor),
+      title: Text(text),
+      onTap: () {
+        callback();
+        // Navigator.pop(context); // Close the bottom sheet after navigation
+      },
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -49,31 +93,45 @@ class _AllContactsViewState extends State<AllContactsView> {
         builder: (context, viewModel, child) {
           return Scaffold(
             appBar: AppBar(
+              iconTheme: IconThemeData(color: Colors.white),
               title: Row(
                 children: [
                   Text(
                     'Caller List',
                     style: TextStyle(
                       fontSize: 20,
-                      fontWeight: FontWeight.bold,
-                      color: Colors.black87,
+                      letterSpacing: 1,
+                      color: Colors.white,
                       // fontWeight: FontWeight.bold,
                     ),
                   ),
-                  Padding(
-                    padding:  EdgeInsets.only(left: 130),
-                    child: IconButton(onPressed: () {
-
-                    }, icon: Icon(Icons.more_vert_outlined)),
-                  ),
+                  // Padding(
+                  //   padding:  EdgeInsets.only(left: 90),
+                  //   child: IconButton(onPressed: () {}, icon: Icon(Icons.more_vert_outlined)),
+                  // ),
                 ],
 
               ),
               actions: [
                 IconButton(onPressed: () {
                   viewModel.NavigateTOFilterView();
-                }, icon: Icon(Icons.filter_list)),
+
+                }, icon: Icon(Icons.filter_list,color: Colors.white,)),
+                IconButton(
+                  icon: Icon(Icons.more_vert, color: Colors.white),
+                  onPressed: () => _showModalBottomSheet(context),
+                ),
+
               ],
+              flexibleSpace: Container(
+                decoration: BoxDecoration(
+                  gradient: LinearGradient(
+                    colors: [Colors.orange, Colors.orange.shade400],
+                    begin: Alignment.topLeft,
+                    end: Alignment.bottomRight,
+                  ),
+                ),
+              ),
             ),
 
             body: Padding(
@@ -96,6 +154,7 @@ class _AllContactsViewState extends State<AllContactsView> {
                     child: ListView.builder(
                       itemCount: contacts.length,
                       itemBuilder: (context, index) {
+
                         return Card(
                           surfaceTintColor: Colors.white,
                           color: Colors.white,
@@ -141,7 +200,10 @@ class _AllContactsViewState extends State<AllContactsView> {
                                       padding: const EdgeInsets.only(left: 60),
                                       child: Row(
                                         children: [
-                                          IconButton(onPressed: () {}, icon: Icon(Icons.call)),
+                                          IconButton(onPressed: () {
+                                            viewModel.navigateToKundliView();
+
+                                          }, icon: Icon(Icons.call)),
                                           IconButton(onPressed: () {}, icon: Image.asset('assets/icons/whatsapp.png',height: 30,)),
                                         ],
                                       ),
@@ -201,5 +263,5 @@ class _AllContactsViewState extends State<AllContactsView> {
           );
         },);
   }
-
 }
+

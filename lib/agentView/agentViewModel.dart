@@ -9,4 +9,22 @@ class AgentViewModel extends BaseViewModel{
   void NavigateToUpadteLIstAgent() async {
     await _navigationService.navigateToUpdateListAgent();
   }
+  void NavigateTOAllCaller() async {
+    await _navigationService.navigateToAllContactsView();
+  }
+  void NavigateTODashboard() async {
+    await _navigationService.navigateToFirstViewScreen();
+  }
+  void navigateToRegisterNewUser() async{
+    await _navigationService.navigateToRegistration();
+  }
+  // void navigateToAllContacts() async{
+  //   await _navigationService.navigateToAllContactsView();
+  // }
+  void navigateToCallReceiving() async{
+    await _navigationService.navigateToCallReceiveView();
+  }
+  void navigateToAgentView() async{
+    await _navigationService.navigateToAgentView();
+  }
 }

@@ -30,6 +30,51 @@ class _AgentViewState extends State<AgentView> {
     Agent(name: 'Akshay Singh', number: '9466634594', role: 'call_agent'),
     Agent(name: 'Jai Maa Gange Trust', number: '8168132317', role: 'call_agent'),
   ];
+  void _showModalBottomSheet(BuildContext context) {
+    showModalBottomSheet(
+      context: context,
+      builder: (BuildContext context) {
+        return ViewModelBuilder<AgentViewModel>.reactive(
+          viewModelBuilder: () => AgentViewModel(),
+          builder: (context, viewModel, child) {
+            return Container(
+              padding: EdgeInsets.symmetric(vertical: 10.0),
+              decoration: BoxDecoration(
+                color: Colors.white,
+                borderRadius: BorderRadius.only(
+                  topLeft: Radius.circular(20.0),
+                  topRight: Radius.circular(20.0),
+                ),
+              ),
+              child: Column(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  _buildListItem(context, Icons.people, 'All Callers', Colors.blue, viewModel.NavigateTOAllCaller),
+                  _buildListItem(context, Icons.call_received, 'Call Receiving', Colors.green, viewModel.navigateToCallReceiving),
+                  _buildListItem(context, Icons.contact_phone, 'Add Contact', Colors.orange, viewModel.navigateToRegisterNewUser),
+                  _buildListItem(context, Icons.dashboard, 'Dashboard', Colors.red, viewModel.NavigateTODashboard),
+                  _buildListItem(context, Icons.call, 'Call Logs', Colors.purple, viewModel.NavigateTOAllCaller),
+                  _buildListItem(context, Icons.bar_chart, 'Agent Stats', Colors.teal, viewModel.navigateToAgentView),
+                  _buildListItem(context, Icons.arrow_forward, 'Go to page', Colors.brown, viewModel.NavigateTOAllCaller),
+                ],
+              ),
+            );
+          },
+        );
+      },
+    );
+  }
+
+  Widget _buildListItem(BuildContext context, IconData icon, String text, Color iconColor, void Function() callback) {
+    return ListTile(
+      leading: Icon(icon, color: iconColor),
+      title: Text(text),
+      onTap: () {
+        callback();
+        // Navigator.pop(context); // Close the bottom sheet after navigation
+      },
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -38,9 +83,18 @@ class _AgentViewState extends State<AgentView> {
          return Scaffold(
            backgroundColor: Colors.grey.shade200,
            appBar: AppBar(
-             backgroundColor: Colors.white, // Set a solid background color
+             flexibleSpace: Container(
+               decoration: BoxDecoration(
+                 gradient: LinearGradient(
+                   colors: [Colors.orange, Colors.orange.shade400],
+                   begin: Alignment.topLeft,
+                   end: Alignment.bottomRight,
+                 ),
+               ),
+             ),
+             // backgroundColor: Colors.white, // Set a solid background color
              elevation: 2, // Add slight elevation to give a shadow effect
-             iconTheme: IconThemeData(color: Colors.black),
+             iconTheme: IconThemeData(color: Colors.white),
              leading: IconButton(
                icon: Icon(Icons.arrow_back),
                onPressed: () {
@@ -49,27 +103,12 @@ class _AgentViewState extends State<AgentView> {
              ),
              title: Text(
                'Agents',
-               style: TextStyle(letterSpacing: 1, color: Colors.black),
+               style: TextStyle(letterSpacing: 1, color: Colors.white),
              ),
              actions: [
-               PopupMenuButton<String>(
-                 color: Colors.white,
-                 surfaceTintColor: Colors.white,
-                 elevation: 3,
-                 onSelected: (String value) {
-                   // Handle menu selection
-                   print('Selected: $value');
-                 },
-                 itemBuilder: (BuildContext context) {
-                   return {'All Callers', 'Call Receiving', 'Add Contact', 'Dashboard', 'Call Logs', 'Agent Stats'}
-                       .map((String choice) {
-                     return PopupMenuItem<String>(
-                       value: choice,
-                       child: Text(choice),
-                     );
-                   }).toList();
-                 },
-                 icon: Icon(Icons.more_vert, color: Colors.black),
+               IconButton(
+                 icon: Icon(Icons.more_vert, color: Colors.white),
+                 onPressed: () => _showModalBottomSheet(context),
                ),
              ],
            ),

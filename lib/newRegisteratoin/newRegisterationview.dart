@@ -9,24 +9,31 @@ class Registration extends StatefulWidget {
 }
 
 class _RegistrationState extends State<Registration> {
+  final _formKey = GlobalKey<FormState>();
+  bool isWhatsAppNumber = true;
+
   @override
   Widget build(BuildContext context) {
+    Size size = MediaQuery.of(context).size;
     return Scaffold(
       appBar: AppBar(
         title: Row(
           children: [
-            Text('User Registration', style: TextStyle(
-              letterSpacing: 1,
-              fontSize: 20
-              // fontWeight: FontWeight.bold,
-            ),),
-
+            Text(
+              'User Registration',
+              style: TextStyle(
+                letterSpacing: 1,
+                color:Colors.white,
+                fontSize: 20,
+              ),
+            ),
           ],
         ),
         actions: [
-
-          IconButton(onPressed: () {},
-              icon: Icon(Icons.file_copy_sharp)),
+          IconButton(
+            onPressed: () {},
+            icon: Icon(Icons.file_copy_sharp),
+          ),
           PopupMenuButton<String>(
             color: Colors.white,
             surfaceTintColor: Colors.white,
@@ -35,121 +42,206 @@ class _RegistrationState extends State<Registration> {
               print('Selected: $value');
             },
             itemBuilder: (BuildContext context) {
-              return {'All Callers', 'Call Receiving', 'Add Contact', 'Dashboard', 'Call Logs', 'Agent Stats',}
-                  .map((String choice) {
+              return {
+                'All Callers',
+                'Call Receiving',
+                'Add Contact',
+                'Dashboard',
+                'Call Logs',
+                'Agent Stats',
+              }.map((String choice) {
                 return PopupMenuItem<String>(
-                  onTap: () {
-
-                  },
                   value: choice,
                   child: Text(choice),
                 );
               }).toList();
             },
-            icon: Icon(Icons.more_vert, color: Colors.black),
+            icon: Icon(Icons.more_vert, color: Colors.white),
           ),
         ],
+        flexibleSpace: Container(
+          decoration: BoxDecoration(
+            gradient: LinearGradient(
+              colors: [Colors.orange, Colors.orange.shade400],
+              begin: Alignment.topLeft,
+              end: Alignment.bottomRight,
+            ),
+          ),
+        ),
+        iconTheme: const IconThemeData(color: Colors.white),
       ),
       body: SingleChildScrollView(
-        scrollDirection: Axis.vertical,
-
-        child: Padding(
-          padding: const EdgeInsets.all(16.0),
+        padding: const EdgeInsets.all(16.0),
+        child: Form(
+          key: _formKey,
           child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
+              // Personal Details Section Header
+              Text(
+                '  Personal Details',
+                style: TextStyle(
+                  fontSize: 18,
+                  // fontWeight: FontWeight.bold,
+                  color: Colors.black87,
+                ),
+              ),
+              SizedBox(height: 8),
               Card(
-                surfaceTintColor: Colors.white54,
-                elevation: 2,
-                color: Colors.grey.shade50,
+                color: Colors.white,
+                surfaceTintColor: Colors.white,
+                margin: EdgeInsets.only(bottom: 16.0),
+                elevation: 4,
                 child: Padding(
                   padding: const EdgeInsets.all(16.0),
                   child: Column(
                     children: [
                       TextFormField(
-                        enabled: true,
-                        style: TextStyle(
-                          // fontWeight: FontWeight.bold,
-                        ),
                         decoration: kTextFormFieldDecoration.copyWith(
-                            prefixIcon: Icon(Icons.person),
-                            labelText: 'Name'
+                          prefixIcon: Icon(Icons.person),
+                          labelText: 'Name',
                         ),
+                        validator: (value) {
+                          if (value == null || value.isEmpty) {
+                            return 'Please enter your name';
+                          }
+                          return null;
+                        },
                       ),
-                      SizedBox(height: 15,),
+                      SizedBox(height: 15),
                       TextFormField(
-                        style: TextStyle(
-                          fontWeight: FontWeight.bold,
-                        ),
                         keyboardType: TextInputType.number,
                         decoration: kTextFormFieldDecoration.copyWith(
                           prefixIcon: Icon(Icons.mobile_friendly_outlined),
                           labelText: 'Mobile Number',
                         ),
+                        validator: (value) {
+                          if (value == null || value.isEmpty) {
+                            return 'Please enter your mobile number';
+                          }
+                          return null;
+                        },
                       ),
-                      SizedBox(height: 15,),
+                      SizedBox(height: 15),
                       SwitchListTile(
                         title: const Text(
                           'Is WhatsApp Number?',
                           style: TextStyle(
                             color: Colors.black54,
-                            // fontWeight: FontWeight.w600,
                           ),
                         ),
-                        value: true,
+                        value: isWhatsAppNumber,
                         onChanged: (bool value) {
-                          // Handle the change
+                          setState(() {
+                            isWhatsAppNumber = value;
+                          });
                         },
                         activeColor: Colors.blue,
                         activeTrackColor: Colors.blue.withOpacity(0.5),
                         inactiveThumbColor: Colors.grey,
                         inactiveTrackColor: Colors.grey.withOpacity(0.3),
-                        contentPadding: EdgeInsets.symmetric(horizontal: 16.0, vertical: 8.0),
                       ),
-
-                      SizedBox(height: 15,),
+                      SizedBox(height: 15),
                       TextFormField(
-                        style: TextStyle(
-                          fontWeight: FontWeight.bold,
-                        ),
-             decoration: kTextFormFieldDecoration.copyWith(
-               prefixIcon: Icon(Icons.location_on),
-               labelText: 'Location',
-             ),
-                      ),
-                      SizedBox(height: 15,),
-                      TextFormField(
-                        style: TextStyle(
-                          fontWeight: FontWeight.bold,
-                        ),
-                        decoration:kTextFormFieldDecoration.copyWith(
+                        decoration: kTextFormFieldDecoration.copyWith(
                           prefixIcon: Icon(Icons.calendar_today),
                           labelText: 'Date of Birth',
-                        )
-                      ),
-                      SizedBox(height: 15,),
-                      TextFormField(
-                        style: TextStyle(
-                          fontWeight: FontWeight.bold,
                         ),
+                        validator: (value) {
+                          if (value == null || value.isEmpty) {
+                            return 'Please enter your date of birth';
+                          }
+                          return null;
+                        },
+                      ),
+                      SizedBox(height: 15),
+                      TextFormField(
                         decoration: kTextFormFieldDecoration.copyWith(
                           prefixIcon: Icon(Icons.access_time),
                           labelText: 'Time',
                         ),
+                        validator: (value) {
+                          if (value == null || value.isEmpty) {
+                            return 'Please enter the time';
+                          }
+                          return null;
+                        },
                       ),
-                      SizedBox(height: 15,),
-                      DropdownButtonFormField(
+                    ],
+                  ),
+                ),
+              ),
 
+              // Location Section Header
+              Text(
+                '   Location',
+                style: TextStyle(
+                  fontSize: 18,
+                  // fontWeight: FontWeight.bold,
+                  color: Colors.black87,
+                ),
+              ),
+              SizedBox(height: 8),
+              Card(
+                color: Colors.white,
+                surfaceTintColor: Colors.white,
+                margin: EdgeInsets.only(bottom: 16.0),
+                elevation: 4,
+                child: Padding(
+                  padding: const EdgeInsets.all(16.0),
+                  child: Column(
+                    children: [
+                      TextFormField(
+                        decoration: kTextFormFieldDecoration.copyWith(
+                          prefixIcon: Icon(Icons.location_on),
+                          labelText: 'Location',
+                        ),
+                        validator: (value) {
+                          if (value == null || value.isEmpty) {
+                            return 'Please enter your location';
+                          }
+                          return null;
+                        },
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+
+              // Statuses Section Header
+              Text(
+                '  Statuses',
+                style: TextStyle(
+                  fontSize: 18,
+                  // fontWeight: FontWeight.bold,
+                  color: Colors.black87,
+                ),
+              ),
+              SizedBox(height: 8),
+              Card(
+                color: Colors.white,
+                surfaceTintColor: Colors.white,
+
+                margin: EdgeInsets.only(bottom: 16.0),
+                elevation: 4,
+                child: Padding(
+                  padding: const EdgeInsets.all(16.0),
+                  child: Column(
+                    children: [
+                      DropdownButtonFormField<String>(
                         decoration: InputDecoration(
-focusedBorder: OutlineInputBorder(borderSide: BorderSide( color: Colors.black12, )),
-                        fillColor: Colors.white,
+                          focusedBorder: OutlineInputBorder(
+                            borderSide: BorderSide(color: Colors.black12),
+                          ),
+                          fillColor: Colors.white,
                           filled: true,
                           enabled: true,
                           enabledBorder: OutlineInputBorder(
-                            borderSide: BorderSide( color: Colors.black12, ),
-                              borderRadius: BorderRadius.circular(10)
+                            borderSide: BorderSide(color: Colors.black12),
+                            borderRadius: BorderRadius.circular(10),
                           ),
                           border: OutlineInputBorder(
-                              borderRadius: BorderRadius.circular(10)
+                            borderRadius: BorderRadius.circular(10),
                           ),
                           labelText: 'Gender',
                           labelStyle: TextStyle(
@@ -166,19 +258,21 @@ focusedBorder: OutlineInputBorder(borderSide: BorderSide( color: Colors.black12,
                         ],
                         onChanged: (value) {},
                       ),
-                      SizedBox(height: 15,),
-                      DropdownButtonFormField(
+                      SizedBox(height: 15),
+                      DropdownButtonFormField<String>(
                         decoration: InputDecoration(
-                          focusedBorder: OutlineInputBorder(borderSide: BorderSide( color: Colors.black12, )),
+                          focusedBorder: OutlineInputBorder(
+                            borderSide: BorderSide(color: Colors.black12),
+                          ),
                           fillColor: Colors.white,
                           filled: true,
                           enabled: true,
                           enabledBorder: OutlineInputBorder(
-                              borderSide: BorderSide( color: Colors.black12, ),
-                              borderRadius: BorderRadius.circular(10)
+                            borderSide: BorderSide(color: Colors.black12),
+                            borderRadius: BorderRadius.circular(10),
                           ),
                           border: OutlineInputBorder(
-                              borderRadius: BorderRadius.circular(10)
+                            borderRadius: BorderRadius.circular(10),
                           ),
                           labelText: 'Account Status',
                           labelStyle: TextStyle(
@@ -194,19 +288,21 @@ focusedBorder: OutlineInputBorder(borderSide: BorderSide( color: Colors.black12,
                         ],
                         onChanged: (value) {},
                       ),
-                      SizedBox(height: 15,),
-                      DropdownButtonFormField(
+                      SizedBox(height: 15),
+                      DropdownButtonFormField<String>(
                         decoration: InputDecoration(
-                          focusedBorder: OutlineInputBorder(borderSide: BorderSide( color: Colors.black12, )),
+                          focusedBorder: OutlineInputBorder(
+                            borderSide: BorderSide(color: Colors.black12),
+                          ),
                           fillColor: Colors.white,
                           filled: true,
                           enabled: true,
                           enabledBorder: OutlineInputBorder(
-                              borderSide: BorderSide( color: Colors.black12, ),
-                              borderRadius: BorderRadius.circular(10)
+                            borderSide: BorderSide(color: Colors.black12),
+                            borderRadius: BorderRadius.circular(10),
                           ),
                           border: OutlineInputBorder(
-                              borderRadius: BorderRadius.circular(10)
+                            borderRadius: BorderRadius.circular(10),
                           ),
                           labelText: 'Call Status',
                           labelStyle: TextStyle(
@@ -222,20 +318,41 @@ focusedBorder: OutlineInputBorder(borderSide: BorderSide( color: Colors.black12,
                         ],
                         onChanged: (value) {},
                       ),
-                      SizedBox(height: 15,),
+                      SizedBox(height: 15),
                       TextFormField(
-                        style: TextStyle(
-                          fontWeight: FontWeight.bold,
-                        ),
-                        decoration:kTextFormFieldDecoration.copyWith(
+                        decoration: kTextFormFieldDecoration.copyWith(
                           prefixIcon: Icon(Icons.comment),
                           labelText: 'Customer Status',
                         ),
+                        validator: (value) {
+                          if (value == null || value.isEmpty) {
+                            return 'Please enter the customer status';
+                          }
+                          return null;
+                        },
                       ),
                     ],
                   ),
                 ),
               ),
+
+              SizedBox(height: 20),
+              SizedBox(
+                width: size.width * 0.94,
+                height: 45,
+                child: Center(
+                  child: ElevatedButton(
+                    onPressed: () {
+                      if (_formKey.currentState?.validate() ?? false) {
+                        // Process data
+                      }
+                    },
+                    style: roundedelevatedButtonStyle,
+                    child: Text('Submit'),
+                  ),
+                ),
+              ),
+
             ],
           ),
         ),

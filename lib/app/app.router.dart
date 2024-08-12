@@ -12,6 +12,7 @@ import 'package:api/callReceiving/call_receiveView.dart' as _i14;
 import 'package:api/editProfile/editProfileView.dart' as _i13;
 import 'package:api/firstView/firstViewScreen.dart' as _i2;
 import 'package:api/forgetPassworddView/forgetPasswordView.dart' as _i9;
+import 'package:api/kundliView/kundliView.dart' as _i17;
 import 'package:api/loginOrRegisterSelecterView/loginOrRegisterView.dart'
     as _i7;
 import 'package:api/loginView/loginView.dart' as _i6;
@@ -22,10 +23,10 @@ import 'package:api/signUpView.dart' as _i5;
 import 'package:api/SpecificCallLogDetails/specificCallLogsDetails.dart'
     as _i10;
 import 'package:api/updateList/updateListView.dart' as _i11;
-import 'package:flutter/material.dart' as _i17;
+import 'package:flutter/material.dart' as _i18;
 import 'package:flutter/material.dart';
 import 'package:stacked/stacked.dart' as _i1;
-import 'package:stacked_services/stacked_services.dart' as _i18;
+import 'package:stacked_services/stacked_services.dart' as _i19;
 
 class Routes {
   static const firstViewScreen = '/first-view-screen';
@@ -60,6 +61,8 @@ class Routes {
 
   static const filterDialog = '/filter-dialog';
 
+  static const kundliView = '/kundli-view';
+
   static const all = <String>{
     firstViewScreen,
     agentView,
@@ -77,6 +80,7 @@ class Routes {
     registration,
     allContactsView,
     filterDialog,
+    kundliView,
   };
 }
 
@@ -146,102 +150,112 @@ class StackedRouter extends _i1.RouterBase {
       Routes.filterDialog,
       page: _i11.FilterDialog,
     ),
+    _i1.RouteDef(
+      Routes.kundliView,
+      page: _i17.KundliView,
+    ),
   ];
 
   final _pagesMap = <Type, _i1.StackedRouteFactory>{
     _i2.FirstViewScreen: (data) {
-      return _i17.MaterialPageRoute<dynamic>(
+      return _i18.MaterialPageRoute<dynamic>(
         builder: (context) => const _i2.FirstViewScreen(),
         settings: data,
       );
     },
     _i3.AgentView: (data) {
-      return _i17.MaterialPageRoute<dynamic>(
+      return _i18.MaterialPageRoute<dynamic>(
         builder: (context) => const _i3.AgentView(),
         settings: data,
       );
     },
     _i4.CallerLogsView: (data) {
-      return _i17.MaterialPageRoute<dynamic>(
+      return _i18.MaterialPageRoute<dynamic>(
         builder: (context) => const _i4.CallerLogsView(),
         settings: data,
       );
     },
     _i5.SingUpView: (data) {
-      return _i17.MaterialPageRoute<dynamic>(
+      return _i18.MaterialPageRoute<dynamic>(
         builder: (context) => const _i5.SingUpView(),
         settings: data,
       );
     },
     _i6.LoginView: (data) {
-      return _i17.MaterialPageRoute<dynamic>(
+      return _i18.MaterialPageRoute<dynamic>(
         builder: (context) => const _i6.LoginView(),
         settings: data,
       );
     },
     _i7.LoginOrRegisterView: (data) {
-      return _i17.MaterialPageRoute<dynamic>(
+      return _i18.MaterialPageRoute<dynamic>(
         builder: (context) => const _i7.LoginOrRegisterView(),
         settings: data,
       );
     },
     _i8.ProfileView: (data) {
-      return _i17.MaterialPageRoute<dynamic>(
+      return _i18.MaterialPageRoute<dynamic>(
         builder: (context) => const _i8.ProfileView(),
         settings: data,
       );
     },
     _i9.ForgetPassword: (data) {
-      return _i17.MaterialPageRoute<dynamic>(
+      return _i18.MaterialPageRoute<dynamic>(
         builder: (context) => const _i9.ForgetPassword(),
         settings: data,
       );
     },
     _i10.CallLogDetailView: (data) {
-      return _i17.MaterialPageRoute<dynamic>(
+      return _i18.MaterialPageRoute<dynamic>(
         builder: (context) => const _i10.CallLogDetailView(),
         settings: data,
       );
     },
     _i11.UpdateListAgent: (data) {
-      return _i17.MaterialPageRoute<dynamic>(
+      return _i18.MaterialPageRoute<dynamic>(
         builder: (context) => _i11.UpdateListAgent(),
         settings: data,
       );
     },
     _i12.ProfileSettings: (data) {
-      return _i17.MaterialPageRoute<dynamic>(
+      return _i18.MaterialPageRoute<dynamic>(
         builder: (context) => const _i12.ProfileSettings(),
         settings: data,
       );
     },
     _i13.ProfileEditApp: (data) {
-      return _i17.MaterialPageRoute<dynamic>(
+      return _i18.MaterialPageRoute<dynamic>(
         builder: (context) => const _i13.ProfileEditApp(),
         settings: data,
       );
     },
     _i14.CallReceiveView: (data) {
-      return _i17.MaterialPageRoute<dynamic>(
+      return _i18.MaterialPageRoute<dynamic>(
         builder: (context) => const _i14.CallReceiveView(),
         settings: data,
       );
     },
     _i15.Registration: (data) {
-      return _i17.MaterialPageRoute<dynamic>(
+      return _i18.MaterialPageRoute<dynamic>(
         builder: (context) => const _i15.Registration(),
         settings: data,
       );
     },
     _i16.AllContactsView: (data) {
-      return _i17.MaterialPageRoute<dynamic>(
+      return _i18.MaterialPageRoute<dynamic>(
         builder: (context) => const _i16.AllContactsView(),
         settings: data,
       );
     },
     _i11.FilterDialog: (data) {
-      return _i17.MaterialPageRoute<dynamic>(
+      return _i18.MaterialPageRoute<dynamic>(
         builder: (context) => _i11.FilterDialog(),
+        settings: data,
+      );
+    },
+    _i17.KundliView: (data) {
+      return _i18.MaterialPageRoute<dynamic>(
+        builder: (context) => const _i17.KundliView(),
         settings: data,
       );
     },
@@ -254,7 +268,7 @@ class StackedRouter extends _i1.RouterBase {
   Map<Type, _i1.StackedRouteFactory> get pagesMap => _pagesMap;
 }
 
-extension NavigatorStateExtension on _i18.NavigationService {
+extension NavigatorStateExtension on _i19.NavigationService {
   Future<dynamic> navigateToFirstViewScreen([
     int? routerId,
     bool preventDuplicates = true,
@@ -479,6 +493,20 @@ extension NavigatorStateExtension on _i18.NavigationService {
         transition: transition);
   }
 
+  Future<dynamic> navigateToKundliView([
+    int? routerId,
+    bool preventDuplicates = true,
+    Map<String, String>? parameters,
+    Widget Function(BuildContext, Animation<double>, Animation<double>, Widget)?
+        transition,
+  ]) async {
+    return navigateTo<dynamic>(Routes.kundliView,
+        id: routerId,
+        preventDuplicates: preventDuplicates,
+        parameters: parameters,
+        transition: transition);
+  }
+
   Future<dynamic> replaceWithFirstViewScreen([
     int? routerId,
     bool preventDuplicates = true,
@@ -697,6 +725,20 @@ extension NavigatorStateExtension on _i18.NavigationService {
         transition,
   ]) async {
     return replaceWith<dynamic>(Routes.filterDialog,
+        id: routerId,
+        preventDuplicates: preventDuplicates,
+        parameters: parameters,
+        transition: transition);
+  }
+
+  Future<dynamic> replaceWithKundliView([
+    int? routerId,
+    bool preventDuplicates = true,
+    Map<String, String>? parameters,
+    Widget Function(BuildContext, Animation<double>, Animation<double>, Widget)?
+        transition,
+  ]) async {
+    return replaceWith<dynamic>(Routes.kundliView,
         id: routerId,
         preventDuplicates: preventDuplicates,
         parameters: parameters,

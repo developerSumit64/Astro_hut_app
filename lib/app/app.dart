@@ -12,6 +12,7 @@ import '../callReceiving/call_receiveView.dart';
 import '../callerLogs/callerLogsView.dart';
 import '../editProfile/editProfileView.dart';
 import '../forgetPassworddView/forgetPasswordView.dart';
+import '../kundliView/kundliView.dart';
 import '../loginOrRegisterSelecterView/loginOrRegisterView.dart';
 import '../loginView/loginView.dart';
 import '../newRegisteratoin/newRegisterationview.dart';
@@ -43,6 +44,7 @@ import '../updateList/updateListView.dart';
     MaterialRoute(page: Registration,initial: false),
     MaterialRoute(page: AllContactsView,initial: false),
     MaterialRoute(page: FilterDialog,initial: false),
+    MaterialRoute(page: KundliView,initial: false),
 
 
 

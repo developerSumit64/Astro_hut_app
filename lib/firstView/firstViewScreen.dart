@@ -29,10 +29,11 @@ class _FirstViewScreenState extends State<FirstViewScreen> {
                 },
               ),
             ],
+            iconTheme: IconThemeData(color: Colors.white),
             flexibleSpace: Container(
               decoration: BoxDecoration(
                 gradient: LinearGradient(
-                  colors: [Colors.orangeAccent.shade700, Colors.orange.shade500],
+                  colors: [Colors.orange, Colors.orange.shade400],
                   begin: Alignment.topLeft,
                   end: Alignment.bottomRight,
                 ),

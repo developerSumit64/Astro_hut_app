@@ -47,6 +47,51 @@ class _CallerLogsViewState extends State<CallerLogsView> {
 
   int _currentPage = 1;
   final int _logsPerPage = 10;
+  void _showModalBottomSheet(BuildContext context) {
+    showModalBottomSheet(
+      context: context,
+      builder: (BuildContext context) {
+        return ViewModelBuilder<CallLogDetailViewModel>.reactive(
+          viewModelBuilder: () => CallLogDetailViewModel(),
+          builder: (context, viewModel, child) {
+            return Container(
+              padding: EdgeInsets.symmetric(vertical: 10.0),
+              decoration: BoxDecoration(
+                color: Colors.white,
+                borderRadius: BorderRadius.only(
+                  topLeft: Radius.circular(20.0),
+                  topRight: Radius.circular(20.0),
+                ),
+              ),
+              child: Column(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  _buildListItem(context, Icons.people, 'All Callers', Colors.blue, viewModel.NavigateTOAllCaller),
+                  _buildListItem(context, Icons.call_received, 'Call Receiving', Colors.green, viewModel.navigateToCallReceiving),
+                  _buildListItem(context, Icons.contact_phone, 'Add Contact', Colors.orange, viewModel.navigateToRegisterNewUser),
+                  _buildListItem(context, Icons.dashboard, 'Dashboard', Colors.red, viewModel.NavigateTODashboard),
+                  _buildListItem(context, Icons.call, 'Call Logs', Colors.purple, viewModel.NavigateTOAllCaller),
+                  _buildListItem(context, Icons.bar_chart, 'Agent Stats', Colors.teal, viewModel.navigateToAgentView),
+                  _buildListItem(context, Icons.arrow_forward, 'Go to page', Colors.brown, viewModel.NavigateTOAllCaller),
+                ],
+              ),
+            );
+          },
+        );
+      },
+    );
+  }
+
+  Widget _buildListItem(BuildContext context, IconData icon, String text, Color iconColor, void Function() callback) {
+    return ListTile(
+      leading: Icon(icon, color: iconColor),
+      title: Text(text),
+      onTap: () {
+        callback();
+        // Navigator.pop(context); // Close the bottom sheet after navigation
+      },
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -55,37 +100,32 @@ class _CallerLogsViewState extends State<CallerLogsView> {
           return Scaffold(
             backgroundColor: Colors.white,
             appBar: AppBar(
-              backgroundColor: Colors.white,
+              flexibleSpace: Container(
+                decoration: BoxDecoration(
+                  gradient: LinearGradient(
+                    colors: [Colors.orange, Colors.orange.shade400],
+                    begin: Alignment.topLeft,
+                    end: Alignment.bottomRight,
+                  ),
+                ),
+              ),
+              // backgroundColor: Colors.white,
               elevation: 2,
               iconTheme: IconThemeData(color: Colors.black),
               leading: IconButton(
-                icon: Icon(Icons.arrow_back),
+                icon: Icon(Icons.arrow_back,color: Colors.white),
                 onPressed: () {
                   Navigator.of(context).pop();
                 },
               ),
               title: Text(
                 'Caller Logs',
-                style: TextStyle(letterSpacing: 1, color: Colors.black),
+                style: TextStyle(letterSpacing: 1, color: Colors.white),
               ),
               actions: [
-                PopupMenuButton<String>(
-                  color: Colors.white,
-                  surfaceTintColor: Colors.white,
-                  elevation: 3,
-                  onSelected: (String value) {
-                    print('Selected: $value');
-                  },
-                  itemBuilder: (BuildContext context) {
-                    return {'All Callers', 'Call Receiving', 'Add Contact', 'Dashboard', 'Call Logs', 'Agent Stats','Go to page '}
-                        .map((String choice) {
-                      return PopupMenuItem<String>(
-                        value: choice,
-                        child: Text(choice),
-                      );
-                    }).toList();
-                  },
-                  icon: Icon(Icons.more_vert, color: Colors.black),
+                IconButton(
+                  icon: Icon(Icons.more_vert, color: Colors.white),
+                  onPressed: () => _showModalBottomSheet(context),
                 ),
               ],
             ),
