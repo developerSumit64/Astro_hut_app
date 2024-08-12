@@ -83,7 +83,6 @@ class _AllContactsViewState extends State<AllContactsView> {
       title: Text(text),
       onTap: () {
         callback();
-        // Navigator.pop(context); // Close the bottom sheet after navigation
       },
     );
   }
