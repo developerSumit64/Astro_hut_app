@@ -98,6 +98,7 @@ class _LoginViewState extends State<LoginView> {
                             alignment: Alignment.centerRight,
                             child: TextButton(
                               onPressed: () {
+                                viewModel.navigateToForgget();
                                 // Handle forgot password button press
                               },
                               child: Text(
