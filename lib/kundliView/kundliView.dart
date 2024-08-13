@@ -261,7 +261,7 @@ class _KundliViewState extends State<KundliView> {
                         viewModel.navigateToKundliView();
                       }
                       if (value == 4 ) {
-                        viewModel.navigateToKundliView();
+                        viewModel.navigateToAddContact();
                       }
 
                       if (value == 5 ) {
@@ -269,11 +269,11 @@ class _KundliViewState extends State<KundliView> {
                       }
 
                       if (value == 6 ) {
-                        viewModel.navigateToKundliView();
+                        viewModel.navigateToUpdateHistory();
                       }
 
                       if (value == 7 ) {
-                        viewModel.navigateToKundliView();
+                        viewModel.navigateToPredictionHistory();
                       }
 
                       if (value == 8 ) {

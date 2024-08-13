@@ -42,6 +42,14 @@ class KundliViewModel extends BaseViewModel{
     await _navigationService.navigateToCallerLogsView();
 
   }
+  void navigateToUpdateHistory() async {
+    await _navigationService.navigateToCallerHistoryViewKundli();
+
+  }
+  void navigateToPredictionHistory() async {
+    await _navigationService.navigateToShowHistoryView();
+
+  }
 
   // void navigateToSpecificCallerDetails() async {
   //   await _navigationService.navi
