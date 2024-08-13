@@ -20,7 +20,8 @@ class _FirstViewScreenState extends State<FirstViewScreen> {
         return Scaffold(
           backgroundColor: Colors.grey.shade300,
           appBar: AppBar(
-            title: Text('Dashboard', style: TextStyle(color: Colors.white,letterSpacing: 1, fontWeight: FontWeight.bold,)),
+
+            title: Text('Dashboard', style: TextStyle(color: Colors.white,letterSpacing: 1, fontWeight: FontWeight.normal,)),
             actions: [
               IconButton(
                 icon: Icon(Icons.person_pin_outlined, color: Colors.white),
@@ -33,7 +34,7 @@ class _FirstViewScreenState extends State<FirstViewScreen> {
             flexibleSpace: Container(
               decoration: BoxDecoration(
                 gradient: LinearGradient(
-                  colors: [Colors.orange, Colors.orange.shade400],
+                  colors: [Colors.orange, Colors.orange.shade300],
                   begin: Alignment.topLeft,
                   end: Alignment.bottomRight,
                 ),
@@ -45,6 +46,8 @@ class _FirstViewScreenState extends State<FirstViewScreen> {
             child: Column(
               children: [
                 DashboardCard(
+
+
                   title: 'All Contacts',
                   color: Colors.white,
                   image: "assets/images/img_6.png",
@@ -86,7 +89,7 @@ class _FirstViewScreenState extends State<FirstViewScreen> {
                       viewModel.navigateToRegisterNewUser();
                     },
                     style: elevatedButtonStyle,
-                    child: Text("Register New User ?", style: TextStyle(letterSpacing: 1,fontWeight: FontWeight.bold)),
+                    child: Text("Register New User ?", style: TextStyle(letterSpacing: 1)),
                   ),
                 ),
               ],

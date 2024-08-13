@@ -48,7 +48,19 @@ class _UpdateListAgentState extends State<UpdateListAgent> {
     return Scaffold(
       backgroundColor: Colors.grey.shade200,
       appBar: AppBar(
-        title: Text('Update List'),
+        iconTheme: IconThemeData(color: Colors.white),
+        flexibleSpace: Container(
+          decoration: BoxDecoration(
+            gradient: LinearGradient(
+              colors: [Colors.orange, Colors.orange.shade300],
+              begin: Alignment.topLeft,
+              end: Alignment.bottomRight,
+            ),
+          ),
+        ),
+        title: Text('Update List',
+            style: TextStyle(color: Colors.white, letterSpacing: 1),
+      ),
         leading: IconButton(
           icon: Icon(Icons.arrow_back),
           onPressed: () {
@@ -86,7 +98,7 @@ class _UpdateListAgentState extends State<UpdateListAgent> {
                 );
               }).toList();
             },
-            icon: Icon(Icons.more_vert, color: Colors.black),
+            icon: Icon(Icons.more_vert, color: Colors.white),
           ),
         ],
       ),
