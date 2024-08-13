@@ -21,9 +21,7 @@ class KundliViewModel extends BaseViewModel{
   void navigateToAddContact() async{
     await _navigationService.navigateToRegistration();
   }
-  // void navigateToAllContacts() async{
-  //   await _navigationService.navigateToAllContactsView();
-  // }
+
   void navigateToCallReceiving() async{
     await _navigationService.navigateToCallReceiveView();
   }
@@ -51,7 +49,5 @@ class KundliViewModel extends BaseViewModel{
 
   }
 
-  // void navigateToSpecificCallerDetails() async {
-  //   await _navigationService.navi
-  // }
+
 }
