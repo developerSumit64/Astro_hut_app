@@ -9,6 +9,7 @@ import 'package:stacked_services/stacked_services.dart';
 import '../SpecificCallLogDetails/specificCallLogsDetails.dart';
 import '../agentView/aggentView.dart';
 import '../callReceiving/call_receiveView.dart';
+import '../callerHistoryFromKundli/callerHistoryFromKundli.dart';
 import '../callerLogs/callerLogsView.dart';
 import '../editProfile/editProfileView.dart';
 import '../forgetPassworddView/forgetPasswordView.dart';
@@ -17,6 +18,7 @@ import '../loginOrRegisterSelecterView/loginOrRegisterView.dart';
 import '../loginView/loginView.dart';
 import '../newRegisteratoin/newRegisterationview.dart';
 import '../profileViewScreen/profileViewScreenView.dart';
+import '../showHistory/showHistoryView.dart';
 import '../signUpView.dart';
 import '../updateList/updateListView.dart';
 
@@ -45,6 +47,9 @@ import '../updateList/updateListView.dart';
     MaterialRoute(page: AllContactsView,initial: false),
     MaterialRoute(page: FilterDialog,initial: false),
     MaterialRoute(page: KundliView,initial: false),
+    MaterialRoute(page: CallerHistoryViewKundli,initial: false),
+    MaterialRoute(page: ShowHistoryView,initial: false),
+
 
 
 

@@ -7,6 +7,8 @@
 // ignore_for_file: no_leading_underscores_for_library_prefixes
 import 'package:api/agentView/aggentView.dart' as _i3;
 import 'package:api/allContacts/all_contactsView.dart' as _i16;
+import 'package:api/callerHistoryFromKundli/callerHistoryFromKundli.dart'
+    as _i18;
 import 'package:api/callerLogs/callerLogsView.dart' as _i4;
 import 'package:api/callReceiving/call_receiveView.dart' as _i14;
 import 'package:api/editProfile/editProfileView.dart' as _i13;
@@ -19,14 +21,15 @@ import 'package:api/loginView/loginView.dart' as _i6;
 import 'package:api/newRegisteratoin/newRegisterationview.dart' as _i15;
 import 'package:api/profileVIew/profileView.dart' as _i8;
 import 'package:api/profileViewScreen/profileViewScreenView.dart' as _i12;
+import 'package:api/showHistory/showHistoryView.dart' as _i19;
 import 'package:api/signUpView.dart' as _i5;
 import 'package:api/SpecificCallLogDetails/specificCallLogsDetails.dart'
     as _i10;
 import 'package:api/updateList/updateListView.dart' as _i11;
-import 'package:flutter/material.dart' as _i18;
+import 'package:flutter/material.dart' as _i20;
 import 'package:flutter/material.dart';
 import 'package:stacked/stacked.dart' as _i1;
-import 'package:stacked_services/stacked_services.dart' as _i19;
+import 'package:stacked_services/stacked_services.dart' as _i21;
 
 class Routes {
   static const firstViewScreen = '/first-view-screen';
@@ -63,6 +66,10 @@ class Routes {
 
   static const kundliView = '/kundli-view';
 
+  static const callerHistoryViewKundli = '/caller-history-view-kundli';
+
+  static const showHistoryView = '/show-history-view';
+
   static const all = <String>{
     firstViewScreen,
     agentView,
@@ -81,6 +88,8 @@ class Routes {
     allContactsView,
     filterDialog,
     kundliView,
+    callerHistoryViewKundli,
+    showHistoryView,
   };
 }
 
@@ -154,108 +163,128 @@ class StackedRouter extends _i1.RouterBase {
       Routes.kundliView,
       page: _i17.KundliView,
     ),
+    _i1.RouteDef(
+      Routes.callerHistoryViewKundli,
+      page: _i18.CallerHistoryViewKundli,
+    ),
+    _i1.RouteDef(
+      Routes.showHistoryView,
+      page: _i19.ShowHistoryView,
+    ),
   ];
 
   final _pagesMap = <Type, _i1.StackedRouteFactory>{
     _i2.FirstViewScreen: (data) {
-      return _i18.MaterialPageRoute<dynamic>(
+      return _i20.MaterialPageRoute<dynamic>(
         builder: (context) => const _i2.FirstViewScreen(),
         settings: data,
       );
     },
     _i3.AgentView: (data) {
-      return _i18.MaterialPageRoute<dynamic>(
+      return _i20.MaterialPageRoute<dynamic>(
         builder: (context) => const _i3.AgentView(),
         settings: data,
       );
     },
     _i4.CallerLogsView: (data) {
-      return _i18.MaterialPageRoute<dynamic>(
+      return _i20.MaterialPageRoute<dynamic>(
         builder: (context) => const _i4.CallerLogsView(),
         settings: data,
       );
     },
     _i5.SingUpView: (data) {
-      return _i18.MaterialPageRoute<dynamic>(
+      return _i20.MaterialPageRoute<dynamic>(
         builder: (context) => const _i5.SingUpView(),
         settings: data,
       );
     },
     _i6.LoginView: (data) {
-      return _i18.MaterialPageRoute<dynamic>(
+      return _i20.MaterialPageRoute<dynamic>(
         builder: (context) => const _i6.LoginView(),
         settings: data,
       );
     },
     _i7.LoginOrRegisterView: (data) {
-      return _i18.MaterialPageRoute<dynamic>(
+      return _i20.MaterialPageRoute<dynamic>(
         builder: (context) => const _i7.LoginOrRegisterView(),
         settings: data,
       );
     },
     _i8.ProfileView: (data) {
-      return _i18.MaterialPageRoute<dynamic>(
+      return _i20.MaterialPageRoute<dynamic>(
         builder: (context) => const _i8.ProfileView(),
         settings: data,
       );
     },
     _i9.ForgetPassword: (data) {
-      return _i18.MaterialPageRoute<dynamic>(
+      return _i20.MaterialPageRoute<dynamic>(
         builder: (context) => const _i9.ForgetPassword(),
         settings: data,
       );
     },
     _i10.CallLogDetailView: (data) {
-      return _i18.MaterialPageRoute<dynamic>(
+      return _i20.MaterialPageRoute<dynamic>(
         builder: (context) => const _i10.CallLogDetailView(),
         settings: data,
       );
     },
     _i11.UpdateListAgent: (data) {
-      return _i18.MaterialPageRoute<dynamic>(
+      return _i20.MaterialPageRoute<dynamic>(
         builder: (context) => _i11.UpdateListAgent(),
         settings: data,
       );
     },
     _i12.ProfileSettings: (data) {
-      return _i18.MaterialPageRoute<dynamic>(
+      return _i20.MaterialPageRoute<dynamic>(
         builder: (context) => const _i12.ProfileSettings(),
         settings: data,
       );
     },
     _i13.ProfileEditApp: (data) {
-      return _i18.MaterialPageRoute<dynamic>(
+      return _i20.MaterialPageRoute<dynamic>(
         builder: (context) => const _i13.ProfileEditApp(),
         settings: data,
       );
     },
     _i14.CallReceiveView: (data) {
-      return _i18.MaterialPageRoute<dynamic>(
+      return _i20.MaterialPageRoute<dynamic>(
         builder: (context) => const _i14.CallReceiveView(),
         settings: data,
       );
     },
     _i15.Registration: (data) {
-      return _i18.MaterialPageRoute<dynamic>(
+      return _i20.MaterialPageRoute<dynamic>(
         builder: (context) => const _i15.Registration(),
         settings: data,
       );
     },
     _i16.AllContactsView: (data) {
-      return _i18.MaterialPageRoute<dynamic>(
+      return _i20.MaterialPageRoute<dynamic>(
         builder: (context) => const _i16.AllContactsView(),
         settings: data,
       );
     },
     _i11.FilterDialog: (data) {
-      return _i18.MaterialPageRoute<dynamic>(
+      return _i20.MaterialPageRoute<dynamic>(
         builder: (context) => _i11.FilterDialog(),
         settings: data,
       );
     },
     _i17.KundliView: (data) {
-      return _i18.MaterialPageRoute<dynamic>(
+      return _i20.MaterialPageRoute<dynamic>(
         builder: (context) => const _i17.KundliView(),
+        settings: data,
+      );
+    },
+    _i18.CallerHistoryViewKundli: (data) {
+      return _i20.MaterialPageRoute<dynamic>(
+        builder: (context) => _i18.CallerHistoryViewKundli(),
+        settings: data,
+      );
+    },
+    _i19.ShowHistoryView: (data) {
+      return _i20.MaterialPageRoute<dynamic>(
+        builder: (context) => _i19.ShowHistoryView(),
         settings: data,
       );
     },
@@ -268,7 +297,7 @@ class StackedRouter extends _i1.RouterBase {
   Map<Type, _i1.StackedRouteFactory> get pagesMap => _pagesMap;
 }
 
-extension NavigatorStateExtension on _i19.NavigationService {
+extension NavigatorStateExtension on _i21.NavigationService {
   Future<dynamic> navigateToFirstViewScreen([
     int? routerId,
     bool preventDuplicates = true,
@@ -507,6 +536,34 @@ extension NavigatorStateExtension on _i19.NavigationService {
         transition: transition);
   }
 
+  Future<dynamic> navigateToCallerHistoryViewKundli([
+    int? routerId,
+    bool preventDuplicates = true,
+    Map<String, String>? parameters,
+    Widget Function(BuildContext, Animation<double>, Animation<double>, Widget)?
+        transition,
+  ]) async {
+    return navigateTo<dynamic>(Routes.callerHistoryViewKundli,
+        id: routerId,
+        preventDuplicates: preventDuplicates,
+        parameters: parameters,
+        transition: transition);
+  }
+
+  Future<dynamic> navigateToShowHistoryView([
+    int? routerId,
+    bool preventDuplicates = true,
+    Map<String, String>? parameters,
+    Widget Function(BuildContext, Animation<double>, Animation<double>, Widget)?
+        transition,
+  ]) async {
+    return navigateTo<dynamic>(Routes.showHistoryView,
+        id: routerId,
+        preventDuplicates: preventDuplicates,
+        parameters: parameters,
+        transition: transition);
+  }
+
   Future<dynamic> replaceWithFirstViewScreen([
     int? routerId,
     bool preventDuplicates = true,
@@ -739,6 +796,34 @@ extension NavigatorStateExtension on _i19.NavigationService {
         transition,
   ]) async {
     return replaceWith<dynamic>(Routes.kundliView,
+        id: routerId,
+        preventDuplicates: preventDuplicates,
+        parameters: parameters,
+        transition: transition);
+  }
+
+  Future<dynamic> replaceWithCallerHistoryViewKundli([
+    int? routerId,
+    bool preventDuplicates = true,
+    Map<String, String>? parameters,
+    Widget Function(BuildContext, Animation<double>, Animation<double>, Widget)?
+        transition,
+  ]) async {
+    return replaceWith<dynamic>(Routes.callerHistoryViewKundli,
+        id: routerId,
+        preventDuplicates: preventDuplicates,
+        parameters: parameters,
+        transition: transition);
+  }
+
+  Future<dynamic> replaceWithShowHistoryView([
+    int? routerId,
+    bool preventDuplicates = true,
+    Map<String, String>? parameters,
+    Widget Function(BuildContext, Animation<double>, Animation<double>, Widget)?
+        transition,
+  ]) async {
+    return replaceWith<dynamic>(Routes.showHistoryView,
         id: routerId,
         preventDuplicates: preventDuplicates,
         parameters: parameters,
