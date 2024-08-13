@@ -22,7 +22,7 @@ import 'package:api/newRegisteratoin/newRegisterationview.dart' as _i15;
 import 'package:api/profileVIew/profileView.dart' as _i8;
 import 'package:api/profileViewScreen/profileViewScreenView.dart' as _i12;
 import 'package:api/showHistory/showHistoryView.dart' as _i19;
-import 'package:api/signUpView.dart' as _i5;
+import 'package:api/signup/signUpView.dart' as _i5;
 import 'package:api/SpecificCallLogDetails/specificCallLogsDetails.dart'
     as _i10;
 import 'package:api/updateList/updateListView.dart' as _i11;

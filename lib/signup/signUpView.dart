@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
-import 'constants/constantStyle.dart';
+import '../constants/constantStyle.dart';
+
 
 class SingUpView extends StatefulWidget {
   const SingUpView({super.key});
@@ -15,9 +16,18 @@ class _SingUpViewState extends State<SingUpView> {
     return Scaffold(
 
       appBar: AppBar(
+        flexibleSpace: Container(
+          decoration: BoxDecoration(
+            gradient: LinearGradient(
+              colors: [Colors.orange, Colors.orange.shade300],
+              begin: Alignment.topLeft,
+              end: Alignment.bottomRight,
+            ),
+          ),
+        ),
         backgroundColor: Colors.white,
         elevation: 2,
-        iconTheme: IconThemeData(color: Colors.black),
+        iconTheme: IconThemeData(color: Colors.white),
         leading: IconButton(
           icon: Icon(Icons.arrow_back),
           onPressed: () {
@@ -26,14 +36,14 @@ class _SingUpViewState extends State<SingUpView> {
         ),
         title: Text(
           'Sign Up',
-          style: TextStyle(letterSpacing: 1, color: Colors.black),
+          style: TextStyle(color: Colors.white, letterSpacing: 1),
         ),
 
       ),
       body: SingleChildScrollView(
         child: Column(
-        
-        
+
+
           children: [
             Align(
               alignment: Alignment.centerRight,
@@ -73,7 +83,7 @@ class _SingUpViewState extends State<SingUpView> {
                   Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 7.0),
                     child: Align(
-                      alignment: Alignment.topLeft,
+                        alignment: Alignment.topLeft,
                         child: Text("Username",style: TextStyle(letterSpacing: 1.5,color: Colors.black54),)),
                   ),
                   SizedBox(height: 10),

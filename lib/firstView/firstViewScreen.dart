@@ -20,6 +20,7 @@ class _FirstViewScreenState extends State<FirstViewScreen> {
         return Scaffold(
           backgroundColor: Colors.grey.shade300,
           appBar: AppBar(
+
             title: Text('Dashboard', style: TextStyle(color: Colors.white,letterSpacing: 1, fontWeight: FontWeight.normal,)),
             actions: [
               IconButton(
@@ -33,7 +34,7 @@ class _FirstViewScreenState extends State<FirstViewScreen> {
             flexibleSpace: Container(
               decoration: BoxDecoration(
                 gradient: LinearGradient(
-                  colors: [Colors.orange, Colors.orange.shade400],
+                  colors: [Colors.orange, Colors.orange.shade300],
                   begin: Alignment.topLeft,
                   end: Alignment.bottomRight,
                 ),

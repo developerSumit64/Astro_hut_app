@@ -19,7 +19,8 @@ import '../loginView/loginView.dart';
 import '../newRegisteratoin/newRegisterationview.dart';
 import '../profileViewScreen/profileViewScreenView.dart';
 import '../showHistory/showHistoryView.dart';
-import '../signUpView.dart';
+
+import '../signup/signUpView.dart';
 import '../updateList/updateListView.dart';
 
 // import '../agentView/agentView.dart';
