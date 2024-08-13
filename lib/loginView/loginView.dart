@@ -98,6 +98,7 @@ class _LoginViewState extends State<LoginView> {
                             alignment: Alignment.centerRight,
                             child: TextButton(
                               onPressed: () {
+                                viewModel.navigateToForgget();
                                 // Handle forgot password button press
                               },
                               child: Text(
@@ -156,6 +157,7 @@ class _LoginViewState extends State<LoginView> {
                               Text("Don't have an account?"),
                               TextButton(
                                 onPressed: () {
+                                  viewModel.navigateToRegister();
                                   // Handle sign-up button press
                                 },
                                 child: Text(

@@ -9,7 +9,12 @@ class LoginViewModel extends BaseViewModel{
   void navigateToFirstView() async{
     await _navigationService.navigateToFirstViewScreen();
   }
+  void navigateToForgget() async{
+    await _navigationService.navigateToForgetPassword();
+  }
 
-
+  void navigateToRegister() async{
+    await _navigationService.navigateToSingUpView();
+  }
 
 }
