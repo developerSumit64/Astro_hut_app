@@ -77,7 +77,7 @@ const InputDecoration kTextFormFieldDecoration = InputDecoration(
 final ButtonStyle elevatedButtonStyle = ElevatedButton.styleFrom(
   foregroundColor: Colors.white,
 
-  backgroundColor: Colors.orange, // Text color
+  backgroundColor:  Color(0xFFFFAC06), // Text color
   shadowColor: Colors.grey.shade400, // Shadow color
   elevation: 1, // Slightly higher elevation for a more prominent shadow
   padding: EdgeInsets.symmetric(horizontal: 24.0, vertical: 12.0),

@@ -9,13 +9,16 @@ class KundliViewModel extends BaseViewModel{
   void NavigateTOFilterView() async {
     await _navigationService.navigateToFilterDialog();
   }
+
   void NavigateTOAllCaller() async {
     await _navigationService.navigateToAllContactsView();
   }
+
   void NavigateTODashboard() async {
     await _navigationService.navigateToFirstViewScreen();
   }
-  void navigateToRegisterNewUser() async{
+
+  void navigateToAddContact() async{
     await _navigationService.navigateToRegistration();
   }
   // void navigateToAllContacts() async{
@@ -26,10 +29,21 @@ class KundliViewModel extends BaseViewModel{
   }
   void navigateToAgentView() async{
     await _navigationService.navigateToAgentView();
-  }void navigateToKundliView() async{
+  }
+
+  void navigateToKundliView() async{
     await _navigationService.navigateToKundliView();
   }
+
   void navigateToCallerDetailsSpecific() async{
     await _navigationService.navigateToCallLogDetailView();
   }
+  void navigateToCallerLogView() async {
+    await _navigationService.navigateToCallerLogsView();
+
+  }
+
+  // void navigateToSpecificCallerDetails() async {
+  //   await _navigationService.navi
+  // }
 }

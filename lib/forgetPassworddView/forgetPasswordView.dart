@@ -74,23 +74,17 @@ class _ForgetPasswordState extends State<ForgetPassword> {
                     Text(
                       "Forgot Your Password",
                       style: TextStyle(
-                        // shadows: [
-                        //   Shadow(
-                        //     offset: Offset(1.0, 1.2),
-                        //     blurRadius: 2.0,
-                        //     color: Colors.green,
-                        //   ),
-                        // ],
                         fontWeight: FontWeight.bold,
                         letterSpacing: 1,
-                        color: Colors.deepOrange,
+                        color: Color(0xFFfb1530), // Correct format for the color
                         fontSize: 21,
                         wordSpacing: 1,
                       ),
-                    ),SizedBox(height: 22),
+                    )
+                    ,SizedBox(height: 22),
                     Text(
                       "Enter your Registration number and we will send you an OTP to your registered mobile number to reset your password",
-                      style: TextStyle(color: Colors.deepOrange.shade200),
+                      style: TextStyle(color: Colors.deepOrange.shade300),
                       textAlign: TextAlign.center,
 
                     ),
@@ -99,7 +93,8 @@ class _ForgetPasswordState extends State<ForgetPassword> {
                       child: Container(
                         decoration: BoxDecoration(
                           shape: BoxShape.rectangle,
-                          color: Colors.orange,
+                          color: Color(0xFFFFAC06),
+
                           borderRadius: BorderRadius.all(Radius.circular(22)),
                         ),
                         child: Column(
