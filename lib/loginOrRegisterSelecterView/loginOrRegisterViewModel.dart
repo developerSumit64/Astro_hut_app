@@ -10,7 +10,8 @@ class LoginOrRegisterViewModel extends BaseViewModel{
 
   void navigateToLogin() async{
    await _navigationService.navigateToLoginView();
-  }void navigateToRegister() async{
+  }
+  void navigateToRegister() async{
    await _navigationService.navigateToSingUpView();
   }
 
