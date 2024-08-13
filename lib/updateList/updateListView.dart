@@ -1,7 +1,9 @@
+import 'package:api/updateList/updateListViewModel.dart';
 import 'package:flutter/material.dart';
 
 import 'package:intl/intl.dart';
 import 'package:api/constants/constantStyle.dart';
+import 'package:stacked/stacked.dart';
 import 'package:url_launcher/url_launcher.dart'; // Ensure this file contains your custom styles
 
 class UpdateListAgent extends StatefulWidget {
@@ -37,8 +39,76 @@ class _UpdateListAgentState extends State<UpdateListAgent> {
       "customStatus": "Pending",
       "createdAt": "01/01/2024",
     },
+    {
+      "updated": "7015756525",
+      "callStatus": "New client",
+      "accountStatus": "Not Paid",
+      "updatedAt": "05/08/2024 - 11:13:24",
+      "name": "Ashwaraya",
+      "city": "New Delhi",
+      "gender": "Female",
+      "customStatus": "Pending",
+      "createdAt": "01/01/2024",
+    },
+    {
+      "updated": "7015756525",
+      "callStatus": "New client",
+      "accountStatus": "Not Paid",
+      "updatedAt": "05/08/2024 - 11:13:24",
+      "name": "Ashwaraya",
+      "city": "New Delhi",
+      "gender": "Female",
+      "customStatus": "Pending",
+      "createdAt": "01/01/2024",
+    },
     // Add more items as needed
   ];
+
+  void _showModalBottomSheet(BuildContext context) {
+    showModalBottomSheet(
+      context: context,
+      builder: (BuildContext context) {
+        return ViewModelBuilder<UpdateListViewModel>.reactive(
+          viewModelBuilder: () => UpdateListViewModel(),
+          builder: (context, viewModel, child) {
+            return Container(
+              padding: EdgeInsets.symmetric(vertical: 10.0),
+              decoration: BoxDecoration(
+                color: Colors.white,
+                borderRadius: BorderRadius.only(
+                  topLeft: Radius.circular(20.0),
+                  topRight: Radius.circular(20.0),
+                ),
+              ),
+              child: Column(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  _buildListItem(context, Icons.people, 'All Callers', Colors.blue, viewModel.NavigateTOAllCaller),
+                  _buildListItem(context, Icons.call_received, 'Call Receiving', Colors.green, viewModel.navigateToCallReceiving),
+                  _buildListItem(context, Icons.contact_phone, 'Add Contact', Colors.orange, viewModel.navigateToRegisterNewUser),
+                  _buildListItem(context, Icons.dashboard, 'Dashboard', Colors.red, viewModel.NavigateTODashboard),
+                  _buildListItem(context, Icons.call, 'Call Logs', Colors.purple, viewModel.NavigateTOAllCaller),
+                  _buildListItem(context, Icons.bar_chart, 'Agent Stats', Colors.teal, viewModel.navigateToAgentView),
+                  // _buildListItem(context, Icons.arrow_forward, 'Go to page', Colors.brown, viewModel.NavigateTOAllCaller),
+                ],
+              ),
+            );
+          },
+        );
+      },
+    );
+  }
+  Widget _buildListItem(BuildContext context, IconData icon, String text, Color iconColor, void Function() callback) {
+    return ListTile(
+      leading: Icon(icon, color: iconColor),
+      title: Text(text),
+      onTap: () {
+        callback();
+        // Navigator.pop(context); // Close the bottom sheet after navigation
+      },
+    );
+  }
+
 
   // Variable to hold the selected call log for detailed view
   Map<String, String>? selectedCallLog;
@@ -79,27 +149,32 @@ class _UpdateListAgentState extends State<UpdateListAgent> {
               );
             },
           ),
-          PopupMenuButton<String>(
-            color: Colors.white,
-            surfaceTintColor: Colors.white,
-            elevation: 3,
-            onSelected: (String value) {
-              print('Selected: $value');
-            },
-            itemBuilder: (BuildContext context) {
-              return {'All Callers', 'Call Receiving', 'Add Contact', 'Dashboard', 'Call Logs', 'Agent Stats', 'Go to page '}
-                  .map((String choice) {
-                return PopupMenuItem<String>(
-                  onTap: () {
-                    
-                  },
-                  value: choice,
-                  child: Text(choice),
-                );
-              }).toList();
-            },
+          // PopupMenuButton<String>(
+          //   color: Colors.white,
+          //   surfaceTintColor: Colors.white,
+          //   elevation: 3,
+          //   onSelected: (String value) {
+          //     print('Selected: $value');
+          //   },
+          //   itemBuilder: (BuildContext context) {
+          //     return {'All Callers', 'Call Receiving', 'Add Contact', 'Dashboard', 'Call Logs', 'Agent Stats', 'Go to page '}
+          //         .map((String choice) {
+          //       return PopupMenuItem<String>(
+          //         onTap: () {
+          //
+          //         },
+          //         value: choice,
+          //         child: Text(choice),
+          //       );
+          //     }).toList();
+          //   },
+          //   icon: Icon(Icons.more_vert, color: Colors.white),
+          // ),
+          IconButton(
             icon: Icon(Icons.more_vert, color: Colors.white),
+            onPressed: () => _showModalBottomSheet(context),
           ),
+
         ],
       ),
       body: Padding(
@@ -146,162 +221,165 @@ class _UpdateListAgentState extends State<UpdateListAgent> {
                 itemCount: callLogs.length,
                 itemBuilder: (context, index) {
                   final callLog = callLogs[index];
-                  return Container(
-                    decoration: containerdesign.decoration,
-                    child: Card(
-                      surfaceTintColor: Colors.white,
-                      color: Colors.white,
-                      margin: EdgeInsets.symmetric(vertical: 5, horizontal: 1),
-                      elevation: 0.5,
-                      shape: RoundedRectangleBorder(
-                        side: BorderSide(
-                          color: Colors.black12.withOpacity(0.05),
+                  return Padding(
+                    padding:  EdgeInsets.only(bottom: 5),
+                    child: Container(
+                      decoration: containerdesign.decoration,
+                      child: Card(
+                        surfaceTintColor: Colors.white,
+                        color: Colors.white,
+                        margin: EdgeInsets.symmetric(vertical: 3, horizontal: 1),
+                        elevation: 0.5,
+                        shape: RoundedRectangleBorder(
+                          side: BorderSide(
+                            color: Colors.black12.withOpacity(0.05),
+                          ),
+                          borderRadius: BorderRadius.only(
+                            topLeft: Radius.circular(32),
+                            bottomRight: Radius.circular(32),
+                          ),
                         ),
-                        borderRadius: BorderRadius.only(
-                          topLeft: Radius.circular(32),
-                          bottomRight: Radius.circular(32),
-                        ),
-                      ),
-                      child: ListTile(
-                        contentPadding: EdgeInsets.all(10),
-                        title: Row(
-                          children: [
-                            Text(
-                              'Updated: ',
-                              style: TextStyle(
-                                fontSize: 16,
-                                letterSpacing: 1,
-                                color: Colors.black54,
+                        child: ListTile(
+                          contentPadding: EdgeInsets.all(10),
+                          title: Row(
+                            children: [
+                              Text(
+                                'Updated: ',
+                                style: TextStyle(
+                                  fontSize: 16,
+                                  letterSpacing: 1,
+                                  color: Colors.black54,
+                                ),
                               ),
-                            ),
-                            Text(
-                              ' ${callLog["updated"]}',
-                              style: TextStyle(
-                                color: Colors.black87,
-                                letterSpacing: 1,
-                                fontSize: 15,
+                              Text(
+                                ' ${callLog["updated"]}',
+                                style: TextStyle(
+                                  color: Colors.black87,
+                                  letterSpacing: 1,
+                                  fontSize: 15,
+                                ),
                               ),
-                            ),
-                          ],
+                            ],
+                          ),
+                          subtitle: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              SizedBox(height: 5),
+                              Row(
+                                children: [
+                                  Text(
+                                    'Call Status: ',
+                                    style: TextStyle(
+                                      color: Colors.black54,
+                                      letterSpacing: 1,
+                                      fontSize: 15,
+                                    ),
+                                  ),
+                                  Text('${callLog["callStatus"]}'),
+                                ],
+                              ),
+                              Row(
+                                children: [
+                                  Text(
+                                    'Account Status: ',
+                                    style: TextStyle(
+                                      color: Colors.black54,
+                                      letterSpacing: 1,
+                                      fontSize: 15,
+                                    ),
+                                  ),
+                                  Text('${callLog["accountStatus"]}'),
+                                ],
+                              ),
+                              Row(
+                                children: [
+                                  Text(
+                                    'Updated At: ',
+                                    style: TextStyle(
+                                      color: Colors.black54,
+                                      letterSpacing: 1,
+                                      fontSize: 15,
+                                    ),
+                                  ),
+                                  Text('${callLog["updatedAt"]}'),
+
+
+                                ],
+                              ),
+                              Divider(),
+                              Row(
+                                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                                children: [
+                                  IconButton(
+                                    icon: Icon(Icons.call, color: Colors.blue),
+                                    onPressed: () async {
+                                      const phoneNumber = '9084907266'; // Replace with the desired phone number
+                                      final Uri url = Uri.parse('tel:$phoneNumber');
+
+                                      if (await canLaunchUrl(url)) {
+                                        await launchUrl(url);
+                                      } else {
+                                        // Show an error message if the call cannot be made
+                                        ScaffoldMessenger.of(context).showSnackBar(
+                                          SnackBar(content: Text('Could not launch $url')),
+                                        );
+                                      }
+                                    },
+                                  ),
+
+
+                                  IconButton(
+                                    icon: Icon(Icons.message, color: Colors.green),
+                                    onPressed: () {
+                                      // Message action
+                                    },
+                                  ),
+                                  IconButton(
+                                    icon: Icon(Icons.info, color: Colors.orange),
+                                    onPressed: () {
+                                      // Set the selected call log and show detailed page
+                                      setState(() {
+                                        selectedCallLog = callLog;
+                                      });
+                                      _showDetailedPage();
+                                    },
+                                  ),
+                                ],
+                              )
+                            ],
+                          ),
+                          // trailing: Expanded(
+                          //   child: SingleChildScrollView(
+                          //     child: Column(
+                          //       mainAxisSize: MainAxisSize.min,
+                          //       children: [
+                          //         IconButton(
+                          //           icon: Icon(Icons.call, color: Colors.blue),
+                          //           onPressed: () {
+                          //             // Call action
+                          //           },
+                          //         ),
+                          //         IconButton(
+                          //           icon: Icon(Icons.message, color: Colors.green),
+                          //           onPressed: () {
+                          //             // Message action
+                          //           },
+                          //         ),
+                          //         IconButton(
+                          //           icon: Icon(Icons.info, color: Colors.orange),
+                          //           onPressed: () {
+                          //             // Set the selected call log and show detailed page
+                          //             setState(() {
+                          //               selectedCallLog = callLog;
+                          //             });
+                          //             _showDetailedPage();
+                          //           },
+                          //         ),
+                          //       ],
+                          //     ),
+                          //   ),
+                          // ),
                         ),
-                        subtitle: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            SizedBox(height: 5),
-                            Row(
-                              children: [
-                                Text(
-                                  'Call Status: ',
-                                  style: TextStyle(
-                                    color: Colors.black54,
-                                    letterSpacing: 1,
-                                    fontSize: 15,
-                                  ),
-                                ),
-                                Text('${callLog["callStatus"]}'),
-                              ],
-                            ),
-                            Row(
-                              children: [
-                                Text(
-                                  'Account Status: ',
-                                  style: TextStyle(
-                                    color: Colors.black54,
-                                    letterSpacing: 1,
-                                    fontSize: 15,
-                                  ),
-                                ),
-                                Text('${callLog["accountStatus"]}'),
-                              ],
-                            ),
-                            Row(
-                              children: [
-                                Text(
-                                  'Updated At: ',
-                                  style: TextStyle(
-                                    color: Colors.black54,
-                                    letterSpacing: 1,
-                                    fontSize: 15,
-                                  ),
-                                ),
-                                Text('${callLog["updatedAt"]}'),
-
-
-                              ],
-                            ),
-                            Divider(),
-                            Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                              children: [
-                                IconButton(
-                                  icon: Icon(Icons.call, color: Colors.blue),
-                                  onPressed: () async {
-                                    const phoneNumber = '9084907266'; // Replace with the desired phone number
-                                    final Uri url = Uri.parse('tel:$phoneNumber');
-
-                                    if (await canLaunchUrl(url)) {
-                                      await launchUrl(url);
-                                    } else {
-                                      // Show an error message if the call cannot be made
-                                      ScaffoldMessenger.of(context).showSnackBar(
-                                        SnackBar(content: Text('Could not launch $url')),
-                                      );
-                                    }
-                                  },
-                                ),
-
-
-                                IconButton(
-                                  icon: Icon(Icons.message, color: Colors.green),
-                                  onPressed: () {
-                                    // Message action
-                                  },
-                                ),
-                                IconButton(
-                                  icon: Icon(Icons.info, color: Colors.orange),
-                                  onPressed: () {
-                                    // Set the selected call log and show detailed page
-                                    setState(() {
-                                      selectedCallLog = callLog;
-                                    });
-                                    _showDetailedPage();
-                                  },
-                                ),
-                              ],
-                            )
-                          ],
-                        ),
-                        // trailing: Expanded(
-                        //   child: SingleChildScrollView(
-                        //     child: Column(
-                        //       mainAxisSize: MainAxisSize.min,
-                        //       children: [
-                        //         IconButton(
-                        //           icon: Icon(Icons.call, color: Colors.blue),
-                        //           onPressed: () {
-                        //             // Call action
-                        //           },
-                        //         ),
-                        //         IconButton(
-                        //           icon: Icon(Icons.message, color: Colors.green),
-                        //           onPressed: () {
-                        //             // Message action
-                        //           },
-                        //         ),
-                        //         IconButton(
-                        //           icon: Icon(Icons.info, color: Colors.orange),
-                        //           onPressed: () {
-                        //             // Set the selected call log and show detailed page
-                        //             setState(() {
-                        //               selectedCallLog = callLog;
-                        //             });
-                        //             _showDetailedPage();
-                        //           },
-                        //         ),
-                        //       ],
-                        //     ),
-                        //   ),
-                        // ),
                       ),
                     ),
                   );

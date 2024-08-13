@@ -215,7 +215,7 @@ class _AgentViewState extends State<AgentView> {
                              agents[index].role,
                              style: TextStyle(
                                fontSize: 12,
-                               color: Colors.blueAccent,
+                               color: Colors.orange.shade400,
                                fontWeight: FontWeight.bold,
                              ),
                            ),

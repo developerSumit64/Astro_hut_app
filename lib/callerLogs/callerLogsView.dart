@@ -177,182 +177,228 @@ class _CallerLogsViewState extends State<CallerLogsView> {
   }
 
   Widget _buildCallLogCard(Map<String, String> log, CallLogDetailViewModel model) {
-    return Container(
-      decoration: containerdesign.decoration,
-      child: GestureDetector(
-        onTap: () {
-model.NavigateTOCallLogDetailView();
-        },
-        child: Card(
+    return Padding(
+      padding:  EdgeInsets.only(bottom: 5),
 
-          surfaceTintColor: Colors.white,
-          color: Colors.white,
-          margin: EdgeInsets.symmetric(vertical: 5,horizontal: 1),
-          elevation: 0.5,
-          shape: RoundedRectangleBorder(
-            side: BorderSide(color: Colors.black12.withOpacity(0.05)),
-            borderRadius: BorderRadius.only(topLeft: Radius.circular(32),bottomRight: Radius.circular(32))),
-          child: Stack(
-            children: [
-              Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: Row(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    CircleAvatar(
-                      radius: 23,
-                      backgroundColor: Colors.transparent,
-                      child: ClipOval(
-                        child: Image.asset(
-                          "assets/images/profile.jpeg",
-                          fit: BoxFit.cover,
+      child: Container(
+        decoration: containerdesign.decoration,
+        child: GestureDetector(
+          onTap: () {
+      // model.NavigateTOCallLogDetailView();
+          },
+          child: Card(
+
+            surfaceTintColor: Colors.white,
+            color: Colors.white,
+            margin: EdgeInsets.symmetric(vertical: 3,horizontal: 1),
+            elevation: 0.5,
+            shape: RoundedRectangleBorder(
+              side: BorderSide(color: Colors.black12.withOpacity(0.05)),
+              borderRadius: BorderRadius.only(topLeft: Radius.circular(32),bottomRight: Radius.circular(32))),
+            child: Stack(
+              children: [
+                Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Row(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      CircleAvatar(
+                        radius: 23,
+                        backgroundColor: Colors.transparent,
+                        child: ClipOval(
+                          child: Image.asset(
+                            "assets/images/profile.jpeg",
+                            fit: BoxFit.cover,
+                          ),
+                        ),
+                      ),
+                      SizedBox(width: 12),
+                      Expanded(
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            SizedBox(height: 32), // Added space for the agent name container
+                            Row(
+                              children: [
+                                Text(
+                                  'Call From: ',
+                                  style: TextStyle(
+                                    color: Colors.black54,
+                                    fontSize: 14,
+                                    letterSpacing: 1,
+                                  ),
+                                ),
+                                Text(
+                                  log['callFrom']!,
+                                  style: TextStyle(
+                                    fontWeight: FontWeight.w500,
+                                    letterSpacing: 1,
+                                    fontSize: 15,
+                                    wordSpacing: 1,
+                                  ),
+                                ),
+                              ],
+                            ),
+                            SizedBox(height: 4),
+                            Row(
+                              children: [
+                                Text(
+                                  'Agent Number: ',
+                                  style: TextStyle(
+                                    color: Colors.black54,
+                                    fontSize: 14,
+                                    letterSpacing: 1,
+                                  ),
+                                ),
+                                Text(
+                                  log['agentNumber']!,
+                                  style: TextStyle(
+                                    fontWeight: FontWeight.w500,
+                                    letterSpacing: 1,
+                                  ),
+                                ),
+                              ],
+                            ),
+                            SizedBox(height: 4),
+                            Row(
+                              children: [
+                                Text(
+                                  'Call Date: ',
+                                  style: TextStyle(
+                                    color: Colors.black54,
+                                    fontSize: 14,
+                                    letterSpacing: 1,
+                                  ),
+                                ),
+                                Text(
+                                  log['callDate']!,
+                                  style: TextStyle(
+                                    fontWeight: FontWeight.w500,
+                                    letterSpacing: 1,
+                                  ),
+                                ),
+                              ],
+                            ),
+                            SizedBox(height: 4),
+                            Row(
+                              children: [
+                                Text(
+                                  'Call Time: ',
+                                  style: TextStyle(
+                                    color: Colors.black54,
+                                    fontSize: 14,
+                                    letterSpacing: 1,
+                                  ),
+                                ),
+                                Text(
+                                  log['callTime']!,
+                                  style: TextStyle(
+                                    fontWeight: FontWeight.w500,
+                                    letterSpacing: 1,
+                                  ),
+                                ),
+                              ],
+                            ),
+                            Padding(
+                              padding: const EdgeInsets.all(8.0),
+                              child: Divider(),
+                            ),
+
+                            Row(
+mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                Icon(Icons.call, color: Colors.green),
+                                // SizedBox(width: 18),
+                                Padding(
+                                  padding: const EdgeInsets.all(8.0),
+                                  child: FaIcon(FontAwesomeIcons.whatsapp, color: Colors.green),
+                                ),
+                              ],
+                            ),
+
+                          ],
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+                // Positioned(
+                //   top: 8,
+                //   left: 70,
+                //   right: 16,
+                //   child: Container(
+                //     padding: EdgeInsets.symmetric(vertical: 4, horizontal: 8),
+                //     decoration: BoxDecoration(
+                //       color: Colors.blue,
+                //       borderRadius: BorderRadius.circular(8),
+                //     ),
+                //     child: Text(
+                //       log['agentName']!,
+                //       style: TextStyle(
+                //         color: Colors.white,
+                //         fontSize: 16,
+                //         fontWeight: FontWeight.bold,
+                //       ),
+                //     ),
+                //   ),
+                // ),
+                Positioned(
+                  top: 7,
+                  left: 68,
+                  child: GestureDetector(
+                  onTap: () {
+                    model.NavigateTOCallLogDetailView();
+                  },
+                    child: Container(
+                      padding: EdgeInsets.symmetric(vertical: 4, horizontal: 8),
+                      decoration: BoxDecoration(
+                        color: Colors.blueAccent.withOpacity(0.1),
+                        borderRadius: BorderRadius.circular(8),
+                      ),
+                      child: Text(
+                        log['agentName']!,
+                        style: TextStyle(
+                          fontSize: 13.5,
+                          color: Colors.orange.shade400,
+                          fontWeight: FontWeight.bold,
                         ),
                       ),
                     ),
-                    SizedBox(width: 12),
-                    Expanded(
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          SizedBox(height: 32), // Added space for the agent name container
-                          Row(
-                            children: [
-                              Text(
-                                'Call From: ',
-                                style: TextStyle(
-                                  color: Colors.black54,
-                                  fontSize: 14,
-                                  letterSpacing: 1,
-                                ),
-                              ),
-                              Text(
-                                log['callFrom']!,
-                                style: TextStyle(
-                                  fontWeight: FontWeight.w500,
-                                  letterSpacing: 1,
-                                  fontSize: 15,
-                                  wordSpacing: 1,
-                                ),
-                              ),
-                            ],
-                          ),
-                          SizedBox(height: 4),
-                          Row(
-                            children: [
-                              Text(
-                                'Agent Number: ',
-                                style: TextStyle(
-                                  color: Colors.black54,
-                                  fontSize: 14,
-                                  letterSpacing: 1,
-                                ),
-                              ),
-                              Text(
-                                log['agentNumber']!,
-                                style: TextStyle(
-                                  fontWeight: FontWeight.w500,
-                                  letterSpacing: 1,
-                                ),
-                              ),
-                            ],
-                          ),
-                          SizedBox(height: 4),
-                          Row(
-                            children: [
-                              Text(
-                                'Call Date: ',
-                                style: TextStyle(
-                                  color: Colors.black54,
-                                  fontSize: 14,
-                                  letterSpacing: 1,
-                                ),
-                              ),
-                              Text(
-                                log['callDate']!,
-                                style: TextStyle(
-                                  fontWeight: FontWeight.w500,
-                                  letterSpacing: 1,
-                                ),
-                              ),
-                            ],
-                          ),
-                          SizedBox(height: 4),
-                          Row(
-                            children: [
-                              Text(
-                                'Call Time: ',
-                                style: TextStyle(
-                                  color: Colors.black54,
-                                  fontSize: 14,
-                                  letterSpacing: 1,
-                                ),
-                              ),
-                              Text(
-                                log['callTime']!,
-                                style: TextStyle(
-                                  fontWeight: FontWeight.w500,
-                                  letterSpacing: 1,
-                                ),
-                              ),
-                            ],
-                          ),
-                        ],
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-              // Positioned(
-              //   top: 8,
-              //   left: 70,
-              //   right: 16,
-              //   child: Container(
-              //     padding: EdgeInsets.symmetric(vertical: 4, horizontal: 8),
-              //     decoration: BoxDecoration(
-              //       color: Colors.blue,
-              //       borderRadius: BorderRadius.circular(8),
-              //     ),
-              //     child: Text(
-              //       log['agentName']!,
-              //       style: TextStyle(
-              //         color: Colors.white,
-              //         fontSize: 16,
-              //         fontWeight: FontWeight.bold,
-              //       ),
-              //     ),
-              //   ),
-              // ),
-              Positioned(
-                top: 7,
-                left: 68,
-                child: Container(
-                  padding: EdgeInsets.symmetric(vertical: 4, horizontal: 8),
-                  decoration: BoxDecoration(
-                    color: Colors.blueAccent.withOpacity(0.1),
-                    borderRadius: BorderRadius.circular(8),
-                  ),
-                  child: Text(
-                    log['agentName']!,
-                    style: TextStyle(
-                      fontSize: 13.5,
-                      color: Colors.blueAccent,
-                      fontWeight: FontWeight.bold,
-                    ),
                   ),
                 ),
-              ),
-              Positioned(
-                bottom: 7,
-                right: 16,
-                child: Row(
-                  children: [
-                    Icon(Icons.call, color: Colors.green),
-                    SizedBox(width: 18),
-                    FaIcon(FontAwesomeIcons.whatsapp, color: Colors.green),
-                  ],
-                ),
-              ),
-            ],
+                // Positioned(
+                //   bottom: 7,
+                //   right: 16,
+                //   child: Row(
+                //     children: [
+                //       Icon(Icons.call, color: Colors.green),
+                //       SizedBox(width: 18),
+                //       FaIcon(FontAwesomeIcons.whatsapp, color: Colors.green),
+                //     ],
+                //   ),
+                // ),
+                //
+                // Positioned(
+                //   bottom: 7,
+                //     left: 16,
+                //
+                //   child: Column(
+                //     children: [
+                //       Divider(),
+                //
+                //       Row(
+                //
+                //         children: [
+                //           Icon(Icons.call, color: Colors.green),
+                //           SizedBox(width: 18),
+                //           FaIcon(FontAwesomeIcons.whatsapp, color: Colors.green),
+                //         ],
+                //       ),
+                //     ],
+                //   ),
+                // ),
+              ],
+            ),
           ),
         ),
       ),
