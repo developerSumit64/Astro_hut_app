@@ -59,7 +59,6 @@ class _LoginViewState extends State<LoginView> {
                     child: SingleChildScrollView(
                       child: Column(
                         children: [
-              
                           Text(
                             'Astro Hut',
                             style: TextStyle(

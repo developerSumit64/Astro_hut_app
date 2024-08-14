@@ -77,15 +77,18 @@ class _AllContactsViewState extends State<AllContactsView> {
       },
     );
   }
+
   Widget _buildListItem(BuildContext context, IconData icon, String text, Color iconColor, void Function() callback) {
     return ListTile(
       leading: Icon(icon, color: iconColor),
       title: Text(text),
       onTap: () {
         callback();
+        // Navigator.pop(context); // Close the bottom sheet after navigation
       },
     );
   }
+
   @override
   Widget build(BuildContext context) {
     return ViewModelBuilder<AllContactsViewModal>.reactive(viewModelBuilder: () => AllContactsViewModal(),
@@ -197,7 +200,7 @@ class _AllContactsViewState extends State<AllContactsView> {
                                         ],
                                       ),
                                       Padding(
-                                        padding: const EdgeInsets.only(left: 60),
+                                        padding: const EdgeInsets.only(left: 80),
                                         child: Row(
                                           mainAxisAlignment: MainAxisAlignment.end,
                                           children: [
@@ -235,30 +238,28 @@ class _AllContactsViewState extends State<AllContactsView> {
                                     ],
                                   ),
                                   const Divider(),
-                                  FittedBox(
-                                    child: Row(
-                                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                      children: [
-                                        Column(
-                                          children: [
-                                            const Text('Update at: ',style: TextStyle(color: Colors.grey,fontWeight: FontWeight.bold)),
-                                            Text(' ${contacts[index]['update']}',style: const TextStyle(fontWeight: FontWeight.bold)),
-                                          ],
-                                        ),
-                                        Column(
-                                          children: [
-                                            const Text('Register at: ',style: TextStyle(color: Colors.grey,fontWeight: FontWeight.bold)),
-                                            Text(' ${contacts[index]['register']}',style: const TextStyle(fontWeight: FontWeight.bold)),
-                                          ],
-                                        ),
-                                        Column(
-                                          children: [
-                                            const Text('Registered By: ',style: TextStyle(color: Colors.grey,fontWeight: FontWeight.bold)),
-                                            Text(' ${contacts[index]['registeredBy']}',style: const TextStyle(fontWeight: FontWeight.bold)),
-                                          ],
-                                        ),
-                                      ],
-                                    ),
+                                  Row(
+                                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                    children: [
+                                      Column(
+                                        children: [
+                                          const Text('Update at: ',style: TextStyle(color: Colors.grey,fontWeight: FontWeight.bold)),
+                                          Text(' ${contacts[index]['update']}',style: const TextStyle(fontWeight: FontWeight.bold)),
+                                        ],
+                                      ),
+                                      Column(
+                                        children: [
+                                          const Text('Register at: ',style: TextStyle(color: Colors.grey,fontWeight: FontWeight.bold)),
+                                          Text(' ${contacts[index]['register']}',style: const TextStyle(fontWeight: FontWeight.bold)),
+                                        ],
+                                      ),
+                                      Column(
+                                        children: [
+                                          const Text('Registered By: ',style: TextStyle(color: Colors.grey,fontWeight: FontWeight.bold)),
+                                          Text(' ${contacts[index]['registeredBy']}',style: const TextStyle(fontWeight: FontWeight.bold)),
+                                        ],
+                                      ),
+                                    ],
                                   ),
                                   Divider(color: Colors.orange,),
                                   Row(
@@ -293,3 +294,4 @@ class _AllContactsViewState extends State<AllContactsView> {
       },);
   }
 }
+
