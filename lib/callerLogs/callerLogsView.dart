@@ -2,6 +2,7 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:stacked/stacked.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 import '../constants/constantStyle.dart';
 import 'callerLogViewModel.dart';
@@ -44,6 +45,30 @@ class _CallerLogsViewState extends State<CallerLogsView> {
       "callTime": "11:41:19"
     },
   ];
+  void _makePhoneCall(String phoneNumber) async {
+    final Uri url = Uri(scheme: 'tel', path: phoneNumber);
+    if (await canLaunchUrl(url)) {
+      await launchUrl(url);
+    } else {
+      throw 'Could not launch $url';
+    }
+  }
+  void _sendWhatsAppMessage(String phoneNumber, {String message = ''}) async {
+    final Uri url = Uri(
+      scheme: 'https',
+      host: 'wa.me', // or use 'api.whatsapp.com/send'
+      path: '/$phoneNumber',
+      queryParameters: {
+        'text': message, // Add a default message if you want
+      },
+    );
+
+    if (await canLaunchUrl(url)) {
+      await launchUrl(url);
+    } else {
+      throw 'Could not launch $url';
+    }
+  }
 
   int _currentPage = 1;
   final int _logsPerPage = 10;
@@ -300,18 +325,23 @@ class _CallerLogsViewState extends State<CallerLogsView> {
                               ],
                             ),
                             Padding(
-                              padding: const EdgeInsets.all(8.0),
+                              padding: const EdgeInsets.only(right: 8, left: 8,bottom: 0 ,top: 8),
                               child: Divider(),
                             ),
 
                             Row(
 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
-                                Icon(Icons.call, color: Colors.green),
+                               IconButton( onPressed: () => _makePhoneCall( log['agentNumber']!,), icon: Icon(Icons.call, color: Colors.green),),
                                 // SizedBox(width: 18),
                                 Padding(
                                   padding: const EdgeInsets.all(8.0),
-                                  child: FaIcon(FontAwesomeIcons.whatsapp, color: Colors.green),
+                                  child:
+                                  IconButton(
+                                    icon: FaIcon(FontAwesomeIcons.whatsapp,color: Colors.green),  // Using FontAwesome WhatsApp icon
+                                    onPressed: () => _sendWhatsAppMessage('1234567890', message: 'Hello!'),
+                                  ),
+
                                 ),
                               ],
                             ),

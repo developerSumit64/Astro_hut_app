@@ -40,7 +40,7 @@ class _UpdateListAgentState extends State<UpdateListAgent> {
       "createdAt": "01/01/2024",
     },
     {
-      "updated": "7015756525",
+      "updated": "7015756509",
       "callStatus": "New client",
       "accountStatus": "Not Paid",
       "updatedAt": "05/08/2024 - 11:13:24",
@@ -63,6 +63,14 @@ class _UpdateListAgentState extends State<UpdateListAgent> {
     },
     // Add more items as needed
   ];
+  void _makePhoneCall(String phoneNumber) async {
+    final Uri url = Uri(scheme: 'tel', path: phoneNumber);
+    if (await canLaunchUrl(url)) {
+      await launchUrl(url);
+    } else {
+      throw 'Could not launch $url';
+    }
+  }
 
   void _showModalBottomSheet(BuildContext context) {
     showModalBottomSheet(
@@ -310,22 +318,7 @@ class _UpdateListAgentState extends State<UpdateListAgent> {
                               Row(
                                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                                 children: [
-                                  IconButton(
-                                    icon: Icon(Icons.call, color: Colors.blue),
-                                    onPressed: () async {
-                                      const phoneNumber = '9084907266'; // Replace with the desired phone number
-                                      final Uri url = Uri.parse('tel:$phoneNumber');
-
-                                      if (await canLaunchUrl(url)) {
-                                        await launchUrl(url);
-                                      } else {
-                                        // Show an error message if the call cannot be made
-                                        ScaffoldMessenger.of(context).showSnackBar(
-                                          SnackBar(content: Text('Could not launch $url')),
-                                        );
-                                      }
-                                    },
-                                  ),
+                                  IconButton( onPressed: () => _makePhoneCall( callLog["updated"]!,), icon: Icon(Icons.call, color: Colors.blue),),
 
 
                                   IconButton(
