@@ -1,4 +1,5 @@
 import 'package:api/allContacts/allContactsViewModel.dart';
+import 'package:api/constants/constantStyle.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:stacked/stacked.dart';
@@ -50,8 +51,8 @@ class _AllContactsViewState extends State<AllContactsView> {
           viewModelBuilder: () => AllContactsViewModal(),
           builder: (context, viewModel, child) {
             return Container(
-              padding: EdgeInsets.symmetric(vertical: 10.0),
-              decoration: BoxDecoration(
+              padding: const EdgeInsets.symmetric(vertical: 10.0),
+              decoration: const BoxDecoration(
                 color: Colors.white,
                 borderRadius: BorderRadius.only(
                   topLeft: Radius.circular(20.0),
@@ -76,7 +77,6 @@ class _AllContactsViewState extends State<AllContactsView> {
       },
     );
   }
-
   Widget _buildListItem(BuildContext context, IconData icon, String text, Color iconColor, void Function() callback) {
     return ListTile(
       leading: Icon(icon, color: iconColor),
@@ -86,15 +86,14 @@ class _AllContactsViewState extends State<AllContactsView> {
       },
     );
   }
-
   @override
   Widget build(BuildContext context) {
     return ViewModelBuilder<AllContactsViewModal>.reactive(viewModelBuilder: () => AllContactsViewModal(),
       builder: (context, viewModel, child) {
         return Scaffold(
           appBar: AppBar(
-            iconTheme: IconThemeData(color: Colors.white),
-            title: Row(
+            iconTheme: const IconThemeData(color: Colors.white),
+            title: const Row(
               children: [
                 Text(
                   'Caller List',
@@ -110,18 +109,15 @@ class _AllContactsViewState extends State<AllContactsView> {
                 //   child: IconButton(onPressed: () {}, icon: Icon(Icons.more_vert_outlined)),
                 // ),
               ],
-
             ),
             actions: [
               IconButton(onPressed: () {
                 viewModel.NavigateTOFilterView();
-
-              }, icon: Icon(Icons.filter_list,color: Colors.white,)),
+              }, icon: const Icon(Icons.filter_list,color: Colors.white,)),
               IconButton(
-                icon: Icon(Icons.more_vert, color: Colors.white),
+                icon: const Icon(Icons.more_vert, color: Colors.white),
                 onPressed: () => _showModalBottomSheet(context),
               ),
-
             ],
             flexibleSpace: Container(
               decoration: BoxDecoration(
@@ -133,7 +129,6 @@ class _AllContactsViewState extends State<AllContactsView> {
               ),
             ),
           ),
-
           body: Padding(
             padding: const EdgeInsets.all(8.0),
             child: Column(
@@ -143,7 +138,7 @@ class _AllContactsViewState extends State<AllContactsView> {
                   child: TextField(
                     decoration: InputDecoration(
                       hintText: 'Search',
-                      prefixIcon: Icon(Icons.search),
+                      prefixIcon: const Icon(Icons.search),
                       border: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(12),
                       ),
@@ -154,109 +149,135 @@ class _AllContactsViewState extends State<AllContactsView> {
                   child: ListView.builder(
                     itemCount: contacts.length,
                     itemBuilder: (context, index) {
-
-                      return Card(
-                        surfaceTintColor: Colors.white,
-                        color: Colors.white,
-                        margin: EdgeInsets.symmetric(vertical: 5, horizontal: 1),
-                        elevation: 2,
-                        shadowColor: Colors.orangeAccent,
-                        shape: RoundedRectangleBorder(
-                          side: BorderSide(
-                            color: Colors.orangeAccent.withOpacity(0.05),
-                          ),
-                          borderRadius: BorderRadius.only(
-                            topLeft: Radius.circular(32),
-                            bottomRight: Radius.circular(32),
-                          ),
-                        ),
-                        child: Padding(
-                          padding: const EdgeInsets.all(16.0),
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Row(
+                      return Padding(
+                        padding: const EdgeInsets.only(top: 5),
+                        child: Container(
+                          decoration: containerdesign.decoration,
+                          child: Card(
+                            surfaceTintColor: Colors.white,
+                            color: Colors.white,
+                            margin: const EdgeInsets.symmetric(vertical: 3, horizontal: 1),
+                            elevation: 2,
+                            shadowColor: Colors.orangeAccent,
+                            shape: RoundedRectangleBorder(
+                              side: BorderSide(
+                                color: Colors.orangeAccent.withOpacity(0.05),
+                              ),
+                              borderRadius: const BorderRadius.only(
+                                topLeft: Radius.circular(32),
+                                bottomRight: Radius.circular(32),
+                              ),
+                            ),
+                            child: Padding(
+                              padding: const EdgeInsets.all(16.0),
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
-                                  CircleAvatar(
-                                    child: Text(contacts[index]['name']![0],style: TextStyle(fontWeight: FontWeight.bold,color: Colors.white),),
-                                    backgroundColor: Colors.orangeAccent,
-                                  ),
-                                  SizedBox(width: 10),
-                                  Column(
+                                  Row(
                                     children: [
-                                      Text(
-                                        '${contacts[index]['name']} . F',
-                                        style: TextStyle(
-                                          fontWeight: FontWeight.bold,
-                                          fontSize: 16,
-                                        ),
+                                      CircleAvatar(
+                                        child: Text(contacts[index]['name']![0],style: const TextStyle(fontWeight: FontWeight.bold,color: Colors.white),),
+                                        backgroundColor: Colors.orangeAccent,
+                                      ),
+                                      const SizedBox(width: 10),
+                                      Column(
+                                        children: [
+                                          Text(
+                                            '${contacts[index]['name']} . F',
+                                            style: const TextStyle(
+                                              fontWeight: FontWeight.bold,
+                                              fontSize: 16,
+                                            ),
+                                          ),
+                                          Padding(
+                                            padding: const EdgeInsets.only(right: 30),
+                                            child: Text(contacts[index]['phone']!,
+                                                style: const TextStyle(fontWeight: FontWeight.bold)),
+                                          ),
+                                        ],
                                       ),
                                       Padding(
-                                        padding: const EdgeInsets.only(right: 30),
-                                        child: Text(contacts[index]['phone']!,
-                                            style: TextStyle(fontWeight: FontWeight.bold)),
+                                        padding: const EdgeInsets.only(left: 80),
+                                        child: Row(
+                                          mainAxisAlignment: MainAxisAlignment.end,
+                                          children: [
+                                            IconButton(
+                                              onPressed: () {
+                                                viewModel.navigateToKundliView();
+                                              },
+                                              icon: const FaIcon(FontAwesomeIcons.om),
+                                              iconSize: 20,
+                                              color: Colors.green,
+                                            ),
+                                            IconButton(onPressed: () {
+                                              viewModel.navigateToRegisterNewUser();
+
+                                            },
+                                              icon: const Icon(Icons.edit,color: Colors.orangeAccent,size: 20,),
+                                            ),
+                                          ],
+                                        ),
                                       ),
                                     ],
                                   ),
-                                  Padding(
-                                    padding: const EdgeInsets.only(left: 60),
-                                    child: Row(
-                                      children: [
-                                        IconButton(onPressed: () {
-                                          viewModel.navigateToKundliView();
+                                  const SizedBox(height: 10),
+                                  const Divider(),
+                                  Row(
+                                    children: [
+                                      const Text('Location : ',style: TextStyle(color: Colors.grey,fontWeight: FontWeight.bold)),
+                                      Text(contacts[index]['location']!,style: const TextStyle(fontWeight: FontWeight.bold)),
+                                    ],
+                                  ),
+                                  Row(
+                                    children: [
+                                      const Text('Details : ',style: TextStyle(color: Colors.grey,fontWeight: FontWeight.bold)),
+                                      Text(contacts[index]['details']!,style: const TextStyle(fontWeight: FontWeight.bold)),
+                                    ],
+                                  ),
+                                  const Divider(),
+                                  Row(
+                                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                    children: [
+                                      Column(
+                                        children: [
+                                          const Text('Update at: ',style: TextStyle(color: Colors.grey,fontWeight: FontWeight.bold)),
+                                          Text(' ${contacts[index]['update']}',style: const TextStyle(fontWeight: FontWeight.bold)),
+                                        ],
+                                      ),
+                                      Column(
+                                        children: [
+                                          const Text('Register at: ',style: TextStyle(color: Colors.grey,fontWeight: FontWeight.bold)),
+                                          Text(' ${contacts[index]['register']}',style: const TextStyle(fontWeight: FontWeight.bold)),
+                                        ],
+                                      ),
+                                      Column(
+                                        children: [
+                                          const Text('Registered By: ',style: TextStyle(color: Colors.grey,fontWeight: FontWeight.bold)),
+                                          Text(' ${contacts[index]['registeredBy']}',style: const TextStyle(fontWeight: FontWeight.bold)),
+                                        ],
+                                      ),
+                                    ],
+                                  ),
+                                  Divider(color: Colors.orange,),
+                                  Row(
+                                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                    children: [
+                                      IconButton(onPressed: () {
+                                        viewModel.navigateToKundliView();
 
-                                        }, icon: Icon(Icons.call,color: Colors.orangeAccent,),
-                                        ),
-                                        IconButton(
-                                          onPressed: () {},
-                                          icon: FaIcon(FontAwesomeIcons.whatsapp),
-                                          iconSize: 40.0,
-                                          color: Colors.green,
-                                        ),
-                                      ],
-                                    ),
-                                  ),
-                                ],
-                              ),
-                              SizedBox(height: 10),
-                              Divider(),
-                              Row(
-                                children: [
-                                  Text('Location : ',style: TextStyle(color: Colors.grey,fontWeight: FontWeight.bold)),
-                                  Text(contacts[index]['location']!,style: TextStyle(fontWeight: FontWeight.bold)),
-                                ],
-                              ),
-                              Row(
-                                children: [
-                                  Text('Details : ',style: TextStyle(color: Colors.grey,fontWeight: FontWeight.bold)),
-                                  Text(contacts[index]['details']!,style: TextStyle(fontWeight: FontWeight.bold)),
-                                ],
-                              ),
-                              Divider(),
-                              Row(
-                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                children: [
-                                  Column(
-                                    children: [
-                                      Text('Update at: ',style: TextStyle(color: Colors.grey,fontWeight: FontWeight.bold)),
-                                      Text(' ${contacts[index]['update']}',style: TextStyle(fontWeight: FontWeight.bold)),
-                                    ],
-                                  ),
-                                  Column(
-                                    children: [
-                                      Text('Register at: ',style: TextStyle(color: Colors.grey,fontWeight: FontWeight.bold)),
-                                      Text(' ${contacts[index]['register']}',style: TextStyle(fontWeight: FontWeight.bold)),
-                                    ],
-                                  ),
-                                  Column(
-                                    children: [
-                                      Text('Registered By: ',style: TextStyle(color: Colors.grey,fontWeight: FontWeight.bold)),
-                                      Text(' ${contacts[index]['registeredBy']}',style: TextStyle(fontWeight: FontWeight.bold)),
+                                      }, icon: const Icon(Icons.call,color: Colors.orangeAccent,),
+                                      ),
+                                      IconButton(
+                                        onPressed: () {},
+                                        icon: const FaIcon(FontAwesomeIcons.whatsapp),
+                                        iconSize: 25,
+                                        color: Colors.green,
+                                      ),
                                     ],
                                   ),
                                 ],
                               ),
-                            ],
+                            ),
                           ),
                         ),
                       );
