@@ -15,10 +15,10 @@ class KundliView extends StatefulWidget {
 class _KundliViewState extends State<KundliView> {
   // Define a list of tabs and their content
   final List<Map<String, dynamic>> tabs = [
-    {'title': 'Lagna Chark', 'content': 'Lagna Chark Content'},
-    {'title': 'Maha Dasha', 'content': 'Maha Dasha Content'},
-    {'title': 'Tab 1', 'content': 'Content for Tab 1'},
-    {'title': 'Tab 2', 'content': 'Content for Tab 2'},
+    {'title': 'Lagna Chark', 'content': 'Lagna Chark Content', 'image':'assets/images/kundliimage.png'},
+    {'title': 'Maha Dasha', 'content': 'Maha Dasha Content','image':'assets/images/kundliimage.png'},
+    {'title': 'Tab 1', 'content': 'Content for Tab 1','image':'assets/images/kundliimage.png'},
+    {'title': 'Tab 2', 'content': 'Content for Tab 2','image':'assets/images/kundliimage.png'},
   ];
 
   // Define a list of dynamic text for the cards
@@ -360,7 +360,7 @@ class _KundliViewState extends State<KundliView> {
             ),
             body: SingleChildScrollView(
               child: Column(
-                children: [
+                children: <Widget>[
                   Padding(
                     padding: const EdgeInsets.all(8.0),
                     child: Container(
@@ -493,7 +493,9 @@ class _KundliViewState extends State<KundliView> {
                               unselectedLabelStyle: const TextStyle(fontSize: 13),
                               labelColor: Colors.white,
                               unselectedLabelColor: Colors.black54,
-                              tabs: tabs.map((tab) => Tab(text: tab['title'])).toList(),
+                              tabs: tabs.map((tab) => Tab(text: tab['title'],)).toList(),
+
+
                             ),
                           ),
                         ),
@@ -501,10 +503,17 @@ class _KundliViewState extends State<KundliView> {
                           height: 300,
                           child: TabBarView(
                             children: tabs.map((tab) {
-                              return Center(
-                                child: Text(
-                                  tab['content'],
-                                  style: TextStyle(fontSize: 16, color: Colors.grey.shade800),
+                              return SingleChildScrollView(
+                                child: Center(
+                                  child: Column(
+                                    children: [
+                                      Text(
+                                        tab['content'],
+                                        style: TextStyle(fontSize: 16, color: Colors.grey.shade800),
+                                      ),
+                                      Image(image: AssetImage(tab['image'],),fit:BoxFit.cover),
+                                    ],
+                                  ),
                                 ),
                               );
                             }).toList(),
@@ -560,24 +569,28 @@ class _KundliViewState extends State<KundliView> {
 
   // Helper method to create individual text cards
   Widget buildTextCard(String text) {
-    return Card(
-      surfaceTintColor: Colors.white,
-      shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(10.0),
-      ),
-      elevation: 3,
-      margin: const EdgeInsets.all(6),
-      color: Colors.white,
-      child: Padding(
-        padding: const EdgeInsets.all(8),
-        child: Text(
-          text,
-          style: const TextStyle(
-            color: Colors.green,
-            fontSize: 16,
+    return Column(
+      children: [
+        Card(
+          surfaceTintColor: Colors.white,
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(10.0),
+          ),
+          elevation: 3,
+          margin: const EdgeInsets.all(6),
+          color: Colors.white,
+          child: Padding(
+            padding: const EdgeInsets.all(8),
+            child: Text(
+              text,
+              style: const TextStyle(
+                color: Colors.green,
+                fontSize: 16,
+              ),
+            ),
           ),
         ),
-      ),
+      ],
     );
   }
 }
