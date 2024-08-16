@@ -34,7 +34,10 @@ final Container containerdesign= Container(
 );
 
 const InputDecoration kTextFormFieldDecoration = InputDecoration(
+
+
     focusedBorder: OutlineInputBorder(
+
       borderRadius: BorderRadius.all(Radius.circular(10)),
       borderSide: BorderSide(
         color: Colors.blueAccent,// Focused blue border colo258/369*-+
@@ -65,12 +68,17 @@ const InputDecoration kTextFormFieldDecoration = InputDecoration(
     //   color: Colors.redAccent,
     //   fontWeight: FontWeight.bold,
     // ),
-    errorBorder:OutlineInputBorder(
-      borderRadius: BorderRadius.all(Radius.circular(10)),  borderSide: BorderSide(
-        color: Colors.red,
-        width: 1,
-      ),
-    )
+    errorBorder: UnderlineInputBorder(
+      borderSide: BorderSide(color: Colors.red),
+
+
+    ),
+  // OutlineInputBorder(
+    //   borderRadius: BorderRadius.all(Radius.circular(10)),  borderSide: BorderSide(
+    //     color: Colors.red,
+    //     width: 1,
+    //   ),
+    // )
 
 
 );

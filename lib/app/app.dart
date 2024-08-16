@@ -35,7 +35,7 @@ import '../updateList/updateListView.dart';
 
     MaterialRoute(page: AgentView,initial:false),
     MaterialRoute(page: CallerLogsView,initial: false),
-    MaterialRoute(page: SingUpView,initial: false),
+    MaterialRoute(page: SignUpView,initial: false),
     MaterialRoute(page: LoginView,initial: false),
     MaterialRoute(page: LoginOrRegisterView,initial: true),
     MaterialRoute(page: ProfileView,initial: false),

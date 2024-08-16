@@ -39,7 +39,7 @@ class Routes {
 
   static const callerLogsView = '/caller-logs-view';
 
-  static const singUpView = '/sing-up-view';
+  static const signUpView = '/sign-up-view';
 
   static const loginView = '/login-view';
 
@@ -75,7 +75,7 @@ class Routes {
     firstViewScreen,
     agentView,
     callerLogsView,
-    singUpView,
+    signUpView,
     loginView,
     loginOrRegisterView,
     profileView,
@@ -109,8 +109,8 @@ class StackedRouter extends _i1.RouterBase {
       page: _i4.CallerLogsView,
     ),
     _i1.RouteDef(
-      Routes.singUpView,
-      page: _i5.SingUpView,
+      Routes.signUpView,
+      page: _i5.SignUpView,
     ),
     _i1.RouteDef(
       Routes.loginView,
@@ -193,9 +193,9 @@ class StackedRouter extends _i1.RouterBase {
         settings: data,
       );
     },
-    _i5.SingUpView: (data) {
+    _i5.SignUpView: (data) {
       return _i21.MaterialPageRoute<dynamic>(
-        builder: (context) => const _i5.SingUpView(),
+        builder: (context) => const _i5.SignUpView(),
         settings: data,
       );
     },
@@ -341,14 +341,14 @@ extension NavigatorStateExtension on _i22.NavigationService {
         transition: transition);
   }
 
-  Future<dynamic> navigateToSingUpView([
+  Future<dynamic> navigateToSignUpView([
     int? routerId,
     bool preventDuplicates = true,
     Map<String, String>? parameters,
     Widget Function(BuildContext, Animation<double>, Animation<double>, Widget)?
         transition,
   ]) async {
-    return navigateTo<dynamic>(Routes.singUpView,
+    return navigateTo<dynamic>(Routes.signUpView,
         id: routerId,
         preventDuplicates: preventDuplicates,
         parameters: parameters,
@@ -607,14 +607,14 @@ extension NavigatorStateExtension on _i22.NavigationService {
         transition: transition);
   }
 
-  Future<dynamic> replaceWithSingUpView([
+  Future<dynamic> replaceWithSignUpView([
     int? routerId,
     bool preventDuplicates = true,
     Map<String, String>? parameters,
     Widget Function(BuildContext, Animation<double>, Animation<double>, Widget)?
         transition,
   ]) async {
-    return replaceWith<dynamic>(Routes.singUpView,
+    return replaceWith<dynamic>(Routes.signUpView,
         id: routerId,
         preventDuplicates: preventDuplicates,
         parameters: parameters,
