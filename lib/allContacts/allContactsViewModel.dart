@@ -5,9 +5,9 @@ import 'package:stacked_services/stacked_services.dart';
 
 class AllContactsViewModal extends BaseViewModel{
   final NavigationService _navigationService = locator<NavigationService>();
-
+  //
   void NavigateTOFilterView() async {
-    await _navigationService.navigateToFilterDialog();
+    await _navigationService.navigateToFilterDialogView();
   }
   void NavigateTOAllCaller() async {
     await _navigationService.navigateToAllContactsView();
