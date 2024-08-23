@@ -1,43 +1,93 @@
+// To parse this JSON data, do
+//
+//     final updateProfileModel = updateProfileModelFromJson(jsonString);
+
+import 'dart:convert';
+
+UpdateProfileModel updateProfileModelFromJson(String str) => UpdateProfileModel.fromJson(json.decode(str));
+
+String updateProfileModelToJson(UpdateProfileModel data) => json.encode(data.toJson());
+
 class UpdateProfileModel {
-  bool? status;
-  String? message;
-  Data? data;
+  bool status;
+  String message;
+  Data data;
 
   UpdateProfileModel({
-    this.status,
-    this.message,
-    this.data,
+    required   this.status,
+    required this.message,
+    required this.data,
   });
 
+  factory UpdateProfileModel.fromJson(Map<String, dynamic> json) => UpdateProfileModel(
+    status: json["status"],
+    message: json["message"],
+    data: Data.fromJson(json["data"]),
+  );
+
+  Map<String, dynamic> toJson() => {
+    "status": status,
+    "message": message,
+    "data": data.toJson(),
+  };
 }
 
 class Data {
-  int? id;
-  String? name;
-  String? email;
+  int id;
+  String name;
+  String email;
   dynamic emailVerifiedAt;
-  String? mobile;
-  DateTime? createdAt;
-  DateTime? updatedAt;
-  String? address;
-  String? image;
+  String mobile;
+  DateTime createdAt;
+  DateTime updatedAt;
+  String address;
+  String image;
   dynamic roleId;
-  String? isActive;
-  DateTime? lastLogin;
+  String isActive;
+  DateTime lastLogin;
 
   Data({
-    this.id,
-    this.name,
-    this.email,
-    this.emailVerifiedAt,
-    this.mobile,
-    this.createdAt,
-    this.updatedAt,
-    this.address,
-    this.image,
-    this.roleId,
-    this.isActive,
-    this.lastLogin,
+    required this.id,
+    required this.name,
+    required  this.email,
+    required this.emailVerifiedAt,
+    required this.mobile,
+    required this.createdAt,
+    required this.updatedAt,
+    required this.address,
+    required this.image,
+    required  this.roleId,
+    required this.isActive,
+    required this.lastLogin,
   });
 
+  factory Data.fromJson(Map<String, dynamic> json) => Data(
+    id: json["id"],
+    name: json["name"],
+    email: json["email"],
+    emailVerifiedAt: json["email_verified_at"],
+    mobile: json["mobile"],
+    createdAt: DateTime.parse(json["created_at"]),
+    updatedAt: DateTime.parse(json["updated_at"]),
+    address: json["address"],
+    image: json["image"],
+    roleId: json["role_id"],
+    isActive: json["is_active"],
+    lastLogin: DateTime.parse(json["last_login"]),
+  );
+
+  Map<String, dynamic> toJson() => {
+    "id": id,
+    "name": name,
+    "email": email,
+    "email_verified_at": emailVerifiedAt,
+    "mobile": mobile,
+    "created_at": createdAt.toIso8601String(),
+    "updated_at": updatedAt.toIso8601String(),
+    "address": address,
+    "image": image,
+    "role_id": roleId,
+    "is_active": isActive,
+    "last_login": lastLogin.toIso8601String(),
+  };
 }

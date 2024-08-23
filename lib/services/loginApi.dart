@@ -1,15 +1,12 @@
 import 'package:dio/dio.dart';
+
 import '../constants/apiconstants.dart';
-import '../models/course_model.dart';
+import '../models/loginModel.dart';
 import 'api.dart';
 
-class CourseApi extends Api {
-  // CourseList? _loginModel;
-  CourseList? _courselists;
-
-
-
-  Future<CourseList?> getCourseList() async {
+class LoginApi extends Api{
+  LoginModel? _loginModel;
+  Future<LoginModel?> getCourseList() async {
     try {
       Response response = await Client.get(
         ApiConstants.Course_URL,
@@ -17,9 +14,9 @@ class CourseApi extends Api {
       );
       print("Response ${response.statusCode}");
       if (response.statusCode == 200) {
-        _courselists= CourseList.fromJson(response.data);
-        print("loginModel data in loginModel Api 2 ${_courselists!.toJson()}");
-        return _courselists;
+        _loginModel= LoginModel.fromJson(response.data);
+        print("loginModel data in loginModel Api 2 ${_loginModel!.toJson()}");
+        return _loginModel;
       }
     }
     on DioError catch (e) {
@@ -34,5 +31,5 @@ class CourseApi extends Api {
     }
     return null;
   }
-}
 
+}
