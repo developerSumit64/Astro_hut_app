@@ -4,9 +4,10 @@ class ApiConstants {
 
 static const String Register = "/register";
 static const String Login = "/login";
-static const String CategoryList = "/register";
-static const String SubCategoryList = "/register";
-static const String GetProfile = "/register";
+static const String CategoryList = "/category-list";
+static const String SubCategoryList = "/subcategory-list";
+static const String GetProfile = "/get-profile/1";
+static const String UpdateProfile = "/update-profile";
 
 
 }
