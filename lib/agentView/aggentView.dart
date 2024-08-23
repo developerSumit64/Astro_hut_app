@@ -1,4 +1,5 @@
 import 'package:api/agentView/agentViewModel.dart';
+import 'package:api/constants/constantStyle.dart';
 import 'package:flutter/material.dart';
 import 'package:stacked/stacked.dart';
 
@@ -86,7 +87,7 @@ class _AgentViewState extends State<AgentView> {
              flexibleSpace: Container(
                decoration: BoxDecoration(
                  gradient: LinearGradient(
-                   colors: [Colors.orange, Colors.orange.shade400],
+                   colors: [Colors.orange, Colors.orange.shade300],
                    begin: Alignment.topLeft,
                    end: Alignment.bottomRight,
                  ),
@@ -120,108 +121,112 @@ class _AgentViewState extends State<AgentView> {
                  onTap: () {
                    viewModel.NavigateToUpadteLIstAgent();
                  },
-                 child: Card(
-                   surfaceTintColor: Colors.white,
-                   color: Colors.white,
-                   margin: EdgeInsets.symmetric(vertical: 8),
-                   elevation: 1,
-                   shape: RoundedRectangleBorder(
-                     borderRadius: BorderRadius.circular(10),
-                   ),
-                   child: Stack(
-                     children: [
-                       Padding(
-                         padding: const EdgeInsets.all(8.0),
-                         child: Row(
-                           crossAxisAlignment: CrossAxisAlignment.start,
-                           children: [
-                             // Profile picture
-                             CircleAvatar(
-                               radius: 23,
-                               backgroundColor: Colors.transparent,
-                               child: ClipOval(
-                                 child: Image.asset(
-                                   "assets/images/profile.jpeg",
-                                   fit: BoxFit.cover,
+                 child: Container(
+                   decoration: containerdesign.decoration,
+                   child: Card(
+                     surfaceTintColor: Colors.white,
+                     color: Colors.white,
+                     margin: EdgeInsets.symmetric(vertical: 3, horizontal:1),
+                     elevation: 1,
+                     shape: RoundedRectangleBorder(borderRadius: BorderRadius.only(
+                       topLeft: Radius.circular(32),
+                       bottomRight: Radius.circular(32),
+                     ),),
+                     child: Stack(
+                       children: [
+                         Padding(
+                           padding: const EdgeInsets.all(8.0),
+                           child: Row(
+                             crossAxisAlignment: CrossAxisAlignment.start,
+                             children: [
+                               // Profile picture
+                               CircleAvatar(
+                                 radius: 23,
+                                 backgroundColor: Colors.transparent,
+                                 child: ClipOval(
+                                   child: Image.asset(
+                                     "assets/images/profile.jpeg",
+                                     fit: BoxFit.cover,
+                                   ),
                                  ),
                                ),
+                               SizedBox(width: 12), // Space between profile and text
+                               Expanded(
+                                 child: Column(
+                                   crossAxisAlignment: CrossAxisAlignment.start,
+                                   children: [
+                                     // Name
+                                     Row(
+                                       children: [
+                                         Text(
+                                           'Name: ',
+                                           style: TextStyle(
+                                             color: Colors.black54,
+                                             // fontWeight: FontWeight.bold,
+                                             fontSize: 14,
+                                             letterSpacing: 1,
+                                           ),
+                                         ),
+                                         Text(
+                                           '${agents[index].name}',
+                                           style: TextStyle(
+                                             fontWeight: FontWeight.w500,
+                                             letterSpacing: 1,
+                                             fontSize: 15,
+                                             wordSpacing: 1,
+                                           ),
+                                         ),
+                                       ],
+                                     ),
+                                     SizedBox(height: 8), // Space between name and number
+                                     // Number
+                                     Row(
+                                       children: [
+                                         Text(
+                                           'Number: ',
+                                           style: TextStyle(
+                                             letterSpacing: 1,
+                                             color: Colors.black54,
+                                             // fontWeight: FontWeight.bold,
+                                             fontSize: 14,
+                                           ),
+                                         ),
+                                         Text(
+                                           '${agents[index].number}',
+                                           style: TextStyle(
+                                             fontWeight: FontWeight.w500,
+                                             letterSpacing: 1,
+                                           ),
+                                         ),
+                                       ],
+                                     ),
+                                   ],
+                                 ),
+                               ),
+                             ],
+                           ),
+                         ),
+                         Positioned(
+                           bottom: 7,
+                           right: 15,
+                           child: Container(
+                             padding: EdgeInsets.symmetric(vertical: 4, horizontal: 8),
+                             decoration: BoxDecoration(
+                               color: Colors.blueAccent.withOpacity(0.1),
+                               borderRadius: BorderRadius.circular(8),
                              ),
-                             SizedBox(width: 12), // Space between profile and text
-                             Expanded(
-                               child: Column(
-                                 crossAxisAlignment: CrossAxisAlignment.start,
-                                 children: [
-                                   // Name
-                                   Row(
-                                     children: [
-                                       Text(
-                                         'Name: ',
-                                         style: TextStyle(
-                                           color: Colors.black54,
-                                           // fontWeight: FontWeight.bold,
-                                           fontSize: 14,
-                                           letterSpacing: 1,
-                                         ),
-                                       ),
-                                       Text(
-                                         '${agents[index].name}',
-                                         style: TextStyle(
-                                           fontWeight: FontWeight.w500,
-                                           letterSpacing: 1,
-                                           fontSize: 15,
-                                           wordSpacing: 1,
-                                         ),
-                                       ),
-                                     ],
-                                   ),
-                                   SizedBox(height: 8), // Space between name and number
-                                   // Number
-                                   Row(
-                                     children: [
-                                       Text(
-                                         'Number: ',
-                                         style: TextStyle(
-                                           letterSpacing: 1,
-                                           color: Colors.black54,
-                                           // fontWeight: FontWeight.bold,
-                                           fontSize: 14,
-                                         ),
-                                       ),
-                                       Text(
-                                         '${agents[index].number}',
-                                         style: TextStyle(
-                                           fontWeight: FontWeight.w500,
-                                           letterSpacing: 1,
-                                         ),
-                                       ),
-                                     ],
-                                   ),
-                                 ],
+                             child: Text(
+                               agents[index].role,
+                               style: TextStyle(
+                                 fontSize: 12,
+                                 color: Colors.orange.shade400,
+                                 fontWeight: FontWeight.bold,
                                ),
                              ),
-                           ],
-                         ),
-                       ),
-                       Positioned(
-                         bottom: 7,
-                         right: 8,
-                         child: Container(
-                           padding: EdgeInsets.symmetric(vertical: 4, horizontal: 8),
-                           decoration: BoxDecoration(
-                             color: Colors.blueAccent.withOpacity(0.1),
-                             borderRadius: BorderRadius.circular(8),
-                           ),
-                           child: Text(
-                             agents[index].role,
-                             style: TextStyle(
-                               fontSize: 12,
-                               color: Colors.blueAccent,
-                               fontWeight: FontWeight.bold,
-                             ),
                            ),
                          ),
-                       ),
-                     ],
+                       ],
+                     ),
                    ),
                  ),
                );

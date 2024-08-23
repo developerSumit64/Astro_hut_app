@@ -7,9 +7,11 @@ class CourseApi extends Api {
   // CourseList? _loginModel;
   CourseList? _courselists;
 
+
+
   Future<CourseList?> getCourseList() async {
     try {
-      Response response = await stuClient.get(
+      Response response = await Client.get(
         ApiConstants.Course_URL,
 
       );

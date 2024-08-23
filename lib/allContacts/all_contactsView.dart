@@ -1,5 +1,7 @@
 import 'package:api/allContacts/allContactsViewModel.dart';
+import 'package:api/constants/constantStyle.dart';
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:stacked/stacked.dart';
 
 import '../updateList/updateListView.dart';
@@ -90,178 +92,206 @@ class _AllContactsViewState extends State<AllContactsView> {
   @override
   Widget build(BuildContext context) {
     return ViewModelBuilder<AllContactsViewModal>.reactive(viewModelBuilder: () => AllContactsViewModal(),
-        builder: (context, viewModel, child) {
-          return Scaffold(
-            appBar: AppBar(
-              iconTheme: const IconThemeData(color: Colors.white),
-              title: const Row(
-                children: [
-                  Text(
-                    'Caller List',
-                    style: TextStyle(
-                      fontSize: 20,
-                      letterSpacing: 1,
-                      color: Colors.white,
-                      // fontWeight: FontWeight.bold,
-                    ),
+      builder: (context, viewModel, child) {
+        return Scaffold(
+          appBar: AppBar(
+            iconTheme: const IconThemeData(color: Colors.white),
+            title: const Row(
+              children: [
+                Text(
+                  'Caller List',
+                  style: TextStyle(
+                    fontSize: 20,
+                    letterSpacing: 1,
+                    color: Colors.white,
+                    // fontWeight: FontWeight.bold,
                   ),
-                  // Padding(
-                  //   padding:  EdgeInsets.only(left: 90),
-                  //   child: IconButton(onPressed: () {}, icon: Icon(Icons.more_vert_outlined)),
-                  // ),
-                ],
-
-              ),
-              actions: [
-                IconButton(onPressed: () {
-                  viewModel.NavigateTOFilterView();
-
-                }, icon: const Icon(Icons.filter_list,color: Colors.white,)),
-                IconButton(
-                  icon: const Icon(Icons.more_vert, color: Colors.white),
-                  onPressed: () => _showModalBottomSheet(context),
                 ),
-
+                // Padding(
+                //   padding:  EdgeInsets.only(left: 90),
+                //   child: IconButton(onPressed: () {}, icon: Icon(Icons.more_vert_outlined)),
+                // ),
               ],
-              flexibleSpace: Container(
-                decoration: BoxDecoration(
-                  gradient: LinearGradient(
-                    colors: [Colors.orange, Colors.orange.shade400],
-                    begin: Alignment.topLeft,
-                    end: Alignment.bottomRight,
-                  ),
+            ),
+            actions: [
+              IconButton(onPressed: () {
+                viewModel.NavigateTOFilterView();
+              }, icon: const Icon(Icons.filter_list,color: Colors.white,)),
+              IconButton(
+                icon: const Icon(Icons.more_vert, color: Colors.white),
+                onPressed: () => _showModalBottomSheet(context),
+              ),
+            ],
+            flexibleSpace: Container(
+              decoration: BoxDecoration(
+                gradient: LinearGradient(
+                  colors: [Colors.orange, Colors.orange.shade400],
+                  begin: Alignment.topLeft,
+                  end: Alignment.bottomRight,
                 ),
               ),
             ),
-
-            body: Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: Column(
-                children: [
-                  SizedBox(
-                    height: 50,
-                    child: TextField(
-                      decoration: InputDecoration(
-                        hintText: 'Search',
-                        prefixIcon: const Icon(Icons.search),
-                        border: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(12),
-                        ),
+          ),
+          body: Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Column(
+              children: [
+                SizedBox(
+                  height: 50,
+                  child: TextField(
+                    decoration: InputDecoration(
+                      hintText: 'Search',
+                      prefixIcon: const Icon(Icons.search),
+                      border: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(12),
                       ),
                     ),
                   ),
-                  Expanded(
-                    child: ListView.builder(
-                      itemCount: contacts.length,
-                      itemBuilder: (context, index) {
-
-                        return Card(
-                          surfaceTintColor: Colors.white,
-                          color: Colors.white,
-                          margin: const EdgeInsets.symmetric(vertical: 5, horizontal: 1),
-                          elevation: 0.5,
-                          shape: RoundedRectangleBorder(
-                            side: BorderSide(
-                              color: Colors.black12.withOpacity(0.05),
+                ),
+                Expanded(
+                  child: ListView.builder(
+                    itemCount: contacts.length,
+                    itemBuilder: (context, index) {
+                      return Padding(
+                        padding: const EdgeInsets.only(top: 5),
+                        child: Container(
+                          decoration: containerdesign.decoration,
+                          child: Card(
+                            surfaceTintColor: Colors.white,
+                            color: Colors.white,
+                            margin: const EdgeInsets.symmetric(vertical: 3, horizontal: 1),
+                            elevation: 2,
+                            shadowColor: Colors.orangeAccent,
+                            shape: RoundedRectangleBorder(
+                              side: BorderSide(
+                                color: Colors.orangeAccent.withOpacity(0.05),
+                              ),
+                              borderRadius: const BorderRadius.only(
+                                topLeft: Radius.circular(32),
+                                bottomRight: Radius.circular(32),
+                              ),
                             ),
-                            borderRadius: const BorderRadius.only(
-                              topLeft: Radius.circular(32),
-                              bottomRight: Radius.circular(32),
-                            ),
-                          ),
-                          child: Padding(
-                            padding: const EdgeInsets.all(16.0),
-                            child: Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Row(
-                                  children: [
-                                    CircleAvatar(
-                                      child: Text(contacts[index]['name']![0]),
-                                    ),
-                                    const SizedBox(width: 10),
-                                    Column(
-                                      children: [
-                                        Text(
-                                          '${contacts[index]['name']} . F',
-                                          style: const TextStyle(
-                                            fontWeight: FontWeight.w500,
-                                            fontSize: 16,
-                                          ),
-                                        ),
-                                        Padding(
-                                          padding: const EdgeInsets.only(right: 30),
-                                          child: Text(contacts[index]['phone']!,
-                                              style: const TextStyle(fontWeight: FontWeight.w500)),
-                                        ),
-                                      ],
-                                    ),
-                                    Padding(
-                                      padding: const EdgeInsets.only(left: 60),
-                                      child: Row(
+                            child: Padding(
+                              padding: const EdgeInsets.all(16.0),
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Row(
+                                    children: [
+                                      CircleAvatar(
+                                        child: Text(contacts[index]['name']![0],style: const TextStyle(fontWeight: FontWeight.bold,color: Colors.white),),
+                                        backgroundColor: Colors.orangeAccent,
+                                      ),
+                                      const SizedBox(width: 10),
+                                      Column(
                                         children: [
-                                          IconButton(onPressed: () {
-                                            viewModel.navigateToKundliView();
-
-                                          }, icon: const Icon(Icons.call)),
-                                          IconButton(onPressed: () {}, icon: Image.asset('assets/icons/whatsapp.png',height: 30,)),
+                                          Text(
+                                            '${contacts[index]['name']} . F',
+                                            style: const TextStyle(
+                                              fontWeight: FontWeight.bold,
+                                              fontSize: 16,
+                                            ),
+                                          ),
+                                          Padding(
+                                            padding: const EdgeInsets.only(right: 30),
+                                            child: Text(contacts[index]['phone']!,
+                                                style: const TextStyle(fontWeight: FontWeight.bold)),
+                                          ),
                                         ],
                                       ),
-                                    ),
-                                  ],
-                                ),
-                                const SizedBox(height: 10),
-                                const Divider(),
-                                Row(
-                                  children: [
-                                    const Text('Location : ',style: TextStyle(color: Colors.black54)),
-                                    Text(contacts[index]['location']!,style: const TextStyle(fontWeight: FontWeight.w400)),
-                                  ],
-                                ),
-                                Row(
-                                  children: [
-                                    const Text('Details : ',style: TextStyle(color: Colors.black54)),
-                                    Text(contacts[index]['details']!,style: const TextStyle(fontWeight: FontWeight.w400)),
-                                  ],
-                                ),
-                                const Divider(),
-                                FittedBox(
-                                  child: Row(
+                                      Padding(
+                                        padding: const EdgeInsets.only(left: 80),
+                                        child: Row(
+                                          mainAxisAlignment: MainAxisAlignment.end,
+                                          children: [
+                                            IconButton(
+                                              onPressed: () {
+                                                viewModel.navigateToKundliView();
+                                              },
+                                              icon: const FaIcon(FontAwesomeIcons.om),
+                                              iconSize: 20,
+                                              color: Colors.green,
+                                            ),
+                                            IconButton(onPressed: () {
+                                              viewModel.navigateToRegisterNewUser();
+
+                                            },
+                                              icon: const Icon(Icons.edit,color: Colors.orangeAccent,size: 20,),
+                                            ),
+                                          ],
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                  const SizedBox(height: 10),
+                                  const Divider(),
+                                  Row(
+                                    children: [
+                                      const Text('Location : ',style: TextStyle(color: Colors.grey,fontWeight: FontWeight.bold)),
+                                      Text(contacts[index]['location']!,style: const TextStyle(fontWeight: FontWeight.bold)),
+                                    ],
+                                  ),
+                                  Row(
+                                    children: [
+                                      const Text('Details : ',style: TextStyle(color: Colors.grey,fontWeight: FontWeight.bold)),
+                                      Text(contacts[index]['details']!,style: const TextStyle(fontWeight: FontWeight.bold)),
+                                    ],
+                                  ),
+                                  const Divider(),
+                                  Row(
                                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                     children: [
                                       Column(
                                         children: [
-                                          const Text('Update at: ',style: TextStyle(color: Colors.black54)),
-                                          Text(' ${contacts[index]['update']}',style: const TextStyle(fontWeight: FontWeight.w400)),
+                                          const Text('Update at: ',style: TextStyle(color: Colors.grey,fontWeight: FontWeight.bold)),
+                                          Text(' ${contacts[index]['update']}',style: const TextStyle(fontWeight: FontWeight.bold)),
                                         ],
                                       ),
                                       Column(
                                         children: [
-                                          const Text('Register at: ',style: TextStyle(color: Colors.black54)),
-                                          Text(' ${contacts[index]['register']}',style: const TextStyle(fontWeight: FontWeight.w400)),
+                                          const Text('Register at: ',style: TextStyle(color: Colors.grey,fontWeight: FontWeight.bold)),
+                                          Text(' ${contacts[index]['register']}',style: const TextStyle(fontWeight: FontWeight.bold)),
                                         ],
                                       ),
                                       Column(
                                         children: [
-                                          const Text('Registered By: ',style: TextStyle(color: Colors.black54)),
-                                          Text(' ${contacts[index]['registeredBy']}',style: const TextStyle(fontWeight: FontWeight.w400)),
+                                          const Text('Registered By: ',style: TextStyle(color: Colors.grey,fontWeight: FontWeight.bold)),
+                                          Text(' ${contacts[index]['registeredBy']}',style: const TextStyle(fontWeight: FontWeight.bold)),
                                         ],
                                       ),
                                     ],
                                   ),
-                                ),
-                              ],
+                                  Divider(color: Colors.orange,),
+                                  Row(
+                                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                    children: [
+                                      IconButton(onPressed: () {
+                                        viewModel.navigateToKundliView();
+
+                                      }, icon: const Icon(Icons.call,color: Colors.orangeAccent,),
+                                      ),
+                                      IconButton(
+                                        onPressed: () {},
+                                        icon: const FaIcon(FontAwesomeIcons.whatsapp),
+                                        iconSize: 25,
+                                        color: Colors.green,
+                                      ),
+                                    ],
+                                  ),
+                                ],
+                              ),
                             ),
                           ),
-                        );
-                      },
-                    ),
+                        ),
+                      );
+                    },
                   ),
-                ],
-              ),
+                ),
+              ],
             ),
-          );
-        },);
+          ),
+        );
+      },);
   }
 }
 

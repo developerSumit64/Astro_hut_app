@@ -1,8 +1,6 @@
-
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-
-import '../constants/constantStyle.dart';
+import 'package:api/constants/constantStyle.dart';
 
 class ForgetPassword extends StatefulWidget {
   const ForgetPassword({Key? key}) : super(key: key);
@@ -11,169 +9,140 @@ class ForgetPassword extends StatefulWidget {
   State<ForgetPassword> createState() => _ForgetPasswordState();
 }
 
-class _ForgetPasswordState extends State<ForgetPassword> with SingleTickerProviderStateMixin {
+class _ForgetPasswordState extends State<ForgetPassword> {
   int state = 0;
   final _formKey = GlobalKey<FormState>();
-  final TextEditingController _regnoController = TextEditingController();
+
+  final TextEditingController _mobileEmailController = TextEditingController();
   final TextEditingController _otpController = TextEditingController();
-  // late AnimationController _animationController;
-  // late Animation<double> _animation;
-
-  @override
-  void initState() {
-    super.initState();
-    // _animationController = AnimationController(
-    //   duration: Duration(milliseconds: 2),
-    //   vsync: this,
-    // )..forward();
-    //
-    // _animation = CurvedAnimation(
-    //   parent: _animationController,
-    //   curve: Curves.linear,
-    // );
-  }
-
-  @override
-  void dispose() {
-  //   _animationController.dispose();
-  //   super.dispose();
-  }
 
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
     return Scaffold(
       appBar: AppBar(
-        // shadowColor: Colors.green.shade100,
-        centerTitle: true,
-        backgroundColor: Colors.blue.shade400,
-        elevation: 5.0,
-        title: Text('Reset Your Password',style: TextStyle(
-          color: Colors. white,
-          shadows: [
-            Shadow(
-              offset: Offset(1.0, 1.0),
-              blurRadius: 2.0,
-              color: Color.fromARGB(111, 0, 0, 0),
+        iconTheme: IconThemeData(color: Colors.white),
+        leading: IconButton(
+          icon: Icon(Icons.arrow_back),
+          onPressed: () {
+            Navigator.of(context).pop();
+          },
+        ),
+        flexibleSpace: Container(
+          decoration: BoxDecoration(
+            gradient: LinearGradient(
+              colors: [Colors.orange, Colors.orange.shade300],
+              begin: Alignment.topLeft,
+              end: Alignment.bottomRight,
             ),
-          ],
-        )),
+          ),
+        ),
+        centerTitle: true,
+        title: const Text(
+          'Reset Your Password',
+          style: TextStyle(color: Colors.white, letterSpacing: 1),
+        ),
       ),
-      body:
-
-      SingleChildScrollView(
-        child: Stack(
+      body: SingleChildScrollView(
+        child: Column(
           children: [
-            Image.asset(
-              "assets/background/MDUBAck.jpeg",
-              fit: BoxFit.cover,
-              height: size.height,
-            ),Padding(
-                padding: const EdgeInsets.only(top:80),
-                child: Column(
-                    children: [
-
-                      Container(
-                        height: 150,
-                        width: 200,
-                        decoration: BoxDecoration(
-                          shape: BoxShape.circle,
-                          image: DecorationImage(
-                            image: AssetImage("assets/background/forgetpasslogo.jpeg"),
-                          ),
-                        ),
+            Align(
+              alignment: Alignment.centerRight,
+              child: Image.asset(
+                'assets/images/corner_orange.png',
+                width: MediaQuery.of(context).size.width / 1.5,
+              ),
+            ),
+            Column(
+              children: [
+                Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Text(
+                      "Forgot Your Password",
+                      style: TextStyle(
+                        fontWeight: FontWeight.bold,
+                        letterSpacing: 1,
+                        color: Color(0xFFfb1530),
+                        fontSize: 21,
+                        wordSpacing: 1,
                       ),
-
-
-
-
-                      Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Padding(
-                            padding: const EdgeInsets.all(8.0),
-                            child: Text(
-                              "Forgot Your Password ",
-                              style: TextStyle(
-                                shadows: [
-                                  Shadow(
-                                    offset: Offset(1.0, 1.2),
-                                    blurRadius: 2.0,
-                                    color: Colors.green,
-                                  ),
-                                ],
-                                fontWeight: FontWeight.bold,
-                                letterSpacing: 1,
-                                color: Colors.blueAccent.shade400,
-                                fontSize: 21,
-                                wordSpacing: 1,
-                              ),
-                            ),
-                          ),
-                          Padding(
-                            padding: const EdgeInsets.all(18.0),
-                            child: Container(
-                              decoration: BoxDecoration(
-                                shape: BoxShape.rectangle,
-                                color: Colors.blue.shade50,
-                                borderRadius: BorderRadius.all(Radius.circular(22)),
-                                // gradient: LinearGradient(
-                                //   colors: [
-                                //     Colors.blue.shade50,
-                                //     Colors.blue.shade200,
-                                //   ],
-                                // ),
-
-                              ),
-                              child: Padding(
-                                padding: const EdgeInsets.all(16.0),
-                                child: Form(
-                                  key: _formKey,
-                                  child: Column(
-                                    children: [
-                                      SizedBox(height: 22),
-                                      Text(
-                                        "Enter your Registration number and we will send you an OTP to your registered mobile number to reset your password",
-                                        style: TextStyle(color: Colors.black45),
-                                        textAlign: TextAlign.center,
-                                      ),
-                                      Padding(
-                                        padding: const EdgeInsets.all(8.0),
-                                        child: SizedBox(height: 58,
-                                          child: TextFormField(
-                                            controller: _regnoController,
-                                            decoration: kTextFormFieldDecoration.copyWith(
-                                              hintText: "Mobile Number / Email id",
-                                              prefixIcon: Icon(
-                                                Icons.format_list_numbered,
-                                                color: Colors.blue.shade300,
-                                              ),
+                    ),
+                    SizedBox(height: 22),
+                    Text(
+                      "Enter your Mobile Number / Email id and we will send you an OTP to your registered mobile number to reset your password",
+                      style: TextStyle(color: Colors.deepOrange.shade300),
+                      textAlign: TextAlign.center,
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.only(
+                          bottom: 18, right: 18, left: 18, top: 45),
+                      child: Container(
+                        decoration: BoxDecoration(
+                          color: Color(0xFFFFAC06),
+                          borderRadius: BorderRadius.all(Radius.circular(22)),
+                        ),
+                        child: Column(
+                          children: [
+                            Padding(
+                              padding: const EdgeInsets.all(16.0),
+                              child: Form(
+                                key: _formKey,
+                                child: Column(
+                                  children: [
+                                    Padding(
+                                      padding: const EdgeInsets.all(8.0),
+                                      child: SizedBox(
+                                        height: 58,
+                                        child: TextFormField(
+                                          controller: _mobileEmailController,
+                                          decoration: kTextFormFieldDecoration
+                                              .copyWith(
+                                            hintText:
+                                            "Mobile Number / Email id",
+                                            prefixIcon: Icon(
+                                              Icons.format_list_numbered,
+                                              color: Colors.blue.shade300,
                                             ),
-                                            validator: (value) {
-                                              if (value == null || value.isEmpty) {
-                                                return 'Please enter your Mobile number';
-                                              }
-                                              return null;
-                                            },
                                           ),
+                                          validator: (value) {
+                                            if (value == null ||
+                                                value.isEmpty) {
+                                              return 'Please enter your Mobile number or Email id';
+                                            } else if (!RegExp(
+                                                r'^[0-9]{10}$')
+                                                .hasMatch(value) &&
+                                                !RegExp(
+                                                    r'^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$')
+                                                    .hasMatch(value)) {
+                                              return 'Please enter a valid Mobile number or Email id';
+                                            }
+                                            return null;
+                                          },
                                         ),
                                       ),
-                                      state == 1
-                                          ? Padding(
+                                    ),
+                                    if (state == 1)
+                                      Padding(
                                         padding: const EdgeInsets.all(8.0),
-                                        child: SizedBox(height: 58,
+                                        child: SizedBox(
+                                          height: 58,
                                           child: TextFormField(
                                             controller: _otpController,
-                                            decoration: kTextFormFieldDecoration.copyWith(
+                                            decoration:
+                                            kTextFormFieldDecoration
+                                                .copyWith(
                                               hintText: "Enter OTP",
                                               prefixIcon: Icon(
                                                 Icons.lock,
                                                 color: Colors.blue.shade300,
                                               ),
                                             ),
-                                            keyboardType: TextInputType.number,
+                                            keyboardType:
+                                            TextInputType.number,
                                             validator: (value) {
-                                              if (value == null || value.isEmpty) {
+                                              if (value == null ||
+                                                  value.isEmpty) {
                                                 return 'Please enter the OTP';
                                               } else if (value.length != 6) {
                                                 return 'OTP must be 6 digits';
@@ -182,129 +151,70 @@ class _ForgetPasswordState extends State<ForgetPassword> with SingleTickerProvid
                                             },
                                           ),
                                         ),
-                                      )
-                                          : Container(),
-                                      SizedBox(
-                                        height: 11,
                                       ),
-                                      SizedBox(
-                                        width: 310,
-                                        child: state == 0
-                                            ?
-                                        Container(
-
-                                          decoration: containerdesign.decoration,
-                                          child: InkWell(
-                                            borderRadius: BorderRadius.circular(12),
-                                            onTap: () {
-                                              if (_formKey.currentState!.validate()) {
-                                                setState(() {
-                                                  state = 1;
-                                                });
-
-                                                ScaffoldMessenger.of(context).showSnackBar(
-                                                  SnackBar(content: Text('Processing Data')),
-                                                );
-
-                                                // Navigator.of(context).push(_createRoute(OtpVerification()));
-                                                // Here you can add the logic to request OTP
-                                              }
-                                            },
-
-                                            child: Container(
-
-                                              padding: EdgeInsets.symmetric(vertical: 15),
-                                              alignment: Alignment.center,
-                                              child: Text(
-                                                'Request OTP',
-                                                style: TextStyle(
-                                                  color: Colors.white,
-                                                  fontWeight: FontWeight.bold,
-                                                ),
-                                              ),
-                                            ),
-                                          ),
-                                        )
-                                            : InkWell(
-                                          borderRadius: BorderRadius.circular(12),
-                                          onTap: () {
-                                            if (_formKey.currentState!.validate()) {
+                                    SizedBox(height: 11),
+                                    SizedBox(
+                                      width: 310,
+                                      child: ElevatedButton(
+                                        onPressed: () {
+                                          if (_formKey.currentState!
+                                              .validate()) {
+                                            if (state == 0) {
                                               setState(() {
                                                 state = 1;
                                               });
-
-                                              ScaffoldMessenger.of(context).showSnackBar(
-                                                SnackBar(content: Text('Processing Data')),
-                                              );
-
-                                              // Navigator.of(context).push(_createRoute(passchange()));
-                                              // Here you can add the logic to request OTP
+                                            } else {
+                                              // Handle OTP submission
                                             }
-                                          },
-
-                                          child: Container(
-                                            decoration: containerdesign.decoration,
-                                            padding: EdgeInsets.symmetric(vertical: 15),
-                                            alignment: Alignment.center,
-                                            child: Text(
-                                              'Submit OTP',
-                                              style: TextStyle(
-                                                color: Colors.white,
-                                                fontWeight: FontWeight.bold,
-                                              ),
-                                            ),
+                                          }
+                                        },
+                                        style: elevatedButtonStyle.copyWith(
+                                          side: MaterialStatePropertyAll(
+                                              BorderSide(
+                                                  color: Colors.white60)),
+                                        ),
+                                        child: Text(
+                                          state == 0
+                                              ? 'Request OTP'
+                                              : 'Submit OTP',
+                                          style: TextStyle(
+                                            fontSize: 14,
+                                            letterSpacing: 1,
+                                            wordSpacing: 1,
                                           ),
                                         ),
                                       ),
-                                      SizedBox(
-                                        height: 11,
-                                      ),
-                                      Align(
-                                        alignment: Alignment.center,
-                                        child: TextButton(
-                                          onPressed: () {
-                                            // Add resend OTP logic here
-                                          },
-                                          child: Text(
-                                            "Resend OTP ?",
-                                            style: TextStyle(
-                                              color: Colors.black38,
-                                            ),
+                                    ),
+                                    SizedBox(height: 11),
+                                    Align(
+                                      alignment: Alignment.center,
+                                      child: TextButton(
+                                        onPressed: () {
+                                          // Add resend OTP logic here
+                                        },
+                                        child: Text(
+                                          "Resend OTP ?",
+                                          style: TextStyle(
+                                            color: Colors.white,
                                           ),
                                         ),
                                       ),
-                                    ],
-                                  ),
+                                    ),
+                                  ],
                                 ),
                               ),
                             ),
-                          ),
-                        ],
-
-                      ),]
-                )),],
+                          ],
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+              ],
+            ),
+          ],
         ),
       ),
     );
-
   }
-
-  // Route _createRoute(Widget page) {
-  //   return PageRouteBuilder(
-  //     pageBuilder: (context, animation, secondaryAnimation) => page,
-  //     transitionsBuilder: (context, animation, secondaryAnimation, child) {
-  //       const begin = Offset(1.0, 0.0); // Slide from right to left
-  //       const end = Offset.zero;
-  //       const curve = Curves.easeInOut;
-  //
-  //       var tween = Tween(begin: begin, end: end).chain(CurveTween(curve: curve));
-  //       var offsetAnimation = animation.drive(tween);
-  //
-  //       return   Transform.scale(
-  //         scale: animation.value,
-  //         child: child,
-  //       );
-  //     },
-  //   );
-  // }
 }

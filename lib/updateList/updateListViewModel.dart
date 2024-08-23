@@ -3,18 +3,17 @@ import 'package:api/app/app.router.dart';
 import 'package:stacked/stacked.dart';
 import 'package:stacked_services/stacked_services.dart';
 
-class AllContactsViewModal extends BaseViewModel{
+class UpdateListViewModel extends BaseViewModel{
   final NavigationService _navigationService = locator<NavigationService>();
-  //
-  void NavigateTOFilterView() async {
-    await _navigationService.navigateToFilterDialogView();
+
+  void NavigateToUpadteLIstAgent() async {
+    await _navigationService.navigateToUpdateListAgent();
   }
   void NavigateTOAllCaller() async {
     await _navigationService.navigateToAllContactsView();
   }
   void NavigateTODashboard() async {
-    // final Shared
-    await _navigationService.navigateToFirstViewScreen( loginModel:  );
+    await _navigationService.navigateToFirstViewScreen();
   }
   void navigateToRegisterNewUser() async{
     await _navigationService.navigateToRegistration();
@@ -27,7 +26,9 @@ class AllContactsViewModal extends BaseViewModel{
   }
   void navigateToAgentView() async{
     await _navigationService.navigateToAgentView();
-  }void navigateToKundliView() async{
-    await _navigationService.navigateToKundliView();
   }
+  void NavigateTOFilterView() async {
+    await _navigationService.navigateToFilterDialogView();
+  }
+
 }

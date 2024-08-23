@@ -34,10 +34,13 @@ final Container containerdesign= Container(
 );
 
 const InputDecoration kTextFormFieldDecoration = InputDecoration(
+
+
     focusedBorder: OutlineInputBorder(
+
       borderRadius: BorderRadius.all(Radius.circular(10)),
       borderSide: BorderSide(
-        color: Colors.blueAccent,// Focused blue border colo258/369*-+
+        color: Colors.blueAccent,
 
         width: 1,
       ),
@@ -65,19 +68,24 @@ const InputDecoration kTextFormFieldDecoration = InputDecoration(
     //   color: Colors.redAccent,
     //   fontWeight: FontWeight.bold,
     // ),
-    errorBorder:OutlineInputBorder(
-      borderRadius: BorderRadius.all(Radius.circular(10)),  borderSide: BorderSide(
-        color: Colors.red,
-        width: 1,
-      ),
-    )
+    errorBorder: UnderlineInputBorder(
+      borderSide: BorderSide(color: Colors.red),
+
+
+    ),
+  // OutlineInputBorder(
+    //   borderRadius: BorderRadius.all(Radius.circular(10)),  borderSide: BorderSide(
+    //     color: Colors.red,
+    //     width: 1,
+    //   ),
+    // )
 
 
 );
 final ButtonStyle elevatedButtonStyle = ElevatedButton.styleFrom(
   foregroundColor: Colors.white,
 
-  backgroundColor: Colors.orange, // Text color
+  backgroundColor:  Color(0xFFFFAC06), // Text color
   shadowColor: Colors.grey.shade400, // Shadow color
   elevation: 1, // Slightly higher elevation for a more prominent shadow
   padding: EdgeInsets.symmetric(horizontal: 24.0, vertical: 12.0),

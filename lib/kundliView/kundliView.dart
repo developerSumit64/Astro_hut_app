@@ -1,5 +1,9 @@
+import 'package:api/kundliView/kundliViewModel.dart';
 import 'package:flutter/material.dart';
+
 import 'package:api/constants/constantStyle.dart';
+import 'package:stacked/stacked.dart';
+// import 'package:api/constants/constantStyle.dart';
 
 class KundliView extends StatefulWidget {
   const KundliView({super.key});
@@ -11,10 +15,10 @@ class KundliView extends StatefulWidget {
 class _KundliViewState extends State<KundliView> {
   // Define a list of tabs and their content
   final List<Map<String, dynamic>> tabs = [
-    {'title': 'Lagna Chark', 'content': 'Lagna Chark Content'},
-    {'title': 'Maha Dasha', 'content': 'Maha Dasha Content'},
-    {'title': 'Tab 1', 'content': 'Content for Tab 1'},
-    {'title': 'Tab 2', 'content': 'Content for Tab 2'},
+    {'title': 'Lagna Chark', 'content': 'Lagna Chark Content', 'image':'assets/images/kundliimage.png'},
+    {'title': 'Maha Dasha', 'content': 'Maha Dasha Content','image':'assets/images/kundliimage.png'},
+    {'title': 'Tab 1', 'content': 'Content for Tab 1','image':'assets/images/kundliimage.png'},
+    {'title': 'Tab 2', 'content': 'Content for Tab 2','image':'assets/images/kundliimage.png'},
   ];
 
   // Define a list of dynamic text for the cards
@@ -223,269 +227,370 @@ class _KundliViewState extends State<KundliView> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        flexibleSpace: Container(
-          decoration: BoxDecoration(
-            gradient: LinearGradient(
-              colors: [Colors.orange, Colors.orange.shade400],
-              begin: Alignment.topLeft,
-              end: Alignment.bottomRight,
-            ),
-          ),
-        ),
-        title: const Text(
-          'Kundli Page',
-          style: TextStyle(color: Colors.white, letterSpacing: 1),
-        ),
-        iconTheme: const IconThemeData(color: Colors.white),
-        actions: [
-          PopupMenuButton<int>(
-            icon: const Icon(Icons.more_vert_outlined),
-            onSelected: (value) {
-              setState(() {
-                if (value == 1) {
-                  showInfo = !showInfo;
-                }
-                if (value == 2 ) {
-                  showHistory = !showHistory;
-                }
-
-              });
-            },
-            itemBuilder: (context) => [
-              const PopupMenuItem(
-
-                value: 1,
-                child: Text("Show Info"),
+    return ViewModelBuilder<KundliViewModel>.reactive(viewModelBuilder: () => KundliViewModel(),
+        builder: (context, viewModel, child) {
+          return Scaffold(
+            appBar: AppBar(
+              flexibleSpace: Container(
+                decoration: BoxDecoration(
+                  gradient: LinearGradient(
+                    colors: [Colors.orange, Colors.orange.shade300],
+                    begin: Alignment.topLeft,
+                    end: Alignment.bottomRight,
+                  ),
+                ),
               ),
-              const PopupMenuItem(
-                value: 2,
-                child: Text("Show History"),
+              title: const Text(
+                'Kundli Page',
+                style: TextStyle(color: Colors.white, letterSpacing: 1),
               ),
-            ],
-          ),
-        ],
-      ),
-      body: SingleChildScrollView(
-        child: Column(
-          children: [
-            Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: Container(
-                decoration: containerdesign.decoration,
-                child: Column(
-                  children: [
-                    Card(
-                      surfaceTintColor: Colors.white,
-                      color: Colors.white,
-                      margin: const EdgeInsets.symmetric(vertical: 5, horizontal: 1),
-                      elevation: 0.5,
-                      shape: RoundedRectangleBorder(
-                        side: BorderSide(
-                          color: Colors.black12.withOpacity(0.05),
-                        ),
-                        borderRadius: const BorderRadius.only(
-                          topLeft: Radius.circular(32),
-                          bottomRight: Radius.circular(32),
-                        ),
-                      ),
-                      child: const Padding(
-                        padding: EdgeInsets.all(15),
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Row(
-                              children: [
-                                Text(
-                                  'Name : ',
-                                  style: TextStyle(
-                                    fontSize: 16,
-                                  ),
-                                ),
-                                Text(
-                                  ' Neetu',
-                                  style: TextStyle(
-                                    fontSize: 16,
-                                    letterSpacing: 1,
-                                  ),
-                                ),
-                              ],
-                            ),
-                            Row(
-                              children: [
-                                Text(
-                                  'DOB : ',
-                                  style: TextStyle(
-                                    fontSize: 15,
-                                  ),
-                                ),
-                                Text(
-                                  '01/11/1991',
-                                  style: TextStyle(
-                                    fontSize: 15,
-                                    letterSpacing: 1,
-                                  ),
-                                ),
-                              ],
-                            ),
-                            Row(
-                              children: [
-                                Text(
-                                  'राशि : ',
-                                  style: TextStyle(
-                                    fontSize: 15,
-                                  ),
-                                ),
-                                Text(
-                                  'सिंह',
-                                  style: TextStyle(
-                                    letterSpacing: 1,
-                                    fontSize: 16,
-                                  ),
-                                ),
-                              ],
-                            ),
-                            Divider(),
-                            FittedBox(
-                              child: Row(
-                                children: [
-                                  Text(
-                                    'Location: ',
-                                    style: TextStyle(
-                                      fontSize: 16,
-                                      color: Colors.black26,
-                                    ),
-                                  ),
-                                  Text(
-                                    ' Jaunpur/Uttar Pradesh/India',
-                                    style: TextStyle(
-                                      fontSize: 16,
-                                      color: Colors.grey,
-                                    ),
-                                  ),
-                                ],
-                              ),
-                            ),
-                            SizedBox(height: 4),
-                            Center(
-                              child: Column(
-                                children: [
-                                  // Additional widgets can be added here
-                                ],
-                              ),
-                            ),
-                          ],
-                        ),
-                      ),
+              iconTheme: const IconThemeData(color: Colors.white),
+              actions: [
+                PopupMenuButton<int>(
+                  surfaceTintColor: Colors.white,
+                  icon: const Icon(Icons.more_vert_outlined),
+                  onSelected: (value) {
+                    setState(() {
+                      if (value == 1) {
+                        showInfo = !showInfo;
+                      }
+                      if (value == 2 ) {
+                        showHistory = !showHistory;
+                      }
+                      if (value == 3 ) {
+                        viewModel.navigateToKundliView();
+                      }
+                      if (value == 4 ) {
+                        viewModel.navigateToAddContact();
+                      }
+
+                      if (value == 5 ) {
+                        viewModel.navigateToCallerDetailsSpecific();
+                      }
+
+                      if (value == 6 ) {
+                        viewModel.navigateToUpdateHistory();
+                      }
+
+                      if (value == 7 ) {
+                        viewModel.navigateToPredictionHistory();
+                      }
+
+                      if (value == 8 ) {
+                        viewModel.NavigateTOAllCaller();
+                      }
+                      if (value == 9 ) {
+                        viewModel.navigateToCallReceiving();
+                      }
+
+                      if (value == 10 ) {
+                        viewModel.navigateToAddContact();
+                      }
+
+                      if (value == 11 ) {
+                        viewModel.NavigateTODashboard();
+                      }
+                      if (value == 12 ) {
+                        viewModel.navigateToCallerLogView();
+                      }
+                      if (value == 13 ) {
+                        viewModel.navigateToAgentView();
+                      }
+
+
+                      // Add more options here based on the selection
+                    });
+                  },
+                  itemBuilder: (context) => [
+                    const PopupMenuItem(
+                      value: 1,
+                      child: Text("Show Full Information"),
+                    ),
+                    const PopupMenuItem(
+                      value: 2,
+                      child: Text("Show History"),
+                    ),
+                    const PopupMenuItem(
+                      value: 3,
+                      child: Text("Kundli Page"),
+                    ),
+                    const PopupMenuItem(
+                      value: 4,
+                      child: Text("Edit Caller"),
+                    ),
+                    const PopupMenuItem(
+                      value: 5,
+                      child: Text("Caller Details"),
+                    ),
+                    const PopupMenuItem(
+                      value: 6,
+                      child: Text("Update History"),
+                    ),
+                    const PopupMenuItem(
+                      value: 7,
+                      child: Text("Prediction History"),
+                    ),
+                    const PopupMenuItem(
+                      value: 8,
+                      child: Text("All Callers"),
+                    ),
+                    const PopupMenuItem(
+                      value: 9,
+                      child: Text("Call Receiving"),
+                    ),
+                    const PopupMenuItem(
+                      value: 10,
+                      child: Text("Add Contact"),
+                    ),
+                    const PopupMenuItem(
+                      value: 11,
+                      child: Text("Dashboard"),
+                    ),
+                    const PopupMenuItem(
+                      value: 12,
+                      child: Text("Call Logs"),
+                    ),
+                    const PopupMenuItem(
+                      value: 13,
+                      child: Text("Agent Stats"),
                     ),
                   ],
                 ),
-              ),
+              ],
             ),
-            if (showInfo) showInfoWidget(),
-            if (showHistory) showHistoryWidget(),
-            DefaultTabController(
-              length: tabs.length,
+            body: SingleChildScrollView(
               child: Column(
-                children: [
+                children: <Widget>[
                   Padding(
                     padding: const EdgeInsets.all(8.0),
                     child: Container(
-                      decoration: BoxDecoration(
-                        color: Colors.orange.shade400,
-                        borderRadius: BorderRadius.circular(5),
-                      ),
-                      child: TabBar(
-                        mouseCursor: SystemMouseCursors.click,
-                        isScrollable: true,
-                        unselectedLabelStyle: const TextStyle(fontSize: 13),
-                        labelColor: Colors.white,
-                        unselectedLabelColor: Colors.black54,
-                        tabs: tabs.map((tab) => Tab(text: tab['title'])).toList(),
+                      decoration: containerdesign.decoration,
+                      child: Column(
+                        children: [
+                          Card(
+                            surfaceTintColor: Colors.white,
+                            color: Colors.white,
+                            margin: const EdgeInsets.symmetric(vertical: 5, horizontal: 1),
+                            elevation: 0.5,
+                            shape: RoundedRectangleBorder(
+                              side: BorderSide(
+                                color: Colors.black12.withOpacity(0.05),
+                              ),
+                              borderRadius: const BorderRadius.only(
+                                topLeft: Radius.circular(32),
+                                bottomRight: Radius.circular(32),
+                              ),
+                            ),
+                            child: const Padding(
+                              padding: EdgeInsets.all(15),
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Row(
+                                    children: [
+                                      Text(
+                                        'Name : ',
+                                        style: TextStyle(
+                                          fontSize: 16,
+                                        ),
+                                      ),
+                                      Text(
+                                        ' Neetu',
+                                        style: TextStyle(
+                                          fontSize: 16,
+                                          letterSpacing: 1,
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                  Row(
+                                    children: [
+                                      Text(
+                                        'DOB : ',
+                                        style: TextStyle(
+                                          fontSize: 15,
+                                        ),
+                                      ),
+                                      Text(
+                                        '01/11/1991',
+                                        style: TextStyle(
+                                          fontSize: 15,
+                                          letterSpacing: 1,
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                  Row(
+                                    children: [
+                                      Text(
+                                        'राशि : ',
+                                        style: TextStyle(
+                                          fontSize: 15,
+                                        ),
+                                      ),
+                                      Text(
+                                        'सिंह',
+                                        style: TextStyle(
+                                          letterSpacing: 1,
+                                          fontSize: 16,
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                  Divider(),
+                                  FittedBox(
+                                    child: Row(
+                                      children: [
+                                        Text(
+                                          'Location: ',
+                                          style: TextStyle(
+                                            fontSize: 16,
+                                            color: Colors.black26,
+                                          ),
+                                        ),
+                                        Text(
+                                          ' Jaunpur/Uttar Pradesh/India',
+                                          style: TextStyle(
+                                            fontSize: 16,
+                                            color: Colors.grey,
+                                          ),
+                                        ),
+                                      ],
+                                    ),
+                                  ),
+                                  SizedBox(height: 4),
+                                  Center(
+                                    child: Column(
+                                      children: [
+                                        // Additional widgets can be added here
+                                      ],
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            ),
+                          ),
+                        ],
                       ),
                     ),
                   ),
-                  Container(
-                    height: 300,
-                    child: TabBarView(
-                      children: tabs.map((tab) {
-                        return Center(
-                          child: Text(
-                            tab['content'],
-                            style: TextStyle(fontSize: 16, color: Colors.grey.shade800),
+                  if (showInfo) showInfoWidget(),
+                  if (showHistory) showHistoryWidget(),
+                  DefaultTabController(
+                    length: tabs.length,
+                    child: Column(
+                      children: [
+                        Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: Container(
+                            decoration: BoxDecoration(
+                              color: Colors.orange.shade400,
+                              borderRadius: BorderRadius.circular(5),
+                            ),
+                            child: TabBar(
+                              mouseCursor: SystemMouseCursors.click,
+                              isScrollable: true,
+                              unselectedLabelStyle: const TextStyle(fontSize: 13),
+                              labelColor: Colors.white,
+                              unselectedLabelColor: Colors.black54,
+                              tabs: tabs.map((tab) => Tab(text: tab['title'],)).toList(),
+
+
+                            ),
                           ),
-                        );
-                      }).toList(),
+                        ),
+                        Container(
+                          height: 300,
+                          child: TabBarView(
+                            children: tabs.map((tab) {
+                              return SingleChildScrollView(
+                                child: Center(
+                                  child: Column(
+                                    children: [
+                                      Text(
+                                        tab['content'],
+                                        style: TextStyle(fontSize: 16, color: Colors.grey.shade800),
+                                      ),
+                                      Image(image: AssetImage(tab['image'],),fit:BoxFit.cover),
+                                    ],
+                                  ),
+                                ),
+                              );
+                            }).toList(),
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                  for (String text in textCardContent) buildTextCard(text),
+                  DefaultTabController(
+                    length: tabs.length,
+                    child: Column(
+                      children: [
+                        Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: Container(
+                            decoration: BoxDecoration(
+                              color: Colors.orange.shade400,
+                              borderRadius: BorderRadius.circular(5),
+                            ),
+                            child: TabBar(
+                              mouseCursor: SystemMouseCursors.click,
+                              isScrollable: true,
+                              unselectedLabelStyle: const TextStyle(fontSize: 13),
+                              labelColor: Colors.white,
+                              unselectedLabelColor: Colors.black54,
+                              tabs: tabs.map((tab) => Tab(text: tab['title'])).toList(),
+                            ),
+                          ),
+                        ),
+                        Container(
+                          height: 200,
+                          child: TabBarView(
+                            children: tabs.map((tab) {
+                              return Center(
+                                child: Text(
+                                  tab['content'],
+                                  style: TextStyle(fontSize: 16, color: Colors.grey.shade800),
+                                ),
+                              );
+                            }).toList(),
+                          ),
+                        ),
+                      ],
                     ),
                   ),
                 ],
               ),
             ),
-            for (String text in textCardContent) buildTextCard(text),
-            DefaultTabController(
-              length: tabs.length,
-              child: Column(
-                children: [
-                  Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: Container(
-                      decoration: BoxDecoration(
-                        color: Colors.orange.shade400,
-                        borderRadius: BorderRadius.circular(5),
-                      ),
-                      child: TabBar(
-                        mouseCursor: SystemMouseCursors.click,
-                        isScrollable: true,
-                        unselectedLabelStyle: const TextStyle(fontSize: 13),
-                        labelColor: Colors.white,
-                        unselectedLabelColor: Colors.black54,
-                        tabs: tabs.map((tab) => Tab(text: tab['title'])).toList(),
-                      ),
-                    ),
-                  ),
-                  Container(
-                    height: 200,
-                    child: TabBarView(
-                      children: tabs.map((tab) {
-                        return Center(
-                          child: Text(
-                            tab['content'],
-                            style: TextStyle(fontSize: 16, color: Colors.grey.shade800),
-                          ),
-                        );
-                      }).toList(),
-                    ),
-                  ),
-                ],
-              ),
-            ),
-          ],
-        ),
-      ),
-    );
+          );
+        },);
   }
 
   // Helper method to create individual text cards
   Widget buildTextCard(String text) {
-    return Card(
-      surfaceTintColor: Colors.white,
-      shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(10.0),
-      ),
-      elevation: 3,
-      margin: const EdgeInsets.all(6),
-      color: Colors.white,
-      child: Padding(
-        padding: const EdgeInsets.all(8),
-        child: Text(
-          text,
-          style: const TextStyle(
-            color: Colors.green,
-            fontSize: 16,
+    return Column(
+      children: [
+        Card(
+          surfaceTintColor: Colors.white,
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(10.0),
+          ),
+          elevation: 3,
+          margin: const EdgeInsets.all(6),
+          color: Colors.white,
+          child: Padding(
+            padding: const EdgeInsets.all(8),
+            child: Text(
+              text,
+              style: const TextStyle(
+                color: Colors.green,
+                fontSize: 16,
+              ),
+            ),
           ),
         ),
-      ),
+      ],
     );
   }
 }

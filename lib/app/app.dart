@@ -1,3 +1,5 @@
+import 'dart:js_interop';
+
 import 'package:api/allContacts/all_contactsView.dart';
 import 'package:api/firstView/firstViewScreen.dart';
 import 'package:api/profileVIew/profileView.dart';
@@ -9,15 +11,20 @@ import 'package:stacked_services/stacked_services.dart';
 import '../SpecificCallLogDetails/specificCallLogsDetails.dart';
 import '../agentView/aggentView.dart';
 import '../callReceiving/call_receiveView.dart';
+import '../callerHistoryFromKundli/callerHistoryFromKundli.dart';
 import '../callerLogs/callerLogsView.dart';
 import '../editProfile/editProfileView.dart';
+import '../filterView/filterView.dart';
 import '../forgetPassworddView/forgetPasswordView.dart';
 import '../kundliView/kundliView.dart';
 import '../loginOrRegisterSelecterView/loginOrRegisterView.dart';
 import '../loginView/loginView.dart';
 import '../newRegisteratoin/newRegisterationview.dart';
 import '../profileViewScreen/profileViewScreenView.dart';
-import '../signUpView.dart';
+import '../services/loginApi.dart';
+import '../showHistory/showHistoryView.dart';
+
+import '../signup/signUpView.dart';
 import '../updateList/updateListView.dart';
 
 // import '../agentView/agentView.dart';
@@ -31,7 +38,7 @@ import '../updateList/updateListView.dart';
 
     MaterialRoute(page: AgentView,initial:false),
     MaterialRoute(page: CallerLogsView,initial: false),
-    MaterialRoute(page: SingUpView,initial: false),
+    MaterialRoute(page: SignUpView,initial: false),
     MaterialRoute(page: LoginView,initial: false),
     MaterialRoute(page: LoginOrRegisterView,initial: true),
     MaterialRoute(page: ProfileView,initial: false),
@@ -43,8 +50,13 @@ import '../updateList/updateListView.dart';
     MaterialRoute(page: CallReceiveView,initial: false),
     MaterialRoute(page: Registration,initial: false),
     MaterialRoute(page: AllContactsView,initial: false),
-    MaterialRoute(page: FilterDialog,initial: false),
+
     MaterialRoute(page: KundliView,initial: false),
+    MaterialRoute(page: CallerHistoryViewKundli,initial: false),
+    MaterialRoute(page: ShowHistoryView,initial: false),
+    MaterialRoute(page: FilterDialogView,initial: false),
+
+
 
 
 
@@ -57,7 +69,8 @@ import '../updateList/updateListView.dart';
     LazySingleton(classType: DialogService),
     LazySingleton(classType: SnackbarService),
     // LazySingleton(classType: CourseApi),
-    LazySingleton(classType: CourseApi)
+    LazySingleton(classType: CourseApi),
+    LazySingleton(classType: LoginApi)
   ],
 )
 class AppSetup {
