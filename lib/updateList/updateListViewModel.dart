@@ -27,4 +27,8 @@ class UpdateListViewModel extends BaseViewModel{
   void navigateToAgentView() async{
     await _navigationService.navigateToAgentView();
   }
+  void NavigateTOFilterView() async {
+    await _navigationService.navigateToFilterDialogView();
+  }
+
 }
