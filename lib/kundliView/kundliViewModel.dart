@@ -14,9 +14,9 @@ class KundliViewModel extends BaseViewModel{
     await _navigationService.navigateToAllContactsView();
   }
 
-  void NavigateTODashboard() async {
-    await _navigationService.navigateToFirstViewScreen();
-  }
+  // void NavigateTODashboard() async {
+  //   await _navigationService.navigateToFirstViewScreen();
+  // }
 
   void navigateToAddContact() async{
     await _navigationService.navigateToRegistration();

@@ -287,9 +287,9 @@ class _KundliViewState extends State<KundliView> {
                         viewModel.navigateToAddContact();
                       }
 
-                      if (value == 11 ) {
-                        viewModel.NavigateTODashboard();
-                      }
+                      // if (value == 11 ) {
+                      //   viewModel.NavigateTODashboard();
+                      // }
                       if (value == 12 ) {
                         viewModel.navigateToCallerLogView();
                       }

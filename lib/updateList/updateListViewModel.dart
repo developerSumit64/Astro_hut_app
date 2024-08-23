@@ -12,9 +12,9 @@ class UpdateListViewModel extends BaseViewModel{
   void NavigateTOAllCaller() async {
     await _navigationService.navigateToAllContactsView();
   }
-  void NavigateTODashboard() async {
-    await _navigationService.navigateToFirstViewScreen();
-  }
+  // void NavigateTODashboard() async {
+  //   await _navigationService.navigateToFirstViewScreen();
+  // }
   void navigateToRegisterNewUser() async{
     await _navigationService.navigateToRegistration();
   }
