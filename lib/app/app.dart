@@ -1,3 +1,5 @@
+import 'dart:js_interop';
+
 import 'package:api/allContacts/all_contactsView.dart';
 import 'package:api/firstView/firstViewScreen.dart';
 import 'package:api/profileVIew/profileView.dart';
@@ -19,6 +21,7 @@ import '../loginOrRegisterSelecterView/loginOrRegisterView.dart';
 import '../loginView/loginView.dart';
 import '../newRegisteratoin/newRegisterationview.dart';
 import '../profileViewScreen/profileViewScreenView.dart';
+import '../services/loginApi.dart';
 import '../showHistory/showHistoryView.dart';
 
 import '../signup/signUpView.dart';
@@ -66,7 +69,8 @@ import '../updateList/updateListView.dart';
     LazySingleton(classType: DialogService),
     LazySingleton(classType: SnackbarService),
     // LazySingleton(classType: CourseApi),
-    LazySingleton(classType: CourseApi)
+    LazySingleton(classType: CourseApi),
+    LazySingleton(classType: LoginApi)
   ],
 )
 class AppSetup {

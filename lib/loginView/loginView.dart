@@ -152,7 +152,10 @@ class _LoginViewState extends State<LoginView> {
                             onPressed: () {
                               if (_formKey.currentState!.validate()) {
                                 _formKey.currentState!.save();
-                                viewModel.navigateToFirstView();
+
+                                viewModel.getLoginDetails(_email, "", _password);
+
+                                // viewModel.navigateToFirstView();
                               }
                             },
                             style: elevatedButtonStyle,

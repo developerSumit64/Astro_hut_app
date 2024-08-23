@@ -19,6 +19,7 @@ import 'package:api/kundliView/kundliView.dart' as _i17;
 import 'package:api/loginOrRegisterSelecterView/loginOrRegisterView.dart'
     as _i7;
 import 'package:api/loginView/loginView.dart' as _i6;
+import 'package:api/models/loginModel.dart' as _i22;
 import 'package:api/newRegisteratoin/newRegisterationview.dart' as _i15;
 import 'package:api/profileVIew/profileView.dart' as _i8;
 import 'package:api/profileViewScreen/profileViewScreenView.dart' as _i12;
@@ -30,7 +31,7 @@ import 'package:api/updateList/updateListView.dart' as _i11;
 import 'package:flutter/material.dart' as _i21;
 import 'package:flutter/material.dart';
 import 'package:stacked/stacked.dart' as _i1;
-import 'package:stacked_services/stacked_services.dart' as _i22;
+import 'package:stacked_services/stacked_services.dart' as _i23;
 
 class Routes {
   static const firstViewScreen = '/first-view-screen';
@@ -176,8 +177,10 @@ class StackedRouter extends _i1.RouterBase {
 
   final _pagesMap = <Type, _i1.StackedRouteFactory>{
     _i2.FirstViewScreen: (data) {
+      final args = data.getArgs<FirstViewScreenArguments>(nullOk: false);
       return _i21.MaterialPageRoute<dynamic>(
-        builder: (context) => const _i2.FirstViewScreen(),
+        builder: (context) =>
+            _i2.FirstViewScreen(key: args.key, loginModel: args.loginModel),
         settings: data,
       );
     },
@@ -298,15 +301,45 @@ class StackedRouter extends _i1.RouterBase {
   Map<Type, _i1.StackedRouteFactory> get pagesMap => _pagesMap;
 }
 
-extension NavigatorStateExtension on _i22.NavigationService {
-  Future<dynamic> navigateToFirstViewScreen([
+class FirstViewScreenArguments {
+  const FirstViewScreenArguments({
+    this.key,
+    required this.loginModel,
+  });
+
+  final _i21.Key? key;
+
+  final _i22.LoginModel loginModel;
+
+  @override
+  String toString() {
+    return '{"key": "$key", "loginModel": "$loginModel"}';
+  }
+
+  @override
+  bool operator ==(covariant FirstViewScreenArguments other) {
+    if (identical(this, other)) return true;
+    return other.key == key && other.loginModel == loginModel;
+  }
+
+  @override
+  int get hashCode {
+    return key.hashCode ^ loginModel.hashCode;
+  }
+}
+
+extension NavigatorStateExtension on _i23.NavigationService {
+  Future<dynamic> navigateToFirstViewScreen({
+    _i21.Key? key,
+    required _i22.LoginModel loginModel,
     int? routerId,
     bool preventDuplicates = true,
     Map<String, String>? parameters,
     Widget Function(BuildContext, Animation<double>, Animation<double>, Widget)?
         transition,
-  ]) async {
+  }) async {
     return navigateTo<dynamic>(Routes.firstViewScreen,
+        arguments: FirstViewScreenArguments(key: key, loginModel: loginModel),
         id: routerId,
         preventDuplicates: preventDuplicates,
         parameters: parameters,
@@ -565,14 +598,17 @@ extension NavigatorStateExtension on _i22.NavigationService {
         transition: transition);
   }
 
-  Future<dynamic> replaceWithFirstViewScreen([
+  Future<dynamic> replaceWithFirstViewScreen({
+    _i21.Key? key,
+    required _i22.LoginModel loginModel,
     int? routerId,
     bool preventDuplicates = true,
     Map<String, String>? parameters,
     Widget Function(BuildContext, Animation<double>, Animation<double>, Widget)?
         transition,
-  ]) async {
+  }) async {
     return replaceWith<dynamic>(Routes.firstViewScreen,
+        arguments: FirstViewScreenArguments(key: key, loginModel: loginModel),
         id: routerId,
         preventDuplicates: preventDuplicates,
         parameters: parameters,

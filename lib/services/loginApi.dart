@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:dio/dio.dart';
 
 import '../constants/apiconstants.dart';
@@ -6,11 +8,31 @@ import 'api.dart';
 
 class LoginApi extends Api{
   LoginModel? _loginModel;
-  Future<LoginModel?> getCourseList() async {
-    try {
-      Response response = await Client.get(
-        ApiConstants.Course_URL,
 
+  Future<LoginModel?> getLogin(String? emailId, String? mobile, String? password) async {
+    try {
+      Map<String, dynamic> formUpdated = {};
+
+      if(emailId!.isNotEmpty)
+      formUpdated['email']= emailId;
+
+      if(mobile!.isNotEmpty)
+      formUpdated['mobile'] = mobile;
+
+      if(password!.isNotEmpty)
+      formUpdated['password']= password;
+
+      Response response = await Client.post(
+        ApiConstants.Login,
+        data: jsonEncode(formUpdated),
+        options: Options(
+          contentType: Headers.jsonContentType,
+           headers: {
+            "Accept":"application/json",
+             "Content-Type":"application/json"
+           },
+          method: "POST"
+        )
       );
       print("Response ${response.statusCode}");
       if (response.statusCode == 200) {
@@ -31,5 +53,7 @@ class LoginApi extends Api{
     }
     return null;
   }
+
+
 
 }

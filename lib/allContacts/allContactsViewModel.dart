@@ -13,7 +13,8 @@ class AllContactsViewModal extends BaseViewModel{
     await _navigationService.navigateToAllContactsView();
   }
   void NavigateTODashboard() async {
-    await _navigationService.navigateToFirstViewScreen();
+    // final Shared
+    await _navigationService.navigateToFirstViewScreen( loginModel:  );
   }
   void navigateToRegisterNewUser() async{
     await _navigationService.navigateToRegistration();

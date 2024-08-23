@@ -1,16 +1,20 @@
 import 'package:api/constants/constantStyle.dart';
 import 'package:api/firstView/firsrViewModel.dart';
+import 'package:api/models/loginModel.dart';
 import 'package:flutter/material.dart';
 import 'package:stacked/stacked.dart';
 
 class FirstViewScreen extends StatefulWidget {
-  const FirstViewScreen({super.key});
+  final LoginModel loginModel;
+  const FirstViewScreen({super.key, required this.loginModel});
 
   @override
   State<FirstViewScreen> createState() => _FirstViewScreenState();
 }
 
 class _FirstViewScreenState extends State<FirstViewScreen> {
+
+
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
